@@ -1,0 +1,6 @@
+INFO:
+  NAME: "new_project_name"
+  AUTHOR: "new_project_author"
+
+DEBUG:
+  ENABLED: true
