@@ -1,7 +1,6 @@
+import argparse
 import pathlib
 import sys
-import argparse
-
 
 # OLD VALUES
 REPLACEMENT_BASE = "NEW_PROJECT"
