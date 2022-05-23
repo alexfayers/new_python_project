@@ -14,23 +14,23 @@ install:				## Install the project.
 .PHONY: format
 format:					## Format the code with isort black
 	@echo "formatting new_project_name ..."
-	@$(ENV_PREFIX)isort new_project_name/
-	@$(ENV_PREFIX)black new_project_name/
+	@$(ENV_PREFIX)isort .
+	@$(ENV_PREFIX)black .
 
 .PHONY: lint
 lint:					## Lint the code to check for potential errors and inconsistencies.
 	@echo "linting new_project_name ..."
 	@echo ""
 	@echo "running flake8 ..."
-	@$(ENV_PREFIX)flake8 new_project_name/
+	@$(ENV_PREFIX)flake8 .
 	@echo ""
 
 	@echo "running black ..."
-	@$(ENV_PREFIX)black --check new_project_name/
+	@$(ENV_PREFIX)black --check .
 	@echo ""
 
 	@echo "running mypy ..."
-	@$(ENV_PREFIX)mypy new_project_name/
+	@$(ENV_PREFIX)mypy .
 
 .PHONY: venv
 venv:					## Create a virtual environment.
@@ -67,3 +67,8 @@ clean:					## Clean unused files.
 docs: lint	         	 ## Build the documentation.
 	@echo "building documentation ..."
 	@$(ENV_PREFIX)pdoc -o docs ./new_project_name --html --force
+
+.PHONY: test
+test: lint				## Run tests for the project.
+	@echo "running tests for new_project_name ..."
+	$(ENV_PREFIX)pytest -v tests/
