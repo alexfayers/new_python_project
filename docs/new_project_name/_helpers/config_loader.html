@@ -35,8 +35,30 @@ import yaml
 from .decorators import singleton
 
 
+def set_attributes(config_object: object, config: dict[str, Any]) -&gt; None:
+    &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
+
+    Args:
+        config_object (object): The class to set the attributes on
+        config (dict[str, Any]): A config section dictionary
+    &#34;&#34;&#34;
+    for key, value in config.items():
+        if isinstance(value, dict):
+            subsection = ConfigSection(value)
+            section_name = getattr(config_object, &#34;_section_name&#34;, &#34;&#34;)
+            subsection._section_name = (
+                f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
+            )
+            setattr(config_object, key, subsection)
+        else:
+            setattr(config_object, key, value)
+
+
 class ConfigSection:
-    &#34;&#34;&#34;An object representation of a section a `yaml` config file. Each config item can be accessed as an attribute.&#34;&#34;&#34;
+    &#34;&#34;&#34;An object representation of a section within a `yaml` config file.
+
+    Each config item can be accessed as an attribute.
+    &#34;&#34;&#34;
 
     BLOCK_WRITE = False
 
@@ -44,25 +66,25 @@ class ConfigSection:
         &#34;&#34;&#34;Initialises a ConfigSection object.
 
         Args:
-            config (dict[str, Any]): _description_
+            config (dict[str, Any]): The config section to be represented by this object
         &#34;&#34;&#34;
         self._section_name = &#34;&#34;
 
-        self.set_attributes(config)
+        set_attributes(self, config)
 
         self.BLOCK_WRITE = True
 
-    def __setattr__(self, name: str, value: Any):
+    def __setattr__(self, name: str, value: Any) -&gt; None:
         &#34;&#34;&#34;Called when an attribute is attempted to be set.
 
-        Prevents changes to attributes if the BLOCK_WRITE flag is set to True.
+        Prevents changes to attributes if the `BLOCK_WRITE` flag is set to True.
 
         Args:
             name (str): The attribute which is being set
             value (Any): The new value of the attribute
 
         Raises:
-            AttributeError: Raised if the BLOCK_WRITE flag is set to True
+            AttributeError: Raised if the `BLOCK_WRITE` flag is set to True
         &#34;&#34;&#34;
         if not self.BLOCK_WRITE or name == &#34;_section_name&#34;:
             super().__setattr__(name, value)
@@ -70,14 +92,14 @@ class ConfigSection:
             raise AttributeError(f&#34;{name} is not writable&#34;)
 
     def __repr__(self) -&gt; str:
-        &#34;&#34;&#34;The string representation of the ConfigSection object.&#34;&#34;&#34;
+        &#34;&#34;&#34;The string representation of the `ConfigSection` object.&#34;&#34;&#34;
         return f&#34;{self.__dict__}&#34;
 
     def __str__(self) -&gt; str:
-        &#34;&#34;&#34;The string representation of the ConfigSection object.&#34;&#34;&#34;
+        &#34;&#34;&#34;The string representation of the `ConfigSection` object.&#34;&#34;&#34;
         return self.__repr__()
 
-    def __getattr__(self, name: str):
+    def __getattr__(self, name: str) -&gt; None:
         &#34;&#34;&#34;Called when `self.__getattribute__` raises an error.
 
         If this is called, we can be pretty sure that the target attribute does not
@@ -93,23 +115,6 @@ class ConfigSection:
             raise AttributeError(
                 f&#34;The &#39;{name}&#39; key does not exist in the &#39;{self._section_name}&#39; section&#34;  # noqa
             )
-
-    def set_attributes(self, config: dict[str, Any]):
-        &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
-
-        Args:
-            config (dict[str, Any]): A config section dictionary
-        &#34;&#34;&#34;
-        for key, value in config.items():
-            if isinstance(value, dict):
-                subsection = ConfigSection(value)
-                section_name = getattr(self, &#34;_section_name&#34;, &#34;&#34;)
-                subsection._section_name = (
-                    f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
-                )
-                setattr(self, key, subsection)
-            else:
-                setattr(self, key, value)
 
 
 @singleton
@@ -129,7 +134,7 @@ class Config:
 
         self.load_config()
 
-    def load_config(self):
+    def load_config(self) -&gt; None:
         &#34;&#34;&#34;Load the config file info this `Config` object.
 
         Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
@@ -142,7 +147,7 @@ class Config:
                 logging.error(e)
                 sys.exit(1)
 
-        ConfigSection.set_attributes(self, config)
+        set_attributes(self, config)
 
     def __repr__(self) -&gt; str:
         &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
@@ -150,7 +155,18 @@ class Config:
 
     def __str__(self) -&gt; str:
         &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
-        return self.__repr__()</code></pre>
+        return self.__repr__()
+
+    def __getattr__(self, name: str) -&gt; Any:
+        &#34;&#34;&#34;Defined to stop mypy from complaining about the `Config` object not having any attributes.
+
+        Args:
+            name (str): The attribute which is being accessed
+
+        Returns:
+            Any: A pretend return value to fool mypy
+        &#34;&#34;&#34;
+        return</code></pre>
 </details>
 </section>
 <section>
@@ -158,6 +174,44 @@ class Config:
 <section>
 </section>
 <section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="new_project_name._helpers.config_loader.set_attributes"><code class="name flex">
+<span>def <span class="ident">set_attributes</span></span>(<span>config_object: object, config: dict) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Set all of the keys within the <code>config</code> parameter as attributes of this <code><a title="new_project_name._helpers.config_loader.ConfigSection" href="#new_project_name._helpers.config_loader.ConfigSection">ConfigSection</a></code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config_object</code></strong> :&ensp;<code>object</code></dt>
+<dd>The class to set the attributes on</dd>
+<dt><strong><code>config</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dd>A config section dictionary</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_attributes(config_object: object, config: dict[str, Any]) -&gt; None:
+    &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
+
+    Args:
+        config_object (object): The class to set the attributes on
+        config (dict[str, Any]): A config section dictionary
+    &#34;&#34;&#34;
+    for key, value in config.items():
+        if isinstance(value, dict):
+            subsection = ConfigSection(value)
+            section_name = getattr(config_object, &#34;_section_name&#34;, &#34;&#34;)
+            subsection._section_name = (
+                f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
+            )
+            setattr(config_object, key, subsection)
+        else:
+            setattr(config_object, key, value)</code></pre>
+</details>
+</dd>
+</dl>
 </section>
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
@@ -197,7 +251,7 @@ class Config:
 
         self.load_config()
 
-    def load_config(self):
+    def load_config(self) -&gt; None:
         &#34;&#34;&#34;Load the config file info this `Config` object.
 
         Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
@@ -210,7 +264,7 @@ class Config:
                 logging.error(e)
                 sys.exit(1)
 
-        ConfigSection.set_attributes(self, config)
+        set_attributes(self, config)
 
     def __repr__(self) -&gt; str:
         &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
@@ -218,12 +272,23 @@ class Config:
 
     def __str__(self) -&gt; str:
         &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
-        return self.__repr__()</code></pre>
+        return self.__repr__()
+
+    def __getattr__(self, name: str) -&gt; Any:
+        &#34;&#34;&#34;Defined to stop mypy from complaining about the `Config` object not having any attributes.
+
+        Args:
+            name (str): The attribute which is being accessed
+
+        Returns:
+            Any: A pretend return value to fool mypy
+        &#34;&#34;&#34;
+        return</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
 <dt id="new_project_name._helpers.config_loader.Config.load_config"><code class="name flex">
-<span>def <span class="ident">load_config</span></span>(<span>self)</span>
+<span>def <span class="ident">load_config</span></span>(<span>self) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Load the config file info this <code><a title="new_project_name._helpers.config_loader.Config" href="#new_project_name._helpers.config_loader.Config">Config</a></code> object.</p>
@@ -232,7 +297,7 @@ class Config:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def load_config(self):
+<pre><code class="python">def load_config(self) -&gt; None:
     &#34;&#34;&#34;Load the config file info this `Config` object.
 
     Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
@@ -245,7 +310,7 @@ class Config:
             logging.error(e)
             sys.exit(1)
 
-    ConfigSection.set_attributes(self, config)</code></pre>
+    set_attributes(self, config)</code></pre>
 </details>
 </dd>
 </dl>
@@ -255,19 +320,23 @@ class Config:
 <span>(</span><span>config: dict)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>An object representation of a section a <code>yaml</code> config file. Each config item can be accessed as an attribute.</p>
+<div class="desc"><p>An object representation of a section within a <code>yaml</code> config file.</p>
+<p>Each config item can be accessed as an attribute.</p>
 <p>Initialises a ConfigSection object.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>config</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
-<dd><em>description</em></dd>
+<dd>The config section to be represented by this object</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class ConfigSection:
-    &#34;&#34;&#34;An object representation of a section a `yaml` config file. Each config item can be accessed as an attribute.&#34;&#34;&#34;
+    &#34;&#34;&#34;An object representation of a section within a `yaml` config file.
+
+    Each config item can be accessed as an attribute.
+    &#34;&#34;&#34;
 
     BLOCK_WRITE = False
 
@@ -275,25 +344,25 @@ class Config:
         &#34;&#34;&#34;Initialises a ConfigSection object.
 
         Args:
-            config (dict[str, Any]): _description_
+            config (dict[str, Any]): The config section to be represented by this object
         &#34;&#34;&#34;
         self._section_name = &#34;&#34;
 
-        self.set_attributes(config)
+        set_attributes(self, config)
 
         self.BLOCK_WRITE = True
 
-    def __setattr__(self, name: str, value: Any):
+    def __setattr__(self, name: str, value: Any) -&gt; None:
         &#34;&#34;&#34;Called when an attribute is attempted to be set.
 
-        Prevents changes to attributes if the BLOCK_WRITE flag is set to True.
+        Prevents changes to attributes if the `BLOCK_WRITE` flag is set to True.
 
         Args:
             name (str): The attribute which is being set
             value (Any): The new value of the attribute
 
         Raises:
-            AttributeError: Raised if the BLOCK_WRITE flag is set to True
+            AttributeError: Raised if the `BLOCK_WRITE` flag is set to True
         &#34;&#34;&#34;
         if not self.BLOCK_WRITE or name == &#34;_section_name&#34;:
             super().__setattr__(name, value)
@@ -301,14 +370,14 @@ class Config:
             raise AttributeError(f&#34;{name} is not writable&#34;)
 
     def __repr__(self) -&gt; str:
-        &#34;&#34;&#34;The string representation of the ConfigSection object.&#34;&#34;&#34;
+        &#34;&#34;&#34;The string representation of the `ConfigSection` object.&#34;&#34;&#34;
         return f&#34;{self.__dict__}&#34;
 
     def __str__(self) -&gt; str:
-        &#34;&#34;&#34;The string representation of the ConfigSection object.&#34;&#34;&#34;
+        &#34;&#34;&#34;The string representation of the `ConfigSection` object.&#34;&#34;&#34;
         return self.__repr__()
 
-    def __getattr__(self, name: str):
+    def __getattr__(self, name: str) -&gt; None:
         &#34;&#34;&#34;Called when `self.__getattribute__` raises an error.
 
         If this is called, we can be pretty sure that the target attribute does not
@@ -323,65 +392,13 @@ class Config:
         if not name.startswith(&#34;_&#34;):
             raise AttributeError(
                 f&#34;The &#39;{name}&#39; key does not exist in the &#39;{self._section_name}&#39; section&#34;  # noqa
-            )
-
-    def set_attributes(self, config: dict[str, Any]):
-        &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
-
-        Args:
-            config (dict[str, Any]): A config section dictionary
-        &#34;&#34;&#34;
-        for key, value in config.items():
-            if isinstance(value, dict):
-                subsection = ConfigSection(value)
-                section_name = getattr(self, &#34;_section_name&#34;, &#34;&#34;)
-                subsection._section_name = (
-                    f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
-                )
-                setattr(self, key, subsection)
-            else:
-                setattr(self, key, value)</code></pre>
+            )</code></pre>
 </details>
 <h3>Class variables</h3>
 <dl>
 <dt id="new_project_name._helpers.config_loader.ConfigSection.BLOCK_WRITE"><code class="name">var <span class="ident">BLOCK_WRITE</span></code></dt>
 <dd>
 <div class="desc"></div>
-</dd>
-</dl>
-<h3>Methods</h3>
-<dl>
-<dt id="new_project_name._helpers.config_loader.ConfigSection.set_attributes"><code class="name flex">
-<span>def <span class="ident">set_attributes</span></span>(<span>self, config: dict)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Set all of the keys within the <code>config</code> parameter as attributes of this <code><a title="new_project_name._helpers.config_loader.ConfigSection" href="#new_project_name._helpers.config_loader.ConfigSection">ConfigSection</a></code>.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>config</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
-<dd>A config section dictionary</dd>
-</dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def set_attributes(self, config: dict[str, Any]):
-    &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
-
-    Args:
-        config (dict[str, Any]): A config section dictionary
-    &#34;&#34;&#34;
-    for key, value in config.items():
-        if isinstance(value, dict):
-            subsection = ConfigSection(value)
-            section_name = getattr(self, &#34;_section_name&#34;, &#34;&#34;)
-            subsection._section_name = (
-                f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
-            )
-            setattr(self, key, subsection)
-        else:
-            setattr(self, key, value)</code></pre>
-</details>
 </dd>
 </dl>
 </dd>
@@ -399,6 +416,11 @@ class Config:
 <li><code><a title="new_project_name._helpers" href="index.html">new_project_name._helpers</a></code></li>
 </ul>
 </li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="new_project_name._helpers.config_loader.set_attributes" href="#new_project_name._helpers.config_loader.set_attributes">set_attributes</a></code></li>
+</ul>
+</li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
@@ -411,7 +433,6 @@ class Config:
 <h4><code><a title="new_project_name._helpers.config_loader.ConfigSection" href="#new_project_name._helpers.config_loader.ConfigSection">ConfigSection</a></code></h4>
 <ul class="">
 <li><code><a title="new_project_name._helpers.config_loader.ConfigSection.BLOCK_WRITE" href="#new_project_name._helpers.config_loader.ConfigSection.BLOCK_WRITE">BLOCK_WRITE</a></code></li>
-<li><code><a title="new_project_name._helpers.config_loader.ConfigSection.set_attributes" href="#new_project_name._helpers.config_loader.ConfigSection.set_attributes">set_attributes</a></code></li>
 </ul>
 </li>
 </ul>

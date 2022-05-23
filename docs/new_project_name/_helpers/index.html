@@ -64,11 +64,11 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <dl>
 <dt id="new_project_name._helpers.ColoredFormatter"><code class="flex name class">
 <span>class <span class="ident">ColoredFormatter</span></span>
-<span>(</span><span>*args, **kwargs)</span>
+<span>(</span><span>*args: Any, **kwargs: Any)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>A logging formatter which enables ANSI colors for each log level.</p>
-<p>Initialises a ColoredFormatter object.</p></div>
+<p>Initialises a <code><a title="new_project_name._helpers.ColoredFormatter" href="#new_project_name._helpers.ColoredFormatter">ColoredFormatter</a></code> object.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -76,12 +76,12 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <pre><code class="python">class ColoredFormatter(logging.Formatter):
     &#34;&#34;&#34;A logging formatter which enables ANSI colors for each log level.&#34;&#34;&#34;
 
-    def __init__(self, *args, **kwargs):
-        &#34;&#34;&#34;Initialises a ColoredFormatter object.&#34;&#34;&#34;
+    def __init__(self, *args: Any, **kwargs: Any) -&gt; None:
+        &#34;&#34;&#34;Initialises a `ColoredFormatter` object.&#34;&#34;&#34;
         super(ColoredFormatter, self).__init__(*args, **kwargs)
 
     def format(self, record: logging.LogRecord) -&gt; str:
-        &#34;&#34;&#34;Formats the log record, ensuring coloured output.
+        &#34;&#34;&#34;Formats the `record`, ensuring coloured output.
 
         Args:
             record (logging.LogRecord): The log record to format
@@ -111,7 +111,7 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <span>def <span class="ident">format</span></span>(<span>self, record: logging.LogRecord) ‑> str</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Formats the log record, ensuring coloured output.</p>
+<div class="desc"><p>Formats the <code>record</code>, ensuring coloured output.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>record</code></strong> :&ensp;<code>logging.LogRecord</code></dt>
@@ -127,7 +127,7 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def format(self, record: logging.LogRecord) -&gt; str:
-    &#34;&#34;&#34;Formats the log record, ensuring coloured output.
+    &#34;&#34;&#34;Formats the `record`, ensuring coloured output.
 
     Args:
         record (logging.LogRecord): The log record to format
@@ -155,8 +155,8 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <span>(</span><span>name: str)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>A logger which uses the ColoredFormatter to provide coloured output.</p>
-<p>Initialises a ColoredLogger.</p>
+<div class="desc"><p>A logger which uses the <code><a title="new_project_name._helpers.ColoredFormatter" href="#new_project_name._helpers.ColoredFormatter">ColoredFormatter</a></code> to provide coloured output.</p>
+<p>Initialises a <code><a title="new_project_name._helpers.ColoredLogger" href="#new_project_name._helpers.ColoredLogger">ColoredLogger</a></code>.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
@@ -167,12 +167,12 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class ColoredLogger(logging.Logger):
-    &#34;&#34;&#34;A logger which uses the ColoredFormatter to provide coloured output.&#34;&#34;&#34;
+    &#34;&#34;&#34;A logger which uses the `ColoredFormatter` to provide coloured output.&#34;&#34;&#34;
 
     CONSOLE_FORMAT = &#34;[%(name)s] (%(levelname)s): %(message)s&#34;
 
     def __init__(self, name: str) -&gt; None:
-        &#34;&#34;&#34;Initialises a ColoredLogger.
+        &#34;&#34;&#34;Initialises a `ColoredLogger`.
 
         Args:
             name (str): The name of the logger
@@ -195,8 +195,8 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 
         self.addHandler(console)
 
-    def success(self, msg: str, *args, **kwargs) -&gt; None:
-        &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using ColoredLogger.
+    def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
+        &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `ColoredLogger`.
 
         Args:
             msg (str): The message to log
@@ -219,10 +219,10 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <h3>Methods</h3>
 <dl>
 <dt id="new_project_name._helpers.ColoredLogger.success"><code class="name flex">
-<span>def <span class="ident">success</span></span>(<span>self, msg: str, *args, **kwargs) ‑> None</span>
+<span>def <span class="ident">success</span></span>(<span>self, msg: str, *args: Any, **kwargs: Any) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Enables the "success" log type for all loggers using ColoredLogger.</p>
+<div class="desc"><p>Enables the "success" log type for all loggers using <code><a title="new_project_name._helpers.ColoredLogger" href="#new_project_name._helpers.ColoredLogger">ColoredLogger</a></code>.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>msg</code></strong> :&ensp;<code>str</code></dt>
@@ -232,8 +232,8 @@ __pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def success(self, msg: str, *args, **kwargs) -&gt; None:
-    &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using ColoredLogger.
+<pre><code class="python">def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
+    &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `ColoredLogger`.
 
     Args:
         msg (str): The message to log
@@ -279,7 +279,7 @@ class Config:
 
         self.load_config()
 
-    def load_config(self):
+    def load_config(self) -&gt; None:
         &#34;&#34;&#34;Load the config file info this `Config` object.
 
         Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
@@ -292,7 +292,7 @@ class Config:
                 logging.error(e)
                 sys.exit(1)
 
-        ConfigSection.set_attributes(self, config)
+        set_attributes(self, config)
 
     def __repr__(self) -&gt; str:
         &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
@@ -300,12 +300,23 @@ class Config:
 
     def __str__(self) -&gt; str:
         &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
-        return self.__repr__()</code></pre>
+        return self.__repr__()
+
+    def __getattr__(self, name: str) -&gt; Any:
+        &#34;&#34;&#34;Defined to stop mypy from complaining about the `Config` object not having any attributes.
+
+        Args:
+            name (str): The attribute which is being accessed
+
+        Returns:
+            Any: A pretend return value to fool mypy
+        &#34;&#34;&#34;
+        return</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
 <dt id="new_project_name._helpers.Config.load_config"><code class="name flex">
-<span>def <span class="ident">load_config</span></span>(<span>self)</span>
+<span>def <span class="ident">load_config</span></span>(<span>self) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Load the config file info this <code><a title="new_project_name._helpers.Config" href="#new_project_name._helpers.Config">Config</a></code> object.</p>
@@ -314,7 +325,7 @@ class Config:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def load_config(self):
+<pre><code class="python">def load_config(self) -&gt; None:
     &#34;&#34;&#34;Load the config file info this `Config` object.
 
     Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
@@ -327,7 +338,7 @@ class Config:
             logging.error(e)
             sys.exit(1)
 
-    ConfigSection.set_attributes(self, config)</code></pre>
+    set_attributes(self, config)</code></pre>
 </details>
 </dd>
 </dl>

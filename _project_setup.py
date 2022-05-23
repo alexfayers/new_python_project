@@ -31,7 +31,7 @@ def load_replacement_values() -> dict[str, str]:
 
     for key in reversed(REPLACE_KEYS):
         new_key = f"{REPLACEMENT_BASE}_{key}".lower()
-        REPLACE_MAP[new_key] = getattr(args, key.lower(), None)  # type: ignore
+        REPLACE_MAP[new_key] = getattr(args, key.lower(), None)
         if REPLACE_MAP[new_key] is None:
             print(f"ERROR: {key.lower()} argument is not set")
             sys.exit(1)
@@ -63,7 +63,7 @@ def path_recurse_directories(path: pathlib.Path) -> list[pathlib.Path]:
     return directories
 
 
-def replace_placeholders(REPLACE_MAP: dict[str, str]):
+def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     """Initialise the project by replacing the template placeholders with the new values.
 
     Args:

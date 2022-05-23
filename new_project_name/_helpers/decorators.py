@@ -1,5 +1,5 @@
 from functools import wraps
-from typing import Callable
+from typing import Any, Callable
 
 
 def singleton(cls: Callable) -> Callable:
@@ -16,9 +16,9 @@ def singleton(cls: Callable) -> Callable:
     instances = {}
 
     @wraps(cls)
-    def _singleton(*args, **kw):
+    def _singleton(*args: list[Any], **kwargs: dict[str, Any]) -> Any:
         if cls not in instances:
-            instances[cls] = cls(*args, **kw)
+            instances[cls] = cls(*args, **kwargs)
         return instances[cls]
 
     return _singleton

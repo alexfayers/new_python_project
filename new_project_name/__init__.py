@@ -1,4 +1,4 @@
-"""This package new_project_description."""
+""".. include:: ../README.md"""  # noqa
 
 from .base import BaseClass
 from .cli import cli_main

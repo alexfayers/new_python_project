@@ -1,5 +1,6 @@
 import copy
 import logging
+from typing import Any
 
 # Config stuff
 
@@ -24,12 +25,12 @@ SUCCESS_LEVEL = 25
 class ColoredFormatter(logging.Formatter):
     """A logging formatter which enables ANSI colors for each log level."""
 
-    def __init__(self, *args, **kwargs):
-        """Initialises a ColoredFormatter object."""
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialises a `ColoredFormatter` object."""
         super(ColoredFormatter, self).__init__(*args, **kwargs)
 
     def format(self, record: logging.LogRecord) -> str:
-        """Formats the log record, ensuring coloured output.
+        """Formats the `record`, ensuring coloured output.
 
         Args:
             record (logging.LogRecord): The log record to format
@@ -51,12 +52,12 @@ class ColoredFormatter(logging.Formatter):
 
 
 class ColoredLogger(logging.Logger):
-    """A logger which uses the ColoredFormatter to provide coloured output."""
+    """A logger which uses the `ColoredFormatter` to provide coloured output."""
 
     CONSOLE_FORMAT = "[%(name)s] (%(levelname)s): %(message)s"
 
     def __init__(self, name: str) -> None:
-        """Initialises a ColoredLogger.
+        """Initialises a `ColoredLogger`.
 
         Args:
             name (str): The name of the logger
@@ -79,8 +80,8 @@ class ColoredLogger(logging.Logger):
 
         self.addHandler(console)
 
-    def success(self, msg: str, *args, **kwargs) -> None:
-        """Enables the "success" log type for all loggers using ColoredLogger.
+    def success(self, msg: str, *args: Any, **kwargs: Any) -> None:
+        """Enables the "success" log type for all loggers using `ColoredLogger`.
 
         Args:
             msg (str): The message to log
