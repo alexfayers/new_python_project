@@ -18,8 +18,12 @@ def load_replacement_values() -> dict[str, str]:
     """
     parser = argparse.ArgumentParser()
     for value in REPLACE_KEYS:
-        parser.add_argument(f"{value.lower()}", type=str, help=f"New {value} for project")
-    parser.add_argument("-l", "--live", action="store_true", help="Perform live replacements")
+        parser.add_argument(
+            f"{value.lower()}", type=str, help=f"New {value} for project"
+        )
+    parser.add_argument(
+        "-l", "--live", action="store_true", help="Perform live replacements"
+    )
 
     args = parser.parse_args()
 
@@ -49,8 +53,8 @@ def path_recurse_directories(path: pathlib.Path) -> list[pathlib.Path]:
         for current_path in path.glob("*")
         if current_path.is_dir()
         and not current_path.name.startswith(".")
-        and not current_path.name.startswith('__')
-        and not current_path.name.endswith('egg-info')
+        and not current_path.name.startswith("__")
+        and not current_path.name.endswith("egg-info")
     ]
 
     for directory in directories:
@@ -80,7 +84,11 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]):
 
     for directory in search_directories:
         for current_path in directory.glob("*"):
-            if current_path.is_file() and not current_path.samefile(pathlib.Path(__file__)) and current_path not in DO_NOT_REPLACE:
+            if (
+                current_path.is_file()
+                and not current_path.samefile(pathlib.Path(__file__))
+                and current_path not in DO_NOT_REPLACE
+            ):
                 replace_files.append(current_path)
 
     # replace placeholders in files
@@ -100,7 +108,9 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]):
                 key_replacements += 1
             if key_replacements > 0:
                 print(
-                    f"[File content replace]\t\tReplacing {key_replacements} instance{'s' if key_replacements > 1 else ''} of '{key}' with '{value}' in '{target_file}'"  # noqa
+                    "[File content replace]\t\t"
+                    f"Replacing {key_replacements} instance{'s' if key_replacements > 1 else ''}"
+                    f"of '{key}' with '{value}' in '{target_file}'"
                 )
                 replacements += key_replacements
 
@@ -112,7 +122,9 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]):
     if success_count <= 0:
         print("[File content replace]\t@@ No placeholders replaced.")
     else:
-        print(f"[File content replace]\t@@ {success_count} placeholder{'s' if success_count > 1 else ''} replaced.")
+        print(
+            f"[File content replace]\t@@ {success_count} placeholder{'s' if success_count > 1 else ''} replaced."
+        )
 
     # rename files
     success_count = 0
@@ -120,7 +132,8 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]):
     for target_file in replace_files:
         if target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
             print(
-                f"[File rename]\t\t\tRenaming '{target_file}' to '{target_file.parent / f'{NEW_PROJECT_NAME}{target_file.suffix}'}'"
+                "[File rename]\t\t\t"
+                f"Renaming '{target_file}' to '{target_file.parent / f'{NEW_PROJECT_NAME}{target_file.suffix}'}'"
             )
             if LIVE_MODE:
                 target_file.rename(
@@ -131,7 +144,9 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]):
     if success_count <= 0:
         print("[File rename]\t\t@@ No files renamed.")
     else:
-        print(f"[File rename]\t\t@@ {success_count} file{'s' if success_count > 1 else ''} renamed.")
+        print(
+            f"[File rename]\t\t@@ {success_count} file{'s' if success_count > 1 else ''} renamed."
+        )
 
     # rename directories
     success_count = 0
@@ -148,10 +163,12 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]):
     if success_count <= 0:
         print("[Directory rename]\t@@ No directories renamed.")
     else:
-        print(f"[Directory rename]\t@@ {success_count} directory{'s' if success_count > 1 else ''} renamed.")
+        print(
+            f"[Directory rename]\t@@ {success_count} directory{'s' if success_count > 1 else ''} renamed."
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     replacement_map = load_replacement_values()
     replace_placeholders(replacement_map)
     print("[Done]")
