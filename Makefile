@@ -77,3 +77,8 @@ docs: lint	         	 ## Build the documentation.
 test: lint				## Run tests for the project.
 	@echo "running tests for new_project_name ..."
 	$(ENV_PREFIX)pytest -v tests/
+
+.PHONY: release-patch
+release-patch:          ## Create a new tag for release.
+	@echo "Releasing new patch version ..."
+	bump2version patch
