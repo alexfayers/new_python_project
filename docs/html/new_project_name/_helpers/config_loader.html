@@ -28,14 +28,16 @@
 </summary>
 <pre><code class="python">import logging
 import sys
-from typing import Any
+from typing import Any, Dict
 
 import yaml
 
 from .decorators import singleton
 
+logger = logging.getLogger(__name__)
 
-def set_attributes(config_object: object, config: dict[str, Any]) -&gt; None:
+
+def set_attributes(config_object: object, config: Dict[str, Any]) -&gt; None:
     &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
 
     Args:
@@ -44,11 +46,9 @@ def set_attributes(config_object: object, config: dict[str, Any]) -&gt; None:
     &#34;&#34;&#34;
     for key, value in config.items():
         if isinstance(value, dict):
-            subsection = ConfigSection(value)
             section_name = getattr(config_object, &#34;_section_name&#34;, &#34;&#34;)
-            subsection._section_name = (
-                f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
-            )
+            new_section_name = f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
+            subsection = ConfigSection(value, section_name=new_section_name)
             setattr(config_object, key, subsection)
         else:
             setattr(config_object, key, value)
@@ -62,15 +62,18 @@ class ConfigSection:
 
     BLOCK_WRITE = False
 
-    def __init__(self, config: dict[str, Any]):
+    def __init__(self, config: dict[str, Any], section_name: str = &#34;&#34;) -&gt; None:
         &#34;&#34;&#34;Initialises a ConfigSection object.
 
         Args:
             config (dict[str, Any]): The config section to be represented by this object
+            section_name (str, optional): The name of the section (used for debugging). Defaults to &#39;&#39;.
         &#34;&#34;&#34;
-        self._section_name = &#34;&#34;
+        self._section_name = section_name
 
         set_attributes(self, config)
+
+        logger.debug(f&#34;Loaded the &#39;{self._section_name}&#39; config section&#34;)
 
         self.BLOCK_WRITE = True
 
@@ -99,7 +102,7 @@ class ConfigSection:
         &#34;&#34;&#34;The string representation of the `ConfigSection` object.&#34;&#34;&#34;
         return self.__repr__()
 
-    def __getattr__(self, name: str) -&gt; None:
+    def __getattr__(self, name: str) -&gt; Any:
         &#34;&#34;&#34;Called when `self.__getattribute__` raises an error.
 
         If this is called, we can be pretty sure that the target attribute does not
@@ -113,7 +116,7 @@ class ConfigSection:
         &#34;&#34;&#34;
         if not name.startswith(&#34;_&#34;):
             raise AttributeError(
-                f&#34;The &#39;{name}&#39; key does not exist in the &#39;{self._section_name}&#39; section&#34;  # noqa
+                f&#34;The &#39;{name}&#39; key does not exist in the &#39;{self._section_name}&#39; section&#34;
             )
 
 
@@ -143,8 +146,8 @@ class Config:
             try:
                 config = yaml.safe_load(f)
             except yaml.YAMLError as e:
-                logging.error(&#34;Error in configuration file!&#34;)
-                logging.error(e)
+                logger.error(&#34;Error in configuration file!&#34;)
+                logger.error(e)
                 sys.exit(1)
 
         set_attributes(self, config)
@@ -166,7 +169,7 @@ class Config:
         Returns:
             Any: A pretend return value to fool mypy
         &#34;&#34;&#34;
-        return</code></pre>
+        return self.__getattribute__(name)</code></pre>
 </details>
 </section>
 <section>
@@ -177,7 +180,7 @@ class Config:
 <h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
 <dt id="new_project_name._helpers.config_loader.set_attributes"><code class="name flex">
-<span>def <span class="ident">set_attributes</span></span>(<span>config_object: object, config: dict) ‑> None</span>
+<span>def <span class="ident">set_attributes</span></span>(<span>config_object: object, config: Dict[str, Any]) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Set all of the keys within the <code>config</code> parameter as attributes of this <code><a title="new_project_name._helpers.config_loader.ConfigSection" href="#new_project_name._helpers.config_loader.ConfigSection">ConfigSection</a></code>.</p>
@@ -192,7 +195,7 @@ class Config:
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def set_attributes(config_object: object, config: dict[str, Any]) -&gt; None:
+<pre><code class="python">def set_attributes(config_object: object, config: Dict[str, Any]) -&gt; None:
     &#34;&#34;&#34;Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
 
     Args:
@@ -201,11 +204,9 @@ class Config:
     &#34;&#34;&#34;
     for key, value in config.items():
         if isinstance(value, dict):
-            subsection = ConfigSection(value)
             section_name = getattr(config_object, &#34;_section_name&#34;, &#34;&#34;)
-            subsection._section_name = (
-                f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
-            )
+            new_section_name = f&#34;{section_name}{&#39;-&gt;&#39; if section_name else &#39;&#39;}{key}&#34;
+            subsection = ConfigSection(value, section_name=new_section_name)
             setattr(config_object, key, subsection)
         else:
             setattr(config_object, key, value)</code></pre>
@@ -260,8 +261,8 @@ class Config:
             try:
                 config = yaml.safe_load(f)
             except yaml.YAMLError as e:
-                logging.error(&#34;Error in configuration file!&#34;)
-                logging.error(e)
+                logger.error(&#34;Error in configuration file!&#34;)
+                logger.error(e)
                 sys.exit(1)
 
         set_attributes(self, config)
@@ -283,7 +284,7 @@ class Config:
         Returns:
             Any: A pretend return value to fool mypy
         &#34;&#34;&#34;
-        return</code></pre>
+        return self.__getattribute__(name)</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
@@ -306,8 +307,8 @@ class Config:
         try:
             config = yaml.safe_load(f)
         except yaml.YAMLError as e:
-            logging.error(&#34;Error in configuration file!&#34;)
-            logging.error(e)
+            logger.error(&#34;Error in configuration file!&#34;)
+            logger.error(e)
             sys.exit(1)
 
     set_attributes(self, config)</code></pre>
@@ -317,7 +318,7 @@ class Config:
 </dd>
 <dt id="new_project_name._helpers.config_loader.ConfigSection"><code class="flex name class">
 <span>class <span class="ident">ConfigSection</span></span>
-<span>(</span><span>config: dict)</span>
+<span>(</span><span>config: dict, section_name: str = '')</span>
 </code></dt>
 <dd>
 <div class="desc"><p>An object representation of a section within a <code>yaml</code> config file.</p>
@@ -327,6 +328,8 @@ class Config:
 <dl>
 <dt><strong><code>config</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
 <dd>The config section to be represented by this object</dd>
+<dt><strong><code>section_name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>The name of the section (used for debugging). Defaults to ''.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -340,15 +343,18 @@ class Config:
 
     BLOCK_WRITE = False
 
-    def __init__(self, config: dict[str, Any]):
+    def __init__(self, config: dict[str, Any], section_name: str = &#34;&#34;) -&gt; None:
         &#34;&#34;&#34;Initialises a ConfigSection object.
 
         Args:
             config (dict[str, Any]): The config section to be represented by this object
+            section_name (str, optional): The name of the section (used for debugging). Defaults to &#39;&#39;.
         &#34;&#34;&#34;
-        self._section_name = &#34;&#34;
+        self._section_name = section_name
 
         set_attributes(self, config)
+
+        logger.debug(f&#34;Loaded the &#39;{self._section_name}&#39; config section&#34;)
 
         self.BLOCK_WRITE = True
 
@@ -377,7 +383,7 @@ class Config:
         &#34;&#34;&#34;The string representation of the `ConfigSection` object.&#34;&#34;&#34;
         return self.__repr__()
 
-    def __getattr__(self, name: str) -&gt; None:
+    def __getattr__(self, name: str) -&gt; Any:
         &#34;&#34;&#34;Called when `self.__getattribute__` raises an error.
 
         If this is called, we can be pretty sure that the target attribute does not
@@ -391,7 +397,7 @@ class Config:
         &#34;&#34;&#34;
         if not name.startswith(&#34;_&#34;):
             raise AttributeError(
-                f&#34;The &#39;{name}&#39; key does not exist in the &#39;{self._section_name}&#39; section&#34;  # noqa
+                f&#34;The &#39;{name}&#39; key does not exist in the &#39;{self._section_name}&#39; section&#34;
             )</code></pre>
 </details>
 <h3>Class variables</h3>
