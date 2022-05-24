@@ -79,16 +79,26 @@ test: lint				## Run tests for the project.
 	$(ENV_PREFIX)pytest -v tests/
 
 .PHONY: release-patch
-release-patch:          ## Create a new tag for patch release.
+release-patch: update-changelog		## Create a new tag for patch release.
 	@echo "Releasing new patch version ..."
-	bump2version patch
+	@$(ENV_PREFIX)bump2version patch
+	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
 
 .PHONY: release-minor
-release-minor:          ## Create a new tag for minor release.
+release-minor: update-changelog		## Create a new tag for minor release.
 	@echo "Releasing new minor version ..."
-	bump2version minor
+	@$(ENV_PREFIX)bump2version minor
+	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
 
 .PHONY: release-major
-release-major:          ## Create a new tag for major release.
+release-major: update-changelog		## Create a new tag for major release.
 	@echo "Releasing new major version ..."
-	bump2version major
+	@$(ENV_PREFIX)bump2version major
+	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
+
+.PHONY: update-changelog
+update-changelog:       ## Update the changelog.
+	@echo "Updating changelog ..."
+	@$(ENV_PREFIX)gitchangelog > CHANGELOG.md
+	@git add CHANGELOG.md
+	@git commit -m "Update changelog"
