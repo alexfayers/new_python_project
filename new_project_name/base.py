@@ -2,10 +2,7 @@
 
 import logging
 
-from ._helpers.color_logger import ColoredLogger
 from ._helpers.config_loader import Config
-
-logging.setLoggerClass(ColoredLogger)
 
 
 class BaseClass:
@@ -17,9 +14,10 @@ class BaseClass:
         Args:
             config_file (str): Path to a config file containing settings for the class.
         """
-        self.logger = self._setup_logging()
+        self.logger = logging.getLogger(__name__)
         self.config = Config(config_file)
 
-    def _setup_logging(self) -> logging.Logger:
-        logging.setLoggerClass(ColoredLogger)
-        return logging.getLogger(__name__)
+        if self.config.DEBUG.ENABLED:
+            self.logger.setLevel(logging.DEBUG)
+        else:
+            self.logger.setLevel(logging.INFO)

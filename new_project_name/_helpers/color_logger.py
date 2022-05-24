@@ -62,7 +62,8 @@ class ColoredLogger(logging.Logger):
         Args:
             name (str): The name of the logger
         """
-        super(ColoredLogger, self).__init__(name, logging.DEBUG)
+        super().__init__(name)
+        self.propagate = False  # don't propagate to parent loggers, otherwise we get duplicate messages
 
         logging.SUCCESS = SUCCESS_LEVEL  # type: ignore
         logging.addLevelName(logging.SUCCESS, "SUCCESS")  # type: ignore

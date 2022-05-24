@@ -1,13 +1,15 @@
 import logging
 import sys
-from typing import Any
+from typing import Any, Dict
 
 import yaml
 
 from .decorators import singleton
 
+logger = logging.getLogger(__name__)
 
-def set_attributes(config_object: object, config: dict[str, Any]) -> None:
+
+def set_attributes(config_object: object, config: Dict[str, Any]) -> None:
     """Set all of the keys within the `config` parameter as attributes of this `ConfigSection`.
 
     Args:
@@ -16,11 +18,9 @@ def set_attributes(config_object: object, config: dict[str, Any]) -> None:
     """
     for key, value in config.items():
         if isinstance(value, dict):
-            subsection = ConfigSection(value)
             section_name = getattr(config_object, "_section_name", "")
-            subsection._section_name = (
-                f"{section_name}{'->' if section_name else ''}{key}"
-            )
+            new_section_name = f"{section_name}{'->' if section_name else ''}{key}"
+            subsection = ConfigSection(value, section_name=new_section_name)
             setattr(config_object, key, subsection)
         else:
             setattr(config_object, key, value)
@@ -34,15 +34,18 @@ class ConfigSection:
 
     BLOCK_WRITE = False
 
-    def __init__(self, config: dict[str, Any]):
+    def __init__(self, config: dict[str, Any], section_name: str = "") -> None:
         """Initialises a ConfigSection object.
 
         Args:
             config (dict[str, Any]): The config section to be represented by this object
+            section_name (str, optional): The name of the section (used for debugging). Defaults to ''.
         """
-        self._section_name = ""
+        self._section_name = section_name
 
         set_attributes(self, config)
+
+        logger.debug(f"Loaded the '{self._section_name}' config section")
 
         self.BLOCK_WRITE = True
 
@@ -71,7 +74,7 @@ class ConfigSection:
         """The string representation of the `ConfigSection` object."""
         return self.__repr__()
 
-    def __getattr__(self, name: str) -> None:
+    def __getattr__(self, name: str) -> Any:
         """Called when `self.__getattribute__` raises an error.
 
         If this is called, we can be pretty sure that the target attribute does not
@@ -85,7 +88,7 @@ class ConfigSection:
         """
         if not name.startswith("_"):
             raise AttributeError(
-                f"The '{name}' key does not exist in the '{self._section_name}' section"  # noqa
+                f"The '{name}' key does not exist in the '{self._section_name}' section"
             )
 
 
@@ -115,8 +118,8 @@ class Config:
             try:
                 config = yaml.safe_load(f)
             except yaml.YAMLError as e:
-                logging.error("Error in configuration file!")
-                logging.error(e)
+                logger.error("Error in configuration file!")
+                logger.error(e)
                 sys.exit(1)
 
         set_attributes(self, config)
@@ -138,4 +141,4 @@ class Config:
         Returns:
             Any: A pretend return value to fool mypy
         """
-        return
+        return self.__getattribute__(name)
