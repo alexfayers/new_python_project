@@ -14,7 +14,11 @@ install:				## Install the project.
 .PHONY: format
 format:					## Format the code with isort black
 	@echo "formatting new_project_name ..."
+	@echo ""
+	@echo "running isort ..."
 	@$(ENV_PREFIX)isort .
+	
+	@echo "running black ..."
 	@$(ENV_PREFIX)black .
 
 .PHONY: lint
@@ -66,7 +70,8 @@ clean:					## Clean unused files.
 .PHONY: docs
 docs: lint	         	 ## Build the documentation.
 	@echo "building documentation ..."
-	@$(ENV_PREFIX)pdoc -o docs ./new_project_name --html --force
+	@$(ENV_PREFIX)pdoc -o docs/markdown ./new_project_name --force
+	@$(ENV_PREFIX)pdoc -o docs/html ./new_project_name --html --force
 
 .PHONY: test
 test: lint				## Run tests for the project.
