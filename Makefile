@@ -79,6 +79,16 @@ test: lint				## Run tests for the project.
 	$(ENV_PREFIX)pytest -v tests/
 
 .PHONY: release-patch
-release-patch:          ## Create a new tag for release.
+release-patch:          ## Create a new tag for patch release.
 	@echo "Releasing new patch version ..."
 	bump2version patch
+
+.PHONY: release-minor
+release-minor:          ## Create a new tag for minor release.
+	@echo "Releasing new minor version ..."
+	bump2version minor
+
+.PHONY: release-major
+release-major:          ## Create a new tag for major release.
+	@echo "Releasing new major version ..."
+	bump2version major
