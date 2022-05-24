@@ -82,19 +82,16 @@ test: lint				## Run tests for the project.
 release-patch: update-changelog		## Create a new tag for patch release.
 	@echo "Releasing new patch version ..."
 	@$(ENV_PREFIX)bump2version patch
-	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
 
 .PHONY: release-minor
 release-minor: update-changelog		## Create a new tag for minor release.
 	@echo "Releasing new minor version ..."
 	@$(ENV_PREFIX)bump2version minor
-	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
 
 .PHONY: release-major
 release-major: update-changelog		## Create a new tag for major release.
 	@echo "Releasing new major version ..."
 	@$(ENV_PREFIX)bump2version major
-	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
 
 .PHONY: update-changelog
 update-changelog:       ## Update the changelog.
