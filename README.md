@@ -1,6 +1,6 @@
 # new_project_name
 
-project_description
+new_project_description
 
 ## Installation
 
