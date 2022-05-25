@@ -10,7 +10,7 @@ Functions
     
     Args:
         config_object (object): The class to set the attributes on
-        config (dict[str, Any]): A config section dictionary
+        config (Dict[str, Any]): A config section dictionary
 
 Classes
 -------
@@ -41,7 +41,7 @@ Classes
     Initialises a ConfigSection object.
     
     Args:
-        config (dict[str, Any]): The config section to be represented by this object
+        config (Dict[str, Any]): The config section to be represented by this object
         section_name (str, optional): The name of the section (used for debugging). Defaults to ''.
 
     ### Class variables

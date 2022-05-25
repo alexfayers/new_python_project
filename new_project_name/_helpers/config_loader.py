@@ -14,7 +14,7 @@ def set_attributes(config_object: object, config: Dict[str, Any]) -> None:
 
     Args:
         config_object (object): The class to set the attributes on
-        config (dict[str, Any]): A config section dictionary
+        config (Dict[str, Any]): A config section dictionary
     """
     for key, value in config.items():
         if isinstance(value, dict):
@@ -34,11 +34,11 @@ class ConfigSection:
 
     BLOCK_WRITE = False
 
-    def __init__(self, config: dict[str, Any], section_name: str = "") -> None:
+    def __init__(self, config: Dict[str, Any], section_name: str = "") -> None:
         """Initialises a ConfigSection object.
 
         Args:
-            config (dict[str, Any]): The config section to be represented by this object
+            config (Dict[str, Any]): The config section to be represented by this object
             section_name (str, optional): The name of the section (used for debugging). Defaults to ''.
         """
         self._section_name = section_name

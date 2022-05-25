@@ -42,7 +42,7 @@ def set_attributes(config_object: object, config: Dict[str, Any]) -&gt; None:
 
     Args:
         config_object (object): The class to set the attributes on
-        config (dict[str, Any]): A config section dictionary
+        config (Dict[str, Any]): A config section dictionary
     &#34;&#34;&#34;
     for key, value in config.items():
         if isinstance(value, dict):
@@ -62,11 +62,11 @@ class ConfigSection:
 
     BLOCK_WRITE = False
 
-    def __init__(self, config: dict[str, Any], section_name: str = &#34;&#34;) -&gt; None:
+    def __init__(self, config: Dict[str, Any], section_name: str = &#34;&#34;) -&gt; None:
         &#34;&#34;&#34;Initialises a ConfigSection object.
 
         Args:
-            config (dict[str, Any]): The config section to be represented by this object
+            config (Dict[str, Any]): The config section to be represented by this object
             section_name (str, optional): The name of the section (used for debugging). Defaults to &#39;&#39;.
         &#34;&#34;&#34;
         self._section_name = section_name
@@ -188,7 +188,7 @@ class Config:
 <dl>
 <dt><strong><code>config_object</code></strong> :&ensp;<code>object</code></dt>
 <dd>The class to set the attributes on</dd>
-<dt><strong><code>config</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dt><strong><code>config</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
 <dd>A config section dictionary</dd>
 </dl></div>
 <details class="source">
@@ -200,7 +200,7 @@ class Config:
 
     Args:
         config_object (object): The class to set the attributes on
-        config (dict[str, Any]): A config section dictionary
+        config (Dict[str, Any]): A config section dictionary
     &#34;&#34;&#34;
     for key, value in config.items():
         if isinstance(value, dict):
@@ -326,7 +326,7 @@ class Config:
 <p>Initialises a ConfigSection object.</p>
 <h2 id="args">Args</h2>
 <dl>
-<dt><strong><code>config</code></strong> :&ensp;<code>dict[str, Any]</code></dt>
+<dt><strong><code>config</code></strong> :&ensp;<code>Dict[str, Any]</code></dt>
 <dd>The config section to be represented by this object</dd>
 <dt><strong><code>section_name</code></strong> :&ensp;<code>str</code>, optional</dt>
 <dd>The name of the section (used for debugging). Defaults to ''.</dd>
@@ -343,11 +343,11 @@ class Config:
 
     BLOCK_WRITE = False
 
-    def __init__(self, config: dict[str, Any], section_name: str = &#34;&#34;) -&gt; None:
+    def __init__(self, config: Dict[str, Any], section_name: str = &#34;&#34;) -&gt; None:
         &#34;&#34;&#34;Initialises a ConfigSection object.
 
         Args:
-            config (dict[str, Any]): The config section to be represented by this object
+            config (Dict[str, Any]): The config section to be represented by this object
             section_name (str, optional): The name of the section (used for debugging). Defaults to &#39;&#39;.
         &#34;&#34;&#34;
         self._section_name = section_name

@@ -2,6 +2,7 @@ import argparse
 import configparser
 import sys
 from pathlib import Path
+from typing import List, Dict
 
 # OLD VALUES
 REPLACEMENT_BASE = "NEW_PROJECT"
@@ -12,11 +13,11 @@ LIVE_MODE = False
 PROJECT_PATH = Path(__file__).parent
 
 
-def load_replacement_values() -> dict[str, str]:
+def load_replacement_values() -> Dict[str, str]:
     """Load new project information from the cli.
 
     Returns:
-        dict[str, str]: The replacement map to be used in `replace_placeholders`
+        Dict[str, str]: The replacement map to be used in `replace_placeholders`
     """
     parser = argparse.ArgumentParser()
     for value in REPLACE_KEYS:
@@ -41,14 +42,14 @@ def load_replacement_values() -> dict[str, str]:
     return REPLACE_MAP  # type: ignore
 
 
-def path_recurse_directories(path: Path) -> list[Path]:
+def path_recurse_directories(path: Path) -> List[Path]:
     """Recursively list all directories in a given path.
 
     Args:
         path (Path): The path to recurse
 
     Returns:
-        list[Path]: A list of all directories in the given path
+        List[Path]: A list of all directories in the given path
     """
     directories = [
         current_path
@@ -65,18 +66,18 @@ def path_recurse_directories(path: Path) -> list[Path]:
     return directories
 
 
-def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
+def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
     """Initialise the project by replacing the template placeholders with the new values.
 
     Args:
-        REPLACE_MAP (dict[str, str]): The replacement map generated within `load_replacement_values`
+        REPLACE_MAP (Dict[str, str]): The replacement map generated within `load_replacement_values`
     """
     NEW_PROJECT_NAME = REPLACE_MAP[f"{REPLACEMENT_BASE}_NAME".lower()]
 
-    search_directories: list[Path] = path_recurse_directories(PROJECT_PATH)
+    search_directories: List[Path] = path_recurse_directories(PROJECT_PATH)
     search_directories.append(PROJECT_PATH)
 
-    replace_files: list[Path] = []
+    replace_files: List[Path] = []
     DO_NOT_REPLACE = [
         PROJECT_PATH / Path("setup.py"),
         PROJECT_PATH / Path("LICENSE"),
