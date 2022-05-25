@@ -174,10 +174,11 @@ def remove_or_update_template_files() -> None:
     print("[Reset Files]\t@@ Looking for files to reset to an initial state...")
 
     print("[Reset Files]\t@@ Resetting 'VERSION' file to '0.1.0'")
-    with open(
-        (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
-    ) as f:
-        f.write("0.1.0")
+    if LIVE_MODE:
+        with open(
+            (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
+        ) as f:
+            f.write("0.1.0")
 
     print(
         "[Reset Files]\t@@ Resetting bumpversion 'current_version' in 'setup.cfg' to '0.1.0'"
@@ -187,18 +188,21 @@ def remove_or_update_template_files() -> None:
     config.read(setupcfg_file)
     config.set("bumpversion", "current_version", "0.1.0")
 
-    with open(setupcfg_file, "w") as configfile:
-        config.write(configfile)
+    if LIVE_MODE:
+        with open(setupcfg_file, "w") as configfile:
+            config.write(configfile)
 
     changelogfile = PROJECT_PATH / Path("CHANGELOG.md")
     if changelogfile.is_file():
         print("[Reset Files]\t@@ Removing 'CHANGELOG.md'")
-        changelogfile.unlink()
+        if LIVE_MODE:
+            changelogfile.unlink()
 
     template_readme = PROJECT_PATH / Path("TEMPLATE_README.md")
     if template_readme.is_file():
         print("[Reset Files]\t@@ Renaming 'TEMPLATE_README.md' TO 'README.md'")
-        template_readme.rename(PROJECT_PATH / Path("README.MD"))
+        if LIVE_MODE:
+            template_readme.rename(PROJECT_PATH / Path("README.MD"))
 
 
 if __name__ == "__main__":
