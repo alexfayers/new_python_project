@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>new_project_name._helpers.color_logger API documentation</title>
-<meta name="description" content="" />
+<title>new_project_name._helpers API documentation</title>
+<meta name="description" content="Helper functions and classes to make life easier. Mainly for internal use within the package." />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
 <link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
@@ -19,107 +19,45 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>new_project_name._helpers.color_logger</code></h1>
+<h1 class="title">Module <code>new_project_name._helpers</code></h1>
 </header>
 <section id="section-intro">
+<p>Helper functions and classes to make life easier. Mainly for internal use within the package.</p>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">import copy
+<pre><code class="python">&#34;&#34;&#34;Helper functions and classes to make life easier. Mainly for internal use within the package.&#34;&#34;&#34;
+
 import logging
-from typing import Any
 
-# Config stuff
+from .config_loader import Config
+from .nice_logger import ColoredFormatter, SuccessLogger
 
-BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE = range(8)
+logger = logging.getLogger(__name__)
 
-COLORS = {
-    &#34;WARNING&#34;: YELLOW,
-    &#34;INFO&#34;: WHITE,
-    &#34;DEBUG&#34;: BLUE,
-    &#34;CRITICAL&#34;: YELLOW,
-    &#34;ERROR&#34;: RED,
-    &#34;SUCCESS&#34;: GREEN,
-}
+__all__ = [&#34;Config&#34;, &#34;SuccessLogger&#34;, &#34;ColoredFormatter&#34;]
 
-RESET_SEQ = &#34;\033[0m&#34;
-COLOR_SEQ = &#34;\033[1;%dm&#34;
-BOLD_SEQ = &#34;\033[1m&#34;
-
-SUCCESS_LEVEL = 25
-
-
-class ColoredFormatter(logging.Formatter):
-    &#34;&#34;&#34;A logging formatter which enables ANSI colors for each log level.&#34;&#34;&#34;
-
-    def __init__(self, *args: Any, **kwargs: Any) -&gt; None:
-        &#34;&#34;&#34;Initialises a `ColoredFormatter` object.&#34;&#34;&#34;
-        super(ColoredFormatter, self).__init__(*args, **kwargs)
-
-    def format(self, record: logging.LogRecord) -&gt; str:
-        &#34;&#34;&#34;Formats the `record`, ensuring coloured output.
-
-        Args:
-            record (logging.LogRecord): The log record to format
-
-        Returns:
-            str: The formatted log record
-        &#34;&#34;&#34;
-        new_record = copy.copy(
-            record
-        )  # create a copy of the record so that the original is not changed
-
-        levelname = new_record.levelname
-        if levelname in COLORS:
-            levelname_color = (
-                COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
-            )
-            new_record.levelname = levelname_color
-        return super(ColoredFormatter, self).format(new_record)
-
-
-class ColoredLogger(logging.Logger):
-    &#34;&#34;&#34;A logger which uses the `ColoredFormatter` to provide coloured output.&#34;&#34;&#34;
-
-    CONSOLE_FORMAT = &#34;[%(name)s] (%(levelname)s): %(message)s&#34;
-
-    def __init__(self, name: str) -&gt; None:
-        &#34;&#34;&#34;Initialises a `ColoredLogger`.
-
-        Args:
-            name (str): The name of the logger
-        &#34;&#34;&#34;
-        super().__init__(name)
-        self.propagate = False  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages
-
-        logging.SUCCESS = SUCCESS_LEVEL  # type: ignore
-        logging.addLevelName(logging.SUCCESS, &#34;SUCCESS&#34;)  # type: ignore
-
-        setattr(
-            self,
-            &#34;success&#34;,
-            lambda message, *args: self._log(
-                logging.SUCCESS, message, args  # type: ignore
-            ),
-        )
-
-        console = logging.StreamHandler()
-        console.setFormatter(ColoredFormatter(self.CONSOLE_FORMAT))
-
-        self.addHandler(console)
-
-    def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
-        &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `ColoredLogger`.
-
-        Args:
-            msg (str): The message to log
-        &#34;&#34;&#34;
-        if self.isEnabledFor(SUCCESS_LEVEL):
-            self._log(SUCCESS_LEVEL, msg, args, **kwargs)</code></pre>
+__pdoc__ = {}
+__pdoc__[&#34;ConfigSection&#34;] = True</code></pre>
 </details>
 </section>
 <section>
+<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+<dl>
+<dt><code class="name"><a title="new_project_name._helpers.config_loader" href="config_loader.html">new_project_name._helpers.config_loader</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="new_project_name._helpers.decorators" href="decorators.html">new_project_name._helpers.decorators</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt><code class="name"><a title="new_project_name._helpers.nice_logger" href="nice_logger.html">new_project_name._helpers.nice_logger</a></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
 </section>
 <section>
 </section>
@@ -128,23 +66,30 @@ class ColoredLogger(logging.Logger):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="new_project_name._helpers.color_logger.ColoredFormatter"><code class="flex name class">
+<dt id="new_project_name._helpers.ColoredFormatter"><code class="flex name class">
 <span>class <span class="ident">ColoredFormatter</span></span>
-<span>(</span><span>*args: Any, **kwargs: Any)</span>
+<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>A logging formatter which enables ANSI colors for each log level.</p>
-<p>Initialises a <code><a title="new_project_name._helpers.color_logger.ColoredFormatter" href="#new_project_name._helpers.color_logger.ColoredFormatter">ColoredFormatter</a></code> object.</p></div>
+<p>Initialize the formatter with specified format strings.</p>
+<p>Initialize the formatter either with the specified format string, or a
+default as described above. Allow for specialized date formatting with
+the optional datefmt argument. If datefmt is omitted, you get an
+ISO8601-like (or RFC 3339-like) format.</p>
+<p>Use a style parameter of '%', '{' or '$' to specify that you want to
+use one of %-formatting, :meth:<code>str.format</code> (<code>{}</code>) formatting or
+:class:<code>string.Template</code> formatting in your format string.</p>
+<div class="admonition versionchanged">
+<p class="admonition-title">Changed in version:&ensp;3.2</p>
+<p>Added the <code>style</code> parameter.</p>
+</div></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class ColoredFormatter(logging.Formatter):
     &#34;&#34;&#34;A logging formatter which enables ANSI colors for each log level.&#34;&#34;&#34;
-
-    def __init__(self, *args: Any, **kwargs: Any) -&gt; None:
-        &#34;&#34;&#34;Initialises a `ColoredFormatter` object.&#34;&#34;&#34;
-        super(ColoredFormatter, self).__init__(*args, **kwargs)
 
     def format(self, record: logging.LogRecord) -&gt; str:
         &#34;&#34;&#34;Formats the `record`, ensuring coloured output.
@@ -165,7 +110,7 @@ class ColoredLogger(logging.Logger):
                 COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
             )
             new_record.levelname = levelname_color
-        return super(ColoredFormatter, self).format(new_record)</code></pre>
+        return super().format(new_record)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -173,7 +118,7 @@ class ColoredLogger(logging.Logger):
 </ul>
 <h3>Methods</h3>
 <dl>
-<dt id="new_project_name._helpers.color_logger.ColoredFormatter.format"><code class="name flex">
+<dt id="new_project_name._helpers.ColoredFormatter.format"><code class="name flex">
 <span>def <span class="ident">format</span></span>(<span>self, record: logging.LogRecord) ‑> str</span>
 </code></dt>
 <dd>
@@ -211,18 +156,126 @@ class ColoredLogger(logging.Logger):
             COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
         )
         new_record.levelname = levelname_color
-    return super(ColoredFormatter, self).format(new_record)</code></pre>
+    return super().format(new_record)</code></pre>
 </details>
 </dd>
 </dl>
 </dd>
-<dt id="new_project_name._helpers.color_logger.ColoredLogger"><code class="flex name class">
-<span>class <span class="ident">ColoredLogger</span></span>
-<span>(</span><span>name: str)</span>
+<dt id="new_project_name._helpers.Config"><code class="flex name class">
+<span>class <span class="ident">Config</span></span>
+<span>(</span><span>config_file: str)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>A logger which uses the <code><a title="new_project_name._helpers.color_logger.ColoredFormatter" href="#new_project_name._helpers.color_logger.ColoredFormatter">ColoredFormatter</a></code> to provide coloured output.</p>
-<p>Initialises a <code><a title="new_project_name._helpers.color_logger.ColoredLogger" href="#new_project_name._helpers.color_logger.ColoredLogger">ColoredLogger</a></code>.</p>
+<div class="desc"><p>An object representation of a <code>yaml</code> config file. Each config section can be accessed as an attribute.</p>
+<p>Initialises the <code><a title="new_project_name._helpers.Config" href="#new_project_name._helpers.Config">Config</a></code> object.</p>
+<p>There is only one instance of a <code><a title="new_project_name._helpers.Config" href="#new_project_name._helpers.Config">Config</a></code> for each <code>config_file</code>, as
+it's wrapped by <code>.<a title="new_project_name._helpers.decorators.singleton" href="decorators.html#new_project_name._helpers.decorators.singleton">singleton()</a></code> (to prevent unnecessary processing).</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>The config file to parse</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@singleton
+class Config:
+    &#34;&#34;&#34;An object representation of a `yaml` config file. Each config section can be accessed as an attribute.&#34;&#34;&#34;
+
+    def __init__(self, config_file: str):
+        &#34;&#34;&#34;Initialises the `Config` object.
+
+        There is only one instance of a `Config` for each `config_file`, as
+        it&#39;s wrapped by `.decorators.singleton` (to prevent unnecessary processing).
+
+        Args:
+            config_file (str): The config file to parse
+        &#34;&#34;&#34;
+        self.load_config(config_file)
+
+    def load_config(self, config_file: str) -&gt; None:
+        &#34;&#34;&#34;Load the config file info this `Config` object.
+
+        Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
+
+        Args:
+            config_file (str): The config file to parse
+        &#34;&#34;&#34;
+        with open(config_file, &#34;r&#34;) as f:
+            try:
+                config = yaml.safe_load(f)
+            except yaml.YAMLError as e:
+                logger.error(&#34;Error in configuration file!&#34;)
+                logger.error(e)
+                sys.exit(1)
+
+        set_attributes(self, config)
+
+    def __repr__(self) -&gt; str:
+        &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
+        return f&#34;{self.__dict__}&#34;
+
+    def __str__(self) -&gt; str:
+        &#34;&#34;&#34;The string representation of the `Config` object.&#34;&#34;&#34;
+        return self.__repr__()
+
+    def __getattr__(self, name: str) -&gt; Any:
+        &#34;&#34;&#34;Defined to stop mypy from complaining about the `Config` object not having any attributes.
+
+        Args:
+            name (str): The attribute which is being accessed
+
+        Returns:
+            Any: A pretend return value to fool mypy
+        &#34;&#34;&#34;
+        return self.__getattribute__(name)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="new_project_name._helpers.Config.load_config"><code class="name flex">
+<span>def <span class="ident">load_config</span></span>(<span>self, config_file: str) ‑> None</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Load the config file info this <code><a title="new_project_name._helpers.Config" href="#new_project_name._helpers.Config">Config</a></code> object.</p>
+<p>Each key is set as an attribute of this <code><a title="new_project_name._helpers.Config" href="#new_project_name._helpers.Config">Config</a></code>, which contains an instance of a <code>ConfigSection</code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>The config file to parse</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_config(self, config_file: str) -&gt; None:
+    &#34;&#34;&#34;Load the config file info this `Config` object.
+
+    Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
+
+    Args:
+        config_file (str): The config file to parse
+    &#34;&#34;&#34;
+    with open(config_file, &#34;r&#34;) as f:
+        try:
+            config = yaml.safe_load(f)
+        except yaml.YAMLError as e:
+            logger.error(&#34;Error in configuration file!&#34;)
+            logger.error(e)
+            sys.exit(1)
+
+    set_attributes(self, config)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="new_project_name._helpers.SuccessLogger"><code class="flex name class">
+<span>class <span class="ident">SuccessLogger</span></span>
+<span>(</span><span>name: str, **kwargs: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>A logger which provides a <code>success</code> level - good to use with a <code><a title="new_project_name._helpers.ColoredFormatter" href="#new_project_name._helpers.ColoredFormatter">ColoredFormatter</a></code>.</p>
+<p>Initialises a <code><a title="new_project_name._helpers.SuccessLogger" href="#new_project_name._helpers.SuccessLogger">SuccessLogger</a></code>.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
@@ -232,19 +285,18 @@ class ColoredLogger(logging.Logger):
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class ColoredLogger(logging.Logger):
-    &#34;&#34;&#34;A logger which uses the `ColoredFormatter` to provide coloured output.&#34;&#34;&#34;
+<pre><code class="python">class SuccessLogger(logging.Logger):
+    &#34;&#34;&#34;A logger which provides a `success` level - good to use with a `ColoredFormatter`.&#34;&#34;&#34;
 
-    CONSOLE_FORMAT = &#34;[%(name)s] (%(levelname)s): %(message)s&#34;
-
-    def __init__(self, name: str) -&gt; None:
-        &#34;&#34;&#34;Initialises a `ColoredLogger`.
+    def __init__(self, name: str, **kwargs: Any) -&gt; None:
+        &#34;&#34;&#34;Initialises a `SuccessLogger`.
 
         Args:
             name (str): The name of the logger
         &#34;&#34;&#34;
-        super().__init__(name)
-        self.propagate = False  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages
+        super().__init__(name, **kwargs)
+
+        # self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages
 
         logging.SUCCESS = SUCCESS_LEVEL  # type: ignore
         logging.addLevelName(logging.SUCCESS, &#34;SUCCESS&#34;)  # type: ignore
@@ -257,13 +309,8 @@ class ColoredLogger(logging.Logger):
             ),
         )
 
-        console = logging.StreamHandler()
-        console.setFormatter(ColoredFormatter(self.CONSOLE_FORMAT))
-
-        self.addHandler(console)
-
     def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
-        &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `ColoredLogger`.
+        &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `SuccessLogger`.
 
         Args:
             msg (str): The message to log
@@ -276,20 +323,13 @@ class ColoredLogger(logging.Logger):
 <li>logging.Logger</li>
 <li>logging.Filterer</li>
 </ul>
-<h3>Class variables</h3>
-<dl>
-<dt id="new_project_name._helpers.color_logger.ColoredLogger.CONSOLE_FORMAT"><code class="name">var <span class="ident">CONSOLE_FORMAT</span></code></dt>
-<dd>
-<div class="desc"></div>
-</dd>
-</dl>
 <h3>Methods</h3>
 <dl>
-<dt id="new_project_name._helpers.color_logger.ColoredLogger.success"><code class="name flex">
+<dt id="new_project_name._helpers.SuccessLogger.success"><code class="name flex">
 <span>def <span class="ident">success</span></span>(<span>self, msg: str, *args: Any, **kwargs: Any) ‑> None</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Enables the "success" log type for all loggers using <code><a title="new_project_name._helpers.color_logger.ColoredLogger" href="#new_project_name._helpers.color_logger.ColoredLogger">ColoredLogger</a></code>.</p>
+<div class="desc"><p>Enables the "success" log type for all loggers using <code><a title="new_project_name._helpers.SuccessLogger" href="#new_project_name._helpers.SuccessLogger">SuccessLogger</a></code>.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>msg</code></strong> :&ensp;<code>str</code></dt>
@@ -300,7 +340,7 @@ class ColoredLogger(logging.Logger):
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
-    &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `ColoredLogger`.
+    &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `SuccessLogger`.
 
     Args:
         msg (str): The message to log
@@ -322,22 +362,34 @@ class ColoredLogger(logging.Logger):
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="new_project_name._helpers" href="index.html">new_project_name._helpers</a></code></li>
+<li><code><a title="new_project_name" href="../index.html">new_project_name</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-submodules">Sub-modules</a></h3>
+<ul>
+<li><code><a title="new_project_name._helpers.config_loader" href="config_loader.html">new_project_name._helpers.config_loader</a></code></li>
+<li><code><a title="new_project_name._helpers.decorators" href="decorators.html">new_project_name._helpers.decorators</a></code></li>
+<li><code><a title="new_project_name._helpers.nice_logger" href="nice_logger.html">new_project_name._helpers.nice_logger</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="new_project_name._helpers.color_logger.ColoredFormatter" href="#new_project_name._helpers.color_logger.ColoredFormatter">ColoredFormatter</a></code></h4>
+<h4><code><a title="new_project_name._helpers.ColoredFormatter" href="#new_project_name._helpers.ColoredFormatter">ColoredFormatter</a></code></h4>
 <ul class="">
-<li><code><a title="new_project_name._helpers.color_logger.ColoredFormatter.format" href="#new_project_name._helpers.color_logger.ColoredFormatter.format">format</a></code></li>
+<li><code><a title="new_project_name._helpers.ColoredFormatter.format" href="#new_project_name._helpers.ColoredFormatter.format">format</a></code></li>
 </ul>
 </li>
 <li>
-<h4><code><a title="new_project_name._helpers.color_logger.ColoredLogger" href="#new_project_name._helpers.color_logger.ColoredLogger">ColoredLogger</a></code></h4>
+<h4><code><a title="new_project_name._helpers.Config" href="#new_project_name._helpers.Config">Config</a></code></h4>
 <ul class="">
-<li><code><a title="new_project_name._helpers.color_logger.ColoredLogger.CONSOLE_FORMAT" href="#new_project_name._helpers.color_logger.ColoredLogger.CONSOLE_FORMAT">CONSOLE_FORMAT</a></code></li>
-<li><code><a title="new_project_name._helpers.color_logger.ColoredLogger.success" href="#new_project_name._helpers.color_logger.ColoredLogger.success">success</a></code></li>
+<li><code><a title="new_project_name._helpers.Config.load_config" href="#new_project_name._helpers.Config.load_config">load_config</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="new_project_name._helpers.SuccessLogger" href="#new_project_name._helpers.SuccessLogger">SuccessLogger</a></code></h4>
+<ul class="">
+<li><code><a title="new_project_name._helpers.SuccessLogger.success" href="#new_project_name._helpers.SuccessLogger.success">success</a></code></li>
 </ul>
 </li>
 </ul>

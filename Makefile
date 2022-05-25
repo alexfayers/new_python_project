@@ -70,8 +70,7 @@ clean:					## Clean unused files.
 .PHONY: docs
 docs: lint	         	 ## Build the documentation.
 	@echo "building documentation ..."
-	@$(ENV_PREFIX)pdoc -o docs/markdown ./new_project_name --force
-	@$(ENV_PREFIX)pdoc -o docs/html ./new_project_name --html --force
+	@$(ENV_PREFIX)pdoc -o docs/ ./new_project_name --html --force
 
 .PHONY: test
 test: lint				## Run tests for the project.

@@ -133,16 +133,17 @@ class Config:
         Args:
             config_file (str): The config file to parse
         &#34;&#34;&#34;
-        self.config_file = config_file
+        self.load_config(config_file)
 
-        self.load_config()
-
-    def load_config(self) -&gt; None:
+    def load_config(self, config_file: str) -&gt; None:
         &#34;&#34;&#34;Load the config file info this `Config` object.
 
         Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
+
+        Args:
+            config_file (str): The config file to parse
         &#34;&#34;&#34;
-        with open(self.config_file, &#34;r&#34;) as f:
+        with open(config_file, &#34;r&#34;) as f:
             try:
                 config = yaml.safe_load(f)
             except yaml.YAMLError as e:
@@ -248,16 +249,17 @@ class Config:
         Args:
             config_file (str): The config file to parse
         &#34;&#34;&#34;
-        self.config_file = config_file
+        self.load_config(config_file)
 
-        self.load_config()
-
-    def load_config(self) -&gt; None:
+    def load_config(self, config_file: str) -&gt; None:
         &#34;&#34;&#34;Load the config file info this `Config` object.
 
         Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
+
+        Args:
+            config_file (str): The config file to parse
         &#34;&#34;&#34;
-        with open(self.config_file, &#34;r&#34;) as f:
+        with open(config_file, &#34;r&#34;) as f:
             try:
                 config = yaml.safe_load(f)
             except yaml.YAMLError as e:
@@ -289,21 +291,29 @@ class Config:
 <h3>Methods</h3>
 <dl>
 <dt id="new_project_name._helpers.config_loader.Config.load_config"><code class="name flex">
-<span>def <span class="ident">load_config</span></span>(<span>self) ‑> None</span>
+<span>def <span class="ident">load_config</span></span>(<span>self, config_file: str) ‑> None</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Load the config file info this <code><a title="new_project_name._helpers.config_loader.Config" href="#new_project_name._helpers.config_loader.Config">Config</a></code> object.</p>
-<p>Each key is set as an attribute of this <code><a title="new_project_name._helpers.config_loader.Config" href="#new_project_name._helpers.config_loader.Config">Config</a></code>, which contains an instance of a <code><a title="new_project_name._helpers.config_loader.ConfigSection" href="#new_project_name._helpers.config_loader.ConfigSection">ConfigSection</a></code>.</p></div>
+<p>Each key is set as an attribute of this <code><a title="new_project_name._helpers.config_loader.Config" href="#new_project_name._helpers.config_loader.Config">Config</a></code>, which contains an instance of a <code><a title="new_project_name._helpers.config_loader.ConfigSection" href="#new_project_name._helpers.config_loader.ConfigSection">ConfigSection</a></code>.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>config_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>The config file to parse</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def load_config(self) -&gt; None:
+<pre><code class="python">def load_config(self, config_file: str) -&gt; None:
     &#34;&#34;&#34;Load the config file info this `Config` object.
 
     Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
+
+    Args:
+        config_file (str): The config file to parse
     &#34;&#34;&#34;
-    with open(self.config_file, &#34;r&#34;) as f:
+    with open(config_file, &#34;r&#34;) as f:
         try:
             config = yaml.safe_load(f)
         except yaml.YAMLError as e:
@@ -318,7 +328,7 @@ class Config:
 </dd>
 <dt id="new_project_name._helpers.config_loader.ConfigSection"><code class="flex name class">
 <span>class <span class="ident">ConfigSection</span></span>
-<span>(</span><span>config: dict, section_name: str = '')</span>
+<span>(</span><span>config: Dict[str, Any], section_name: str = '')</span>
 </code></dt>
 <dd>
 <div class="desc"><p>An object representation of a section within a <code>yaml</code> config file.</p>
