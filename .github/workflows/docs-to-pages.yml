@@ -1,0 +1,32 @@
+name: Update documentation on GitHub Pages
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build documentation using make
+        run: make docs
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: docs
+          folder: docs/html
+
+      - name: Add the the latest docs back to the repo
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update docs
