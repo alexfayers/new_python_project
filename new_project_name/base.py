@@ -2,7 +2,7 @@
 
 import logging
 
-from ._helpers.config_loader import Config
+from . import Config
 
 
 class BaseClass:
@@ -14,10 +14,12 @@ class BaseClass:
         Args:
             config_file (str): Path to a config file containing settings for the class.
         """
-        self.logger = logging.getLogger(__name__)
+        self.logger = logging.getLogger(__name__).getChild(self.__class__.__qualname__)
+
         self.config = Config(config_file)
 
+        package_logger = logging.getLogger("new_project_name")
         if self.config.DEBUG.ENABLED:
-            self.logger.setLevel(logging.DEBUG)
+            package_logger.setLevel(logging.DEBUG)
         else:
-            self.logger.setLevel(logging.INFO)
+            package_logger.setLevel(logging.INFO)

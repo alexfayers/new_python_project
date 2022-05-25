@@ -105,16 +105,17 @@ class Config:
         Args:
             config_file (str): The config file to parse
         """
-        self.config_file = config_file
+        self.load_config(config_file)
 
-        self.load_config()
-
-    def load_config(self) -> None:
+    def load_config(self, config_file: str) -> None:
         """Load the config file info this `Config` object.
 
         Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.
+
+        Args:
+            config_file (str): The config file to parse
         """
-        with open(self.config_file, "r") as f:
+        with open(config_file, "r") as f:
             try:
                 config = yaml.safe_load(f)
             except yaml.YAMLError as e:

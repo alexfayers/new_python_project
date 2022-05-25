@@ -23,6 +23,5 @@ def test_config_loader(caplog: LogCaptureFixture) -> None:
     try:
         Config("tests/_helpers/.files/config_bad.yml")
     except BaseException as e:
-        captured = caplog
-        assert "Error in configuration file" in captured.text
+        assert "Error in configuration file" in caplog.text
         assert isinstance(e, SystemExit)
