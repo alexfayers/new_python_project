@@ -27,7 +27,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: docs
-          folder: docs/html
+          folder: docs/new_project_name
 
       - name: Add the the latest docs back to the repo
         uses: stefanzweifel/git-auto-commit-action@v4

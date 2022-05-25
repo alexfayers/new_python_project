@@ -55,9 +55,12 @@ def path_recurse_directories(path: Path) -> List[Path]:
         current_path
         for current_path in path.glob("*")
         if current_path.is_dir()
-        and not current_path.name.startswith(".")
-        and not current_path.name.startswith("__")
-        and not current_path.name.endswith("egg-info")
+        and not (
+            current_path.name.startswith(".")
+            or current_path.name.startswith("__")
+            or current_path.name.endswith("egg-info")
+        )
+        or current_path.name == ".github"  # do format .github the folder
     ]
 
     for directory in directories:
