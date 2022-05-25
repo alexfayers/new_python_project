@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install the project
+        run: make install
+
       - name: Build documentation using make
         run: make docs
 
