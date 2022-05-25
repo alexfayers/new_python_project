@@ -1,12 +1,15 @@
 import argparse
-import pathlib
+import configparser
 import sys
+from pathlib import Path
 
 # OLD VALUES
 REPLACEMENT_BASE = "NEW_PROJECT"
 REPLACE_KEYS = ["NAME", "AUTHOR", "DESCRIPTION"]
 
 LIVE_MODE = False
+
+PROJECT_PATH = Path(__file__).parent
 
 
 def load_replacement_values() -> dict[str, str]:
@@ -38,14 +41,14 @@ def load_replacement_values() -> dict[str, str]:
     return REPLACE_MAP  # type: ignore
 
 
-def path_recurse_directories(path: pathlib.Path) -> list[pathlib.Path]:
+def path_recurse_directories(path: Path) -> list[Path]:
     """Recursively list all directories in a given path.
 
     Args:
-        path (pathlib.Path): The path to recurse
+        path (Path): The path to recurse
 
     Returns:
-        list[pathlib.Path]: A list of all directories in the given path
+        list[Path]: A list of all directories in the given path
     """
     directories = [
         current_path
@@ -68,24 +71,23 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     Args:
         REPLACE_MAP (dict[str, str]): The replacement map generated within `load_replacement_values`
     """
-    PROJECT_PATH = pathlib.Path(__file__).parent
     NEW_PROJECT_NAME = REPLACE_MAP[f"{REPLACEMENT_BASE}_NAME".lower()]
 
-    search_directories: list[pathlib.Path] = path_recurse_directories(PROJECT_PATH)
+    search_directories: list[Path] = path_recurse_directories(PROJECT_PATH)
     search_directories.append(PROJECT_PATH)
 
     replace_files = []
     DO_NOT_REPLACE = [
-        PROJECT_PATH / pathlib.Path("setup.py"),
-        PROJECT_PATH / pathlib.Path("LICENSE"),
-        PROJECT_PATH / pathlib.Path(".gitignore"),
+        PROJECT_PATH / Path("setup.py"),
+        PROJECT_PATH / Path("LICENSE"),
+        PROJECT_PATH / Path(".gitignore"),
     ]
 
     for directory in search_directories:
         for current_path in directory.glob("*"):
             if (
                 current_path.is_file()
-                and not current_path.samefile(pathlib.Path(__file__))
+                and not current_path.samefile(Path(__file__))
                 and current_path not in DO_NOT_REPLACE
             ):
                 replace_files.append(current_path)
@@ -167,7 +169,40 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
         )
 
 
+def remove_or_update_template_files() -> None:
+    """Remove, rename, and update files which shouldn't be in repos which use the template."""
+    print("[Reset Files]\t@@ Looking for files to reset to an initial state...")
+
+    print("[Reset Files]\t@@ Resetting 'VERSION' file to '0.1.0'")
+    with open(
+        (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
+    ) as f:
+        f.write("0.1.0")
+
+    print(
+        "[Reset Files]\t@@ Resetting bumpversion 'current_version' in 'setup.cfg' to '0.1.0'"
+    )
+    setupcfg_file = PROJECT_PATH / Path("setup.cfg")
+    config = configparser.ConfigParser()
+    config.read(setupcfg_file)
+    config.set("bumpversion", "current_version", "0.1.0")
+
+    with open(setupcfg_file, "w") as configfile:
+        config.write(configfile)
+
+    changelogfile = PROJECT_PATH / Path("CHANGELOG.md")
+    if changelogfile.is_file():
+        print("[Reset Files]\t@@ Removing 'CHANGELOG.md'")
+        changelogfile.unlink()
+
+    template_readme = PROJECT_PATH / Path("TEMPLATE_README.md")
+    if template_readme.is_file():
+        print("[Reset Files]\t@@ Renaming 'TEMPLATE_README.md' TO 'README.md'")
+        template_readme.rename(PROJECT_PATH / Path("README.MD"))
+
+
 if __name__ == "__main__":
     replacement_map = load_replacement_values()
     replace_placeholders(replacement_map)
+    remove_or_update_template_files()
     print("[Done]")
