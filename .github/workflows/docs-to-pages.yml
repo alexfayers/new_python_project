@@ -27,6 +27,6 @@ jobs:
           folder: docs/html
 
       - name: Add the the latest docs back to the repo
-      - uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update docs
