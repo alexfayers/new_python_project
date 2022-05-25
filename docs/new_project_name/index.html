@@ -25,7 +25,7 @@
 <h1 id="new_project_name">new_project_name</h1>
 <p>new_project_description</p>
 <h2 id="installation">Installation</h2>
-<p>The Makefile provides a lot of helpers. Pretty much everything you'll need is shortcutted in there. <em>(If you're on Windows, you can install make from <a href="http://gnuwin32.sourceforge.net/packages/make.htm">here</a>)</em></p>
+<p>The Makefile provides a lot of helpers. Pretty much everything you'll need is shortcutted in there. <em>(If you're on Windows, you can use <a href="https://git-scm.com/downloads">git bash</a> or <a href="https://docs.microsoft.com/en-us/windows/wsl/about">wsl</a> to run the make commands)</em></p>
 <p>To install the project you only need to run:</p>
 <pre><code class="language-bash">make install
 </code></pre>
@@ -41,7 +41,7 @@ app.logger.info(
     f&quot;Hi, welcome to {app.config.INFO.NAME} by {app.config.INFO.AUTHOR}!&quot;
 )
 </code></pre>
-<pre><code class="language-bash">$ python -m project_name
+<pre><code class="language-bash">$ python3 -m project_name
 # or
 $ project_name
 </code></pre>
@@ -212,8 +212,7 @@ it's wrapped by <code>.decorators.singleton</code> (to prevent unnecessary proce
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">@singleton
-class Config:
+<pre><code class="python">class Config:
     &#34;&#34;&#34;An object representation of a `yaml` config file. Each config section can be accessed as an attribute.&#34;&#34;&#34;
 
     def __init__(self, config_file: str):
