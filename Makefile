@@ -3,7 +3,7 @@ SHELL:=powershell.exe
 .SHELLFLAGS:=-Command
 endif
 
-ENV_PREFIX:=$(shell python -Bc "import pathlib; print('.venv/bin/') if pathlib.Path('.venv/bin/').exists() else print('.venv/Scripts/') if pathlib.Path('.venv/Scripts/').exists() else print('')")
+ENV_PREFIX:=$(shell python3 -Bc "import pathlib; print('.venv/bin/') if pathlib.Path('.venv/bin/').exists() else print('.venv/Scripts/') if pathlib.Path('.venv/Scripts/').exists() else print('')")
 THIS_FILE:=$(lastword $(MAKEFILE_LIST))
 
 .PHONY: install
@@ -39,8 +39,8 @@ lint:					## Lint the code to check for potential errors and inconsistencies.
 .PHONY: venv
 venv:					## Create a virtual environment.
 	@echo "creating virtualenv ..."
-	@python -Bc "import pathlib, shutil; shutil.rmtree(pathlib.Path('.venv') if pathlib.Path('.venv').exists() else exit())"
-	@python -m venv .venv
+	@python3 -Bc "import pathlib, shutil; shutil.rmtree(pathlib.Path('.venv') if pathlib.Path('.venv').exists() else exit())"
+	@python3 -m venv .venv
 	@$(MAKE) -f $(THIS_FILE) --no-print-directory upgrade-pip
 	@$(MAKE) -f $(THIS_FILE) --no-print-directory install
 	@$(MAKE) -f $(THIS_FILE) --no-print-directory venv-activate-message
@@ -48,7 +48,7 @@ venv:					## Create a virtual environment.
 .PHONY: upgrade-pip
 upgrade-pip:
 	@echo "upgrading pip ..."
-	@$(ENV_PREFIX)python -m pip install --upgrade pip
+	@$(ENV_PREFIX)python3 -m pip install --upgrade pip
 
 .PHONY: venv-activate
 venv-activate-message:
@@ -62,10 +62,10 @@ tests: lint		## Run tests for the project.
 .PHONY: clean
 clean:					## Clean unused files.
 	@echo "cleaning unused files ..."
-	@python -Bc "import pathlib; [p.unlink() for p in pathlib.Path('.').rglob('*.py[co]')]"
-	@python -Bc "import pathlib, shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('__pycache__')]"
-	@python -Bc "import pathlib, shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('*.egg-info')]"
-	@python -Bc "import pathlib, shutil; [shutil.rmtree(p) if pathlib.Path(p).exists() else None for p in ['.pytest_cache', '.mypy_cache']]"
+	@python3 -Bc "import pathlib; [p.unlink() for p in pathlib.Path('.').rglob('*.py[co]')]"
+	@python3 -Bc "import pathlib, shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('__pycache__')]"
+	@python3 -Bc "import pathlib, shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('*.egg-info')]"
+	@python3 -Bc "import pathlib, shutil; [shutil.rmtree(p) if pathlib.Path(p).exists() else None for p in ['.pytest_cache', '.mypy_cache']]"
 
 .PHONY: docs
 docs: lint	         	 ## Build the documentation.

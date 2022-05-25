@@ -4,7 +4,7 @@ new_project_description
 
 ## Installation
 
-The Makefile provides a lot of helpers. Pretty much everything you'll need is shortcutted in there. *(If you're on Windows, you can install make from [here](http://gnuwin32.sourceforge.net/packages/make.htm))*
+The Makefile provides a lot of helpers. Pretty much everything you'll need is shortcutted in there. *(If you're on Windows, you can use [git bash](https://git-scm.com/downloads) or [wsl](https://docs.microsoft.com/en-us/windows/wsl/about) to run the make commands)*
 
 To install the project you only need to run:
 
@@ -32,7 +32,7 @@ app.logger.info(
 ```
 
 ```bash
-$ python -m project_name
+$ python3 -m project_name
 # or
 $ project_name
 ```
