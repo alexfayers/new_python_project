@@ -4,6 +4,7 @@ Changelog
 
 (main)
 ------
+- Update changelog. [alex.fayers]
 - Less focus on windows support - you can use wsl. [alex.fayers]
 - Add .github folder to rename so we can edit workflows. [alex.fayers]
 - Install before doc changes. [alex.fayers]
