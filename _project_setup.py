@@ -2,7 +2,7 @@ import argparse
 import configparser
 import sys
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List
 
 # OLD VALUES
 REPLACEMENT_BASE = "NEW_PROJECT"
@@ -133,7 +133,10 @@ def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
     success_count = 0
     print("[File rename]\t\t@@ Looking for files to rename...")
     for target_file in replace_files:
-        if target_file.is_file() and target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
+        if (
+            target_file.is_file()
+            and target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower()
+        ):
             print(
                 "[File rename]\t\t\t"
                 f"Renaming '{target_file}' to '{target_file.parent / f'{NEW_PROJECT_NAME}{target_file.suffix}'}'"
@@ -155,7 +158,10 @@ def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
     success_count = 0
     print("[Directory rename]\t@@ Looking for directories to rename...")
     for target_directory in search_directories:
-        if target_directory.is_dir() and target_directory.name.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
+        if (
+            target_directory.is_dir()
+            and target_directory.name.lower() == f"{REPLACEMENT_BASE}_NAME".lower()
+        ):
             print(
                 f"[Directory rename]\t\tRenaming '{target_directory}' to '{target_directory.parent / NEW_PROJECT_NAME}'"
             )
@@ -175,7 +181,7 @@ def remove_or_update_template_files() -> None:
     """Remove, rename, and update files which shouldn't be in repos which use the template."""
     print("[Reset Files]\t@@ Looking for files to reset to an initial state...")
 
-    version_file = (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION"))
+    version_file = PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")
     if version_file.is_file():
         print("[Reset Files]\t@@ Resetting 'VERSION' file to '0.1.0'")
         if LIVE_MODE:
@@ -184,14 +190,16 @@ def remove_or_update_template_files() -> None:
             ) as f:
                 f.write("0.1.0")
     else:
-        print("[Reset Files]\t@@ Couldn't find 'VERSION' file. Skipping 'VERSION' reset.")
+        print(
+            "[Reset Files]\t@@ Couldn't find 'VERSION' file. Skipping 'VERSION' reset."
+        )
 
     setupcfg_file = PROJECT_PATH / Path("setup.cfg")
     if setupcfg_file.is_file():
         print(
             "[Reset Files]\t@@ Resetting bumpversion 'current_version' in 'setup.cfg' to '0.1.0'"
         )
-        
+
         config = configparser.ConfigParser()
         config.read(setupcfg_file)
         config.set("bumpversion", "current_version", "0.1.0")
@@ -210,7 +218,9 @@ def remove_or_update_template_files() -> None:
         if LIVE_MODE:
             changelogfile.unlink()
     else:
-        print("[Reset Files]\t@@ Couldn't find 'CHANGELOG.md' file. Skipping 'CHANGELOG.md' removal.")
+        print(
+            "[Reset Files]\t@@ Couldn't find 'CHANGELOG.md' file. Skipping 'CHANGELOG.md' removal."
+        )
 
     template_readme = PROJECT_PATH / Path("TEMPLATE_README.md")
     if template_readme.is_file():
@@ -218,7 +228,9 @@ def remove_or_update_template_files() -> None:
         if LIVE_MODE:
             template_readme.rename(PROJECT_PATH / Path("README.MD"))
     else:
-        print("[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename.")
+        print(
+            "[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename."
+        )
 
 
 if __name__ == "__main__":
