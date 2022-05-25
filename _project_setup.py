@@ -76,7 +76,7 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     search_directories: list[Path] = path_recurse_directories(PROJECT_PATH)
     search_directories.append(PROJECT_PATH)
 
-    replace_files = []
+    replace_files: list[Path] = []
     DO_NOT_REPLACE = [
         PROJECT_PATH / Path("setup.py"),
         PROJECT_PATH / Path("LICENSE"),
@@ -96,29 +96,30 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     success_count = 0
     print("[File content replace]\t@@ Replacing placeholders in files...")
     for target_file in replace_files:
-        replacements = 0
-        try:
-            file_text = target_file.read_text()
-        except UnicodeDecodeError:
-            continue
+        if target_file.is_file():
+            replacements = 0
+            try:
+                file_text = target_file.read_text()
+            except UnicodeDecodeError:
+                continue
 
-        for key, value in REPLACE_MAP.items():
-            key_replacements = 0
-            while key in file_text:
-                file_text = file_text.replace(key, value, 1)
-                key_replacements += 1
-            if key_replacements > 0:
-                print(
-                    "[File content replace]\t\t"
-                    f"Replacing {key_replacements} instance{'s' if key_replacements > 1 else ''}"
-                    f"of '{key}' with '{value}' in '{target_file}'"
-                )
-                replacements += key_replacements
+            for key, value in REPLACE_MAP.items():
+                key_replacements = 0
+                while key in file_text:
+                    file_text = file_text.replace(key, value, 1)
+                    key_replacements += 1
+                if key_replacements > 0:
+                    print(
+                        "[File content replace]\t\t"
+                        f"Replacing {key_replacements} instance{'s' if key_replacements > 1 else ''}"
+                        f"of '{key}' with '{value}' in '{target_file}'"
+                    )
+                    replacements += key_replacements
 
-        if replacements > 0:
-            if LIVE_MODE:
-                target_file.write_text(file_text)
-            success_count += 1
+            if replacements > 0:
+                if LIVE_MODE:
+                    target_file.write_text(file_text)
+                success_count += 1
 
     if success_count <= 0:
         print("[File content replace]\t@@ No placeholders replaced.")
@@ -131,7 +132,7 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     success_count = 0
     print("[File rename]\t\t@@ Looking for files to rename...")
     for target_file in replace_files:
-        if target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
+        if target_file.is_file() and target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
             print(
                 "[File rename]\t\t\t"
                 f"Renaming '{target_file}' to '{target_file.parent / f'{NEW_PROJECT_NAME}{target_file.suffix}'}'"
@@ -153,7 +154,7 @@ def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     success_count = 0
     print("[Directory rename]\t@@ Looking for directories to rename...")
     for target_directory in search_directories:
-        if target_directory.name.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
+        if target_directory.is_dir() and target_directory.name.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
             print(
                 f"[Directory rename]\t\tRenaming '{target_directory}' to '{target_directory.parent / NEW_PROJECT_NAME}'"
             )
@@ -173,36 +174,50 @@ def remove_or_update_template_files() -> None:
     """Remove, rename, and update files which shouldn't be in repos which use the template."""
     print("[Reset Files]\t@@ Looking for files to reset to an initial state...")
 
-    print("[Reset Files]\t@@ Resetting 'VERSION' file to '0.1.0'")
-    if LIVE_MODE:
-        with open(
-            (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
-        ) as f:
-            f.write("0.1.0")
+    version_file = (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION"))
+    if version_file.is_file():
+        print("[Reset Files]\t@@ Resetting 'VERSION' file to '0.1.0'")
+        if LIVE_MODE:
+            with open(
+                (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
+            ) as f:
+                f.write("0.1.0")
+    else:
+        print("[Reset Files]\t@@ Couldn't find 'VERSION' file. Skipping 'VERSION' reset.")
 
-    print(
-        "[Reset Files]\t@@ Resetting bumpversion 'current_version' in 'setup.cfg' to '0.1.0'"
-    )
     setupcfg_file = PROJECT_PATH / Path("setup.cfg")
-    config = configparser.ConfigParser()
-    config.read(setupcfg_file)
-    config.set("bumpversion", "current_version", "0.1.0")
+    if setupcfg_file.is_file():
+        print(
+            "[Reset Files]\t@@ Resetting bumpversion 'current_version' in 'setup.cfg' to '0.1.0'"
+        )
+        
+        config = configparser.ConfigParser()
+        config.read(setupcfg_file)
+        config.set("bumpversion", "current_version", "0.1.0")
 
-    if LIVE_MODE:
-        with open(setupcfg_file, "w") as configfile:
-            config.write(configfile)
+        if LIVE_MODE:
+            with open(setupcfg_file, "w") as configfile:
+                config.write(configfile)
+    else:
+        print(
+            "[Reset Files]\t@@ Couldn't find 'setup.cfg' file. Skipping resetting 'current_version'."
+        )
 
     changelogfile = PROJECT_PATH / Path("CHANGELOG.md")
     if changelogfile.is_file():
         print("[Reset Files]\t@@ Removing 'CHANGELOG.md'")
         if LIVE_MODE:
             changelogfile.unlink()
+    else:
+        print("[Reset Files]\t@@ Couldn't find 'CHANGELOG.md' file. Skipping 'CHANGELOG.md' removal.")
 
     template_readme = PROJECT_PATH / Path("TEMPLATE_README.md")
     if template_readme.is_file():
         print("[Reset Files]\t@@ Renaming 'TEMPLATE_README.md' TO 'README.md'")
         if LIVE_MODE:
             template_readme.rename(PROJECT_PATH / Path("README.MD"))
+    else:
+        print("[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename.")
 
 
 if __name__ == "__main__":
