@@ -1,0 +1,48 @@
+# yoinked from https://github.com/rochacbruno/python-project-template/blob/main/.github/workflows/rename_project.yml
+
+name: Rename the project from template
+
+on: [push]
+
+permissions: write-all
+
+jobs:
+  rename-project:
+    if: ${{ !contains (github.repository, '/new_python_project') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # by default, it uses a depth of 1
+          # this fetches all history so that we can read each commit
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          
+      - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}' | tr '-' '_' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+        shell: bash
+
+      - run: echo "REPOSITORY_URLNAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+        shell: bash
+
+      - run: echo "REPOSITORY_OWNER=$(echo '${{ github.repository }}' | awk -F '/' '{print $1}')" >> $GITHUB_ENV
+        shell: bash
+        
+      - name: Is this still a template
+        id: is_template
+        run: echo "::set-output name=is_template::$(ls .github/template.yml &> /dev/null && echo true || echo false)"
+
+      - name: Set up Python 3.10
+        if: steps.is_template.outputs.is_template == 'true'
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+
+      - name: Rename the project
+        run: |
+          echo "Renaming the project with a name of ${{ env.REPOSITORY_NAME }}, author of ${{ env.REPOSITORY_OWNER }}, and description of ${{ env.REPOSITORY_URLNAME }}"
+          python _project_setup.py "${{ env.REPOSITORY_NAME }}" "${{ env.REPOSITORY_URLNAME }}" "${{ env.REPOSITORY_OWNER }}" "An epic projected called ${{ env.REPOSITORY_NAME }}, by ${{ env.REPOSITORY_OWNER }}!"
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          message: Project ready!
+          push: --set-upstream --force origin main
