@@ -4,6 +4,11 @@ Changelog
 
 (main)
 ------
+- CRLF -> LF. [alex.fayers]
+- Pre-commit and tox! [alex.fayers]
+- Autoinsert changelog at top of file. [alex.fayers]
+- Newline for version. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Merge branch 'main' of
   https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Update docs. [alexfayers]
