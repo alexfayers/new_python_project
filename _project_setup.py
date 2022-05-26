@@ -247,6 +247,6 @@ def disable_actions() -> None:
 
 if __name__ == "__main__":
     replacement_map = load_replacement_values()
-    replace_placeholders(replacement_map)
     remove_or_update_template_files()
+    replace_placeholders(replacement_map)
     print("[Done]")
