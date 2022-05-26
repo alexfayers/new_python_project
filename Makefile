@@ -8,12 +8,12 @@ THIS_FILE:=$(lastword $(MAKEFILE_LIST))
 
 .PHONY: install
 install:				## Install the project.
-	@echo "installing new_project_name ..."
+	@echo "installing new_project_readable_name ..."
 	@$(ENV_PREFIX)pip install -e .[test]
 
 .PHONY: format
 format:					## Format the code with isort black
-	@echo "formatting new_project_name ..."
+	@echo "formatting new_project_readable_name ..."
 	@echo ""
 	@echo "running isort ..."
 	@$(ENV_PREFIX)isort .
@@ -23,7 +23,7 @@ format:					## Format the code with isort black
 
 .PHONY: lint
 lint:					## Lint the code to check for potential errors and inconsistencies.
-	@echo "linting new_project_name ..."
+	@echo "linting new_project_readable_name ..."
 	@echo ""
 	@echo "running flake8 ..."
 	@$(ENV_PREFIX)flake8 .
@@ -56,7 +56,7 @@ venv-activate-message:
 
 .PHONY: tests
 tests: lint		## Run tests for the project.
-	@echo "running tests for new_project_name ..."
+	@echo "running tests for new_project_readable_name ..."
 	$(ENV_PREFIX)pytest -v tests/
 
 .PHONY: clean
@@ -74,7 +74,7 @@ docs: lint	         	 ## Build the documentation.
 
 .PHONY: test
 test: lint				## Run tests for the project.
-	@echo "running tests for new_project_name ..."
+	@echo "running tests for new_project_readable_name ..."
 	$(ENV_PREFIX)pytest -v tests/
 
 .PHONY: release-patch

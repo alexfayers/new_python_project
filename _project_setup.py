@@ -6,9 +6,9 @@ from typing import Dict, List
 
 # OLD VALUES
 REPLACEMENT_BASE = "NEW_PROJECT"
-REPLACE_KEYS = ["NAME", "AUTHOR", "DESCRIPTION"]
+REPLACE_KEYS = ["NAME", "READABLE_NAME", "AUTHOR", "DESCRIPTION"]
 
-LIVE_MODE = False
+LIVE_MODE = True
 
 PROJECT_PATH = Path(__file__).parent
 
@@ -234,6 +234,15 @@ def remove_or_update_template_files() -> None:
         print(
             "[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename."
         )
+
+
+def disable_actions() -> None:
+    """Remove template-related actions from the github workflows."""
+    template_indicator = PROJECT_PATH / Path(".github/template.yml")
+    if template_indicator.is_file():
+        print("[Disable Actions]\t@@ Disabling template actions by removing template.yml")
+        if LIVE_MODE:
+            template_indicator.unlink()
 
 
 if __name__ == "__main__":

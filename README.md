@@ -1,4 +1,4 @@
-# new_project_name
+# new_project_readable_name
 
 new_project_description
 
