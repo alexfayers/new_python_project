@@ -4,6 +4,9 @@ Changelog
 
 (main)
 ------
+- Remove noverify. [alex.fayers]
+- Allow git in release tox env. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Bump version: 0.3.0 -> 0.3.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Convert workflows to use tox, hopefully it works! [alex.fayers]
