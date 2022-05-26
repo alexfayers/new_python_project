@@ -245,11 +245,11 @@ log_encoding = 'utf-8'
 ##        take care of everything and might be more complex. Check the README
 ##        for a complete copy-pastable example.
 ##
-# publish = FileInsertAtFirstRegexMatch(
-#     "CHANGELOG.md",
-#     r'\(unreleased\)',
-#     idx=lambda m: m.start()
-# )
+# just insert at the top
+publish = FileInsertAtFirstRegexMatch(
+    "CHANGELOG.md",
+    r'^',
+)
 #publish = stdout
 
 
