@@ -191,7 +191,7 @@ def remove_or_update_template_files() -> None:
             with open(
                 (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
             ) as f:
-                f.write("0.1.0")
+                f.write("0.1.0\n")
     else:
         print(
             "[Reset Files]\t@@ Couldn't find 'VERSION' file. Skipping 'VERSION' reset."
