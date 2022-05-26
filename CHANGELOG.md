@@ -4,6 +4,18 @@ Changelog
 
 (main)
 ------
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Update docs. [alexfayers]
+- CRLF -> LF. [alex.fayers]
+- Change push behavior. [alex.fayers]
+- Change commit action. [alex.fayers]
+
+
+v0.3.0 (2022-05-25)
+-------------------
+- Bump version: 0.2.0 -> 0.3.0. [alex.fayers]
+- Update changelog. [alex.fayers]
 - Resolve rebase. [alex.fayers]
 - Update changelog. [alex.fayers]
 - Update changelog. [alex.fayers]
