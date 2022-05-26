@@ -39,7 +39,7 @@ $ project_name
 
 ---
 
-## Development 
+## Development
 
 ### Changes
 

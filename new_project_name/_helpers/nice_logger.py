@@ -129,16 +129,7 @@ class SuccessLogger(logging.Logger):
 
         # self.propagate = True  # don't propagate to parent loggers, otherwise we get duplicate messages
 
-        logging.SUCCESS = SUCCESS_LEVEL  # type: ignore
-        logging.addLevelName(logging.SUCCESS, "SUCCESS")  # type: ignore
-
-        setattr(
-            self,
-            "success",
-            lambda message, *args: self._log(
-                logging.SUCCESS, message, args  # type: ignore
-            ),
-        )
+        logging.addLevelName(SUCCESS_LEVEL, "SUCCESS")
 
     def success(self, msg: str, *args: Any, **kwargs: Any) -> None:
         """Enables the "success" log type for all loggers using `SuccessLogger`.

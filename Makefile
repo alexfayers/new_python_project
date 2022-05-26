@@ -17,7 +17,7 @@ format:					## Format the code with isort black
 	@echo ""
 	@echo "running isort ..."
 	@$(ENV_PREFIX)isort .
-	
+
 	@echo "running black ..."
 	@$(ENV_PREFIX)black .
 
