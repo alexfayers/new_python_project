@@ -4,6 +4,7 @@ Changelog
 
 (main)
 ------
+- Update CHANGELOG.md. [alex.fayers]
 - CRLF -> LF. [alex.fayers]
 - Pre-commit and tox! [alex.fayers]
 - Autoinsert changelog at top of file. [alex.fayers]
