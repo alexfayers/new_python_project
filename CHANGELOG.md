@@ -4,6 +4,7 @@ Changelog
 
 (main)
 ------
+- Update CHANGELOG.md. [alex.fayers]
 - Remove noverify. [alex.fayers]
 - Allow git in release tox env. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
