@@ -157,16 +157,7 @@ class SuccessLogger(logging.Logger):
 
         # self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages
 
-        logging.SUCCESS = SUCCESS_LEVEL  # type: ignore
-        logging.addLevelName(logging.SUCCESS, &#34;SUCCESS&#34;)  # type: ignore
-
-        setattr(
-            self,
-            &#34;success&#34;,
-            lambda message, *args: self._log(
-                logging.SUCCESS, message, args  # type: ignore
-            ),
-        )
+        logging.addLevelName(SUCCESS_LEVEL, &#34;SUCCESS&#34;)
 
     def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
         &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `SuccessLogger`.
@@ -189,7 +180,7 @@ class SuccessLogger(logging.Logger):
 <dl>
 <dt id="new_project_name._helpers.nice_logger.BootstrapFormatter"><code class="flex name class">
 <span>class <span class="ident">BootstrapFormatter</span></span>
-<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True)</span>
+<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True, *, defaults=None)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>A logging formatter which enables ANSI colors for each log level - in HTML (but with Bootstrap color names).</p>
@@ -231,7 +222,7 @@ use one of %-formatting, :meth:<code>str.format</code> (<code>{}</code>) formatt
 </dd>
 <dt id="new_project_name._helpers.nice_logger.ColoredFormatter"><code class="flex name class">
 <span>class <span class="ident">ColoredFormatter</span></span>
-<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True)</span>
+<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True, *, defaults=None)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>A logging formatter which enables ANSI colors for each log level.</p>
@@ -326,7 +317,7 @@ use one of %-formatting, :meth:<code>str.format</code> (<code>{}</code>) formatt
 </dd>
 <dt id="new_project_name._helpers.nice_logger.HTMLFormatter"><code class="flex name class">
 <span>class <span class="ident">HTMLFormatter</span></span>
-<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True)</span>
+<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True, *, defaults=None)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>A logging formatter which enables ANSI colors for each log level - in HTML.</p>
@@ -395,16 +386,7 @@ use one of %-formatting, :meth:<code>str.format</code> (<code>{}</code>) formatt
 
         # self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages
 
-        logging.SUCCESS = SUCCESS_LEVEL  # type: ignore
-        logging.addLevelName(logging.SUCCESS, &#34;SUCCESS&#34;)  # type: ignore
-
-        setattr(
-            self,
-            &#34;success&#34;,
-            lambda message, *args: self._log(
-                logging.SUCCESS, message, args  # type: ignore
-            ),
-        )
+        logging.addLevelName(SUCCESS_LEVEL, &#34;SUCCESS&#34;)
 
     def success(self, msg: str, *args: Any, **kwargs: Any) -&gt; None:
         &#34;&#34;&#34;Enables the &#34;success&#34; log type for all loggers using `SuccessLogger`.
@@ -450,7 +432,7 @@ use one of %-formatting, :meth:<code>str.format</code> (<code>{}</code>) formatt
 </dd>
 <dt id="new_project_name._helpers.nice_logger.WebFormatter"><code class="flex name class">
 <span>class <span class="ident">WebFormatter</span></span>
-<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True)</span>
+<span>(</span><span>fmt=None, datefmt=None, style='%', validate=True, *, defaults=None)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>A logging formatter which enables ANSI colors for each log level - in HTML.</p>

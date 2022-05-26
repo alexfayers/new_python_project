@@ -212,7 +212,8 @@ it's wrapped by <code>.decorators.singleton</code> (to prevent unnecessary proce
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class Config:
+<pre><code class="python">@singleton
+class Config:
     &#34;&#34;&#34;An object representation of a `yaml` config file. Each config section can be accessed as an attribute.&#34;&#34;&#34;
 
     def __init__(self, config_file: str):
