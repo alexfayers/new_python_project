@@ -85,7 +85,7 @@ jobs:
           push: --set-upstream origin main
 
       - name: Deploy new docs if they've been updated
-        if: steps.run_tests.outputs.pushed == 'true'
+        if: steps.run_tests.outputs.pushed == true
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: docs
