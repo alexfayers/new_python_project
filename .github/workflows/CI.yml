@@ -78,14 +78,15 @@ jobs:
       - name: Build documentation with tox
         run: tox -e docs
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
-        with:
-          branch: docs
-          folder: docs/new_project_name
-
-      - name: Add the the latest docs back to the repo
+      - name: Add the the latest docs back to the repo if they've been updated
         uses: EndBug/add-and-commit@v9
         with:
           message: "@auto Update docs"
           push: --set-upstream origin main
+
+      - name: Deploy new docs if they've been updated
+        if: steps.run_tests.outputs.pushed == 'true'
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: docs
+          folder: docs/new_project_name
