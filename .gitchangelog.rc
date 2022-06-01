@@ -68,7 +68,7 @@ ignore_regexps = [
     r'^$',  ## ignore commits with empty messages
     r'^[Aa]ctually',
     r'^[Ff]or real',
-    r'^\[auto\]'
+    r'^@auto'
 ]
 
 
