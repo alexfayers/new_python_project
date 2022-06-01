@@ -22,8 +22,14 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install tox
 
-    - name: Lint with tox
+    - name: Lint and format with tox
       run: tox -e lint
+
+    - name: If linting passes, upload any formatting changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "[auto] Formatting"
+          push: --set-upstream origin main
 
   test:
     needs: lint

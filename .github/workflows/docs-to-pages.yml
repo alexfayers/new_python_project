@@ -39,5 +39,5 @@ jobs:
       - name: Add the the latest docs back to the repo
         uses: EndBug/add-and-commit@v9
         with:
-          message: Update docs
+          message: "[auto] Update docs"
           push: --set-upstream origin main

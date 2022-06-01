@@ -44,5 +44,6 @@ jobs:
 
       - uses: EndBug/add-and-commit@v9
         with:
-          message: Project ready!
+          default_author: github_actions
+          message: Initialise project!
           push: --set-upstream --force origin main
