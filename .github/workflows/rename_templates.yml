@@ -42,7 +42,9 @@ jobs:
           echo "Renaming the project with a name of ${{ env.REPOSITORY_NAME }}, author of ${{ env.REPOSITORY_OWNER }}, and description of ${{ env.REPOSITORY_URLNAME }}"
           python _project_setup.py "${{ env.REPOSITORY_NAME }}" "${{ env.REPOSITORY_URLNAME }}" "${{ env.REPOSITORY_OWNER }}" "An epic projected called ${{ env.REPOSITORY_NAME }}, by ${{ env.REPOSITORY_OWNER }}!"
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: EndBug/add-and-commit@v9
         with:
-          commit_message: Initialise project!
-          push_options: --force
+          message: Initialise project!
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
+          push: --force
