@@ -240,7 +240,9 @@ def disable_actions() -> None:
     """Remove template-related actions from the github workflows."""
     template_indicator = PROJECT_PATH / Path(".github/template.yml")
     if template_indicator.is_file():
-        print("[Disable Actions]\t@@ Disabling template actions by removing template.yml")
+        print(
+            "[Disable Actions]\t@@ Disabling template actions by removing template.yml"
+        )
         if LIVE_MODE:
             template_indicator.unlink()
 
