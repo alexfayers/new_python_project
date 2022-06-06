@@ -4,6 +4,8 @@ Changelog
 
 (main)
 ------
+- Line endings. [alex.fayers]
+- Fix gitchangelog. [alex.fayers]
 - Update changelog. [alex.fayers]
 - Fix trailing whitespace. [alex.fayers]
 
