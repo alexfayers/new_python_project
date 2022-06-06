@@ -1,1 +1,5 @@
-.[all]
+.[test]
+.[lint]
+.[devlint]
+.[docs]
+.[release]

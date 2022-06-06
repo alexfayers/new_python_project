@@ -1,19 +1,19 @@
+"""Example usages for the `new_project_name.validation.ValidatingBaseClass` class."""
+
 from typing import List
 
 from typeguard import _CallMemo
 
 from .validating_base import ValidatingBaseClass
 
-__pdoc__ = {"ActionExample._validate_action": True}
-
 
 class ActionExample(ValidatingBaseClass):
-    """Shows an example usage of the `new_project_name._validation.validating_base.ValidatingBaseClass` class."""
+    """Shows an example usage of the `new_project_name.validation.ValidatingBaseClass` class."""
 
     required_methods: List[str] = ["action"]
     validated_methods: List[str] = ["action"]
 
-    def _validate_action(self, method_memo: _CallMemo) -> None:
+    def validate_action(self, method_memo: _CallMemo) -> None:
         """Validate that the data to be processed is in the correct format.
 
         Args:
@@ -34,7 +34,7 @@ class AdderExample(ActionExample):
     def action(self, number_list: List[int]) -> int:
         """Take a list of ints and sum all of the elements.
 
-        The validation method in this case is `ActionExample._validate_action`.
+        The validation method in this case is `ActionExample.validate_action`.
 
         Args:
             number_list (List[int]): The list of ints
@@ -55,7 +55,7 @@ class MultiplyerExample(ActionExample):
     def action(self, number_list: List[int]) -> int:
         """Take a list of ints and multiply all of the elements.
 
-        The validation method in this case is `ActionExample._validate_action`.
+        The validation method in this case is `ActionExample.validate_action`.
 
         Args:
             number_list (List[int]): The list of ints
@@ -71,7 +71,7 @@ class MultiplyerExample(ActionExample):
 
 
 def run_example() -> None:
-    """An example usage of the `new_project_name._validation.validating_base.ValidatingBaseClass` class.
+    """An example usage of the `new_project_name.validation.ValidatingBaseClass` class.
 
     Simply executes two different methods using the same automatic type validation.
     """

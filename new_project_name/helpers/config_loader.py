@@ -1,3 +1,5 @@
+"""Simple yaml config loading and validation, with a few extra features."""
+
 import logging
 import sys
 from typing import Any, Dict

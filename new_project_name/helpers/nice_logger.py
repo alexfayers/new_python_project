@@ -1,3 +1,5 @@
+"""Nice logging features, including a "success" level and colored logging in both the terminal - and HTML."""
+
 import copy
 import html
 import logging

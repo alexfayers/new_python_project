@@ -14,24 +14,24 @@ from typeguard import (
 
 logger = logging.getLogger(__name__)
 
-__pdoc__ = {
-    "ValidatingBaseClass._validate_self": True,
-    "ValidatingBaseClass._validate_argument_types": True,
-    "ValidatingBaseClass._validate_return_type": True,
-    "ValidatingBaseClass.__getattribute__": True,
-}
-
 
 class ValidatingBaseClass:
-    """A class which automatically validates the inputs and outputs of specified methods."""
+    """A class which automatically validates itself.
+
+    The inputs and outputs of specified methods are validated through the use of the `validated_methods` class variable,
+    and any methods are are required to be implemented in child classes are defined within the `required_methods`
+    class variable.
+
+    Example usage can be seen in `new_project_name.validation.examples`.
+    """
 
     required_methods: List[str] = []
     """Methods that must be implemented in any child classes"""
     validated_methods: List[str] = []
-    """
-    Methods that must be validated in any child classes.
+    """Methods that must be validated in any child classes.
 
-    The `_validate_XXX` naming scheme should be used when creating a validation function.
+    The `validate_XXX` naming scheme should be used when creating a validation function.
+    All `validate_XXX` methods should accept a single argument, which is a `_CallMemo` object.
     """
 
     _self_validated = False
@@ -107,7 +107,7 @@ class ValidatingBaseClass:
             and self._self_validated
             and __name in self.validated_methods
         ):
-            validator_name = f"_validate_{__name}"
+            validator_name = f"validate_{__name}"
             validator = super().__getattribute__(validator_name)
             if not validator:
                 raise NotImplementedError(

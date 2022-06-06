@@ -2,12 +2,9 @@
 
 import logging
 
-from .config_loader import Config
+from .config_loader import Config, ConfigSection
 from .nice_logger import ColoredFormatter, SuccessLogger
 
 logger = logging.getLogger(__name__)
 
-__all__ = ["Config", "SuccessLogger", "ColoredFormatter"]
-
-__pdoc__ = {}
-__pdoc__["ConfigSection"] = True
+__all__ = ["Config", "ConfigSection", "SuccessLogger", "ColoredFormatter"]
