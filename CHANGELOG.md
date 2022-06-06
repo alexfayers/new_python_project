@@ -4,6 +4,7 @@ Changelog
 
 (main)
 ------
+- Update changelog. [alex.fayers]
 - Fix trailing whitespace. [alex.fayers]
 
 
