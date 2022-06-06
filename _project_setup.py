@@ -229,7 +229,7 @@ def remove_or_update_template_files() -> None:
     if template_readme.is_file():
         print("[Reset Files]\t@@ Renaming 'TEMPLATE_README.md' TO 'README.md'")
         if LIVE_MODE:
-            template_readme.rename(PROJECT_PATH / Path("README.MD"))
+            template_readme.rename(PROJECT_PATH / Path("README.md"))
     else:
         print(
             "[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename."
