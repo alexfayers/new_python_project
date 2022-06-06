@@ -77,3 +77,30 @@ _The release command will also automatically update your [changelog](CHANGELOG.m
 All of the documentation is generated using pdoc. Every function and every class needs a docstring anyway - it's [good practice](https://peps.python.org/pep-0257/#what-is-a-docstring).
 
 CI tests won't pass until all the docstrings are written and formatted correctly. This may be annoying for some people initially, but it's actually really helpful in the long run, because it forces you to document as you go.
+
+## Fetching upstream changes
+
+If you want, you can add this repo as an upstream remote, and then you can pull any updates to the template into your own repo!
+
+```bash
+# Add the upstream remote:
+git remote add upstream https://github.com/alexfayers/new_python_project
+# Make sure we can't push to it:
+git remote set-url --push upstream no_push
+```
+
+Then when you want to update, you can do something like this:
+
+```bash
+# pull from upstream, ignoring the fact that our new repo isn't technically the same repo as the upstream
+git pull upstream main --allow-unrelated-histories
+# Only accept our changes if there are merge issues - these might happen because of the rename script
+git checkout --ours .
+# Stage all of the new changes to stop merge issue warnings popping up everywhere
+git add .
+# commit all of that
+git commit -m 'Merge upstream'
+
+# ???
+# profit
+```
