@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Add git attributes and disable whitespace check. [alex.fayers]
+
+
+v0.5.1 (2022-06-06)
+-------------------
+- Bump version: 0.5.0 -> 0.5.1. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Line endings. [alex.fayers]
 - Fix gitchangelog. [alex.fayers]
 - Update changelog. [alex.fayers]
