@@ -4,6 +4,8 @@ Changelog
 
 (main)
 ------
+- Temp disable push on release. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Add git attributes and disable whitespace check. [alex.fayers]
 
 
