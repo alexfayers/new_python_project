@@ -16,14 +16,7 @@
     <nav class="pdoc">
         <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
-        <div>            <a class="pdoc-button module-list-button" href="index.html">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
-  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
-</svg>                &nbsp;
-                Module Index
-            </a>
-
+        <div>
 
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                    pattern=".+" required>
@@ -81,16 +74,18 @@ new_project_name    </h1>
 
 <h2 id="installation">Installation</h2>
 
-<p>The Makefile provides a lot of helpers. Pretty much everything you'll need is shortcutted in there. <em>(If you're on Windows, you can use <a href="https://git-scm.com/downloads">git bash</a> or <a href="https://docs.microsoft.com/en-us/windows/wsl/about">wsl</a> to run the make commands)</em></p>
+<p>The tox config provides a lot of helpers. Pretty much everything you'll need is shortcutted in there.</p>
 
-<p>To install the project you only need to run:</p>
+<p>To install the project you only need to clone the repo and run pip install:</p>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>make install
+<div class="pdoc-code codehilite"><pre><span></span><code>git clone https://github.com/new_project_author/new_project_name
+<span class="nb">cd</span> new_project_name
+pip install .
 </code></pre></div>
 
-<p>If you like using virtual environments, you can easily install the project within one using:</p>
+<p>If you like using virtual environments, you can easily install the project within one using <a href="https://pypa.github.io/pipx/">pipx</a>:</p>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>make venv
+<div class="pdoc-code codehilite"><pre><span></span><code>pipx install .
 </code></pre></div>
 
 <h2 id="usage">Usage</h2>
@@ -115,22 +110,21 @@ $ project_name
 
 <h3 id="changes">Changes</h3>
 
-<p>If you want to make any changes, these commands are useful:</p>
+<p>If you want to make any changes, you can validate your code and documentation using:</p>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>make format
-make lint
+<div class="pdoc-code codehilite"><pre><span></span><code>tox -e format
 </code></pre></div>
 
-<p>And this one is nice for removing the trash cache files:</p>
+<p>If you want to build the project for release on pypi, you can run:</p>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>make clean
+<div class="pdoc-code codehilite"><pre><span></span><code>tox -e build
 </code></pre></div>
 
 <h3 id="testing">Testing</h3>
 
-<p>To run linting and unit tests, just run the make command:</p>
+<p>To run linting and unit tests, just run the tox command:</p>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>make tests
+<div class="pdoc-code codehilite"><pre><span></span><code>tox
 </code></pre></div>
 
 <h3 id="documentation">Documentation</h3>
@@ -153,17 +147,18 @@ make lint
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
 </span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">BaseClass</span>
 </span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">.cli</span> <span class="kn">import</span> <span class="n">cli_main</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">ColoredFormatter</span> <span class="k">as</span> <span class="n">_ColoredFormatter</span><span class="p">,</span> <span class="n">SuccessLogger</span> <span class="k">as</span> <span class="n">_SuccessLogger</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="c1"># set up logging for the package</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="n">logging</span><span class="o">.</span><span class="n">setLoggerClass</span><span class="p">(</span><span class="n">_SuccessLogger</span><span class="p">)</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="n">console</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="n">console</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">_ColoredFormatter</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%(name)s</span><span class="s2">] (</span><span class="si">%(levelname)s</span><span class="s2">): </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">))</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">console</span><span class="p">)</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BaseClass&quot;</span><span class="p">,</span> <span class="s2">&quot;cli_main&quot;</span><span class="p">,</span> <span class="s2">&quot;helpers&quot;</span><span class="p">,</span> <span class="s2">&quot;validation&quot;</span><span class="p">]</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">ColoredFormatter</span> <span class="k">as</span> <span class="n">_ColoredFormatter</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">SuccessLogger</span> <span class="k">as</span> <span class="n">_SuccessLogger</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="c1"># set up logging for the package</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="n">logging</span><span class="o">.</span><span class="n">setLoggerClass</span><span class="p">(</span><span class="n">_SuccessLogger</span><span class="p">)</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="n">console</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="n">console</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">_ColoredFormatter</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%(name)s</span><span class="s2">] (</span><span class="si">%(levelname)s</span><span class="s2">): </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">))</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">console</span><span class="p">)</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BaseClass&quot;</span><span class="p">,</span> <span class="s2">&quot;cli_main&quot;</span><span class="p">,</span> <span class="s2">&quot;helpers&quot;</span><span class="p">,</span> <span class="s2">&quot;validation&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 

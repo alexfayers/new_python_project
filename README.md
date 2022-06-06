@@ -4,19 +4,21 @@ new_project_description
 
 ## Installation
 
-The Makefile provides a lot of helpers. Pretty much everything you'll need is shortcutted in there. *(If you're on Windows, you can use [git bash](https://git-scm.com/downloads) or [wsl](https://docs.microsoft.com/en-us/windows/wsl/about) to run the make commands)*
+The tox config provides a lot of helpers. Pretty much everything you'll need is shortcutted in there.
 
-To install the project you only need to run:
+To install the project you only need to clone the repo and run pip install:
 
 ```bash
-make install
+git clone https://github.com/new_project_author/new_project_name
+cd new_project_name
+pip install .
 ```
 
 
-If you like using virtual environments, you can easily install the project within one using:
+If you like using virtual environments, you can easily install the project within one using [pipx](https://pypa.github.io/pipx/):
 
 ```bash
-make venv
+pipx install .
 ```
 
 ## Usage
@@ -43,25 +45,24 @@ $ project_name
 
 ### Changes
 
-If you want to make any changes, these commands are useful:
+If you want to make any changes, you can validate your code and documentation using:
 
 ```bash
-make format
-make lint
+tox -e format
 ```
 
-And this one is nice for removing the trash cache files:
+If you want to build the project for release on pypi, you can run:
 
 ```bash
-make clean
+tox -e build
 ```
 
 ### Testing
 
-To run linting and unit tests, just run the make command:
+To run linting and unit tests, just run the tox command:
 
 ```bash
-make tests
+tox
 ```
 
 ### Documentation
