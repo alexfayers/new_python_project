@@ -23,11 +23,12 @@
 
         <h2>Contents</h2>
         <ul>
-  <li><a href="#new_project_readable_name">new_project_readable_name</a>
+  <li><a href="#alexs-new-python-project-template">Alex's New Python Project Template</a>
   <ul>
     <li><a href="#installation">Installation</a></li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#development">Development</a></li>
+    <li><a href="#tox">Tox</a></li>
+    <li><a href="#documentation-reiterated">Documentation, reiterated</a></li>
   </ul></li>
 </ul>
 
@@ -68,73 +69,84 @@
                     <h1 class="modulename">
 new_project_name    </h1>
 
-                        <div class="docstring"><h1 id="new_project_readable_name">new_project_readable_name</h1>
+                        <div class="docstring"><h1 id="alexs-new-python-project-template">Alex's New Python Project Template</h1>
 
-<p>new_project_description</p>
+<p>This repository allows you to start a new python project faster. It sets up a few things for after you <a href="https://github.com/alexfayers/new_python_project/generate">create a new repository from this template</a>, so that you can get started on your new idea sooner.</p>
 
 <h2 id="installation">Installation</h2>
 
-<p>The tox config provides a lot of helpers. Pretty much everything you'll need is shortcutted in there.</p>
+<p>After you've created your new repo, wait for the <a href=".github/workflows/rename_templates.yml">rename_templates</a> workflow to complete. This will move around a few files, rename some stuff, and reset the project version so that everything's ready for you to get started (using the <a href="_project_setup.py">_project_setup.py</a> script).</p>
 
-<p>To install the project you only need to clone the repo and run pip install:</p>
-
-<div class="pdoc-code codehilite"><pre><span></span><code>git clone https://github.com/new_project_author/new_project_name
-<span class="nb">cd</span> new_project_name
-pip install .
-</code></pre></div>
-
-<p>If you like using virtual environments, you can easily install the project within one using <a href="https://pypa.github.io/pipx/">pipx</a>:</p>
-
-<div class="pdoc-code codehilite"><pre><span></span><code>pipx install .
-</code></pre></div>
-
-<h2 id="usage">Usage</h2>
-
-<div class="pdoc-code codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">project_name</span> <span class="kn">import</span> <span class="n">BaseClass</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">BaseClass</span><span class="p">(</span><span class="s2">&quot;config.yml&quot;</span><span class="p">)</span>
-
-<span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-    <span class="sa">f</span><span class="s2">&quot;Hi, welcome to </span><span class="si">{</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">INFO</span><span class="o">.</span><span class="n">NAME</span><span class="si">}</span><span class="s2"> by </span><span class="si">{</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">INFO</span><span class="o">.</span><span class="n">AUTHOR</span><span class="si">}</span><span class="s2">!&quot;</span>
-<span class="p">)</span>
-</code></pre></div>
-
-<div class="pdoc-code codehilite"><pre><span></span><code>$ python3 -m project_name
-<span class="c1"># or</span>
-$ project_name
-</code></pre></div>
-
-<hr />
+<p>Then you can clone the repo locally, and get started on some coding.</p>
 
 <h2 id="development">Development</h2>
 
-<h3 id="changes">Changes</h3>
+<p>The template includes a few of my preferences for writing Python:</p>
 
-<p>If you want to make any changes, you can validate your code and documentation using:</p>
+<ul>
+<li>All function parameters and returns values must be typed.</li>
+<li>All functions, classes, and modules must contain docstrings (in the Google format).</li>
+<li>Each module that you add _should_ have tests associated with it - they go in the <a href="tests">tests</a> folder.
+<ul>
+<li>_At the moment, this isn't actually enforced - but it probably will be in the future because I, personally, always forget to write tests for things._</li>
+</ul></li>
+<li>pre-commit hooks are available to enable linting and formatting to be run before you do a commit. You can either install these using <code>pre-commit install</code> or just run them once using <code>tox -e lint</code>.</li>
+<li>A few cool classes and functions that I use a lot are also included as submodules of your module. In the future I'll make a system to manage these, but for now you can delete them if you don't need them.</li>
+<li>The project is installable as a python module, allowing you to even upload the project to PyPI, if you want.</li>
+</ul>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>tox -e format
-</code></pre></div>
+<h2 id="tox">Tox</h2>
 
-<p>If you want to build the project for release on PyPI, you can run:</p>
+<p>The <a href="tox.ini">tox config</a> also provides a lot of useful shortcuts. For example:</p>
 
-<div class="pdoc-code codehilite"><pre><span></span><code>tox -e build
-</code></pre></div>
+<hr />
 
-<h3 id="testing">Testing</h3>
-
-<p>To run linting and unit tests, just run the tox command:</p>
+<p>You can run your unit tests using:</p>
 
 <div class="pdoc-code codehilite"><pre><span></span><code>tox
 </code></pre></div>
 
-<h3 id="documentation">Documentation</h3>
+<hr />
 
-<p>All of the documentation is generated using pdoc. Every function and every class needs a docstring anyway - it's good practice.</p>
+<p>You can validate and format your code and documentation using:</p>
 
-<p>The docs won't be generated until all of the documentation is there!</p>
-
-<div class="pdoc-code codehilite"><pre><span></span><code>make docs
+<div class="pdoc-code codehilite"><pre><span></span><code>tox -e lint
 </code></pre></div>
+
+<hr />
+
+<p>You can re-generate your docs locally using:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code>tox -e docs
+</code></pre></div>
+
+<p>_(Although, docs are automatically generated and updated if needed as the last step of the <a href=".github/workflows/CI.yml">CI workflow</a>)_</p>
+
+<hr />
+
+<p>You can build the project into <code>.whl</code> and <code>.tar.gz</code> files using:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code>tox -e build
+</code></pre></div>
+
+<hr />
+
+<p>And you can even create a new release on Github using:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code>tox -e release patch  <span class="c1"># for a small fix</span>
+tox -e release minor  <span class="c1"># for a small improvement</span>
+tox -e release patch  <span class="c1"># for a big change or feature addition</span>
+</code></pre></div>
+
+<p>_The release command will also automatically update your <a href="CHANGELOG.md">changelog</a> through the use of <a href="https://github.com/vaab/gitchangelog">gitchangelog</a>._</p>
+
+<hr />
+
+<h2 id="documentation-reiterated">Documentation, reiterated</h2>
+
+<p>All of the documentation is generated using pdoc. Every function and every class needs a docstring anyway - it's <a href="https://peps.python.org/pep-0257/#what-is-a-docstring">good practice</a>.</p>
+
+<p>CI tests won't pass until all the docstrings are written and formatted correctly. This may be annoying for some people initially, but it's actually really helpful in the long run, because it forces you to document as you go.</p>
 </div>
 
                         <input id="new_project_name-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
