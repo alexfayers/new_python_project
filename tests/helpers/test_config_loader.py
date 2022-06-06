@@ -1,3 +1,5 @@
+"""Tests for the `new_project_name.helpers.config_loader` module."""
+
 from pytest import LogCaptureFixture
 
 from new_project_name.helpers.config_loader import Config, ConfigSection

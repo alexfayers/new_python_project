@@ -16,7 +16,14 @@
     <nav class="pdoc">
         <label id="navtoggle" for="togglestate" class="pdoc-button"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke-linecap='round' stroke="currentColor" stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg></label>
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
-        <div>
+        <div>            <a class="pdoc-button module-list-button" href="index.html">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+  <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg>                &nbsp;
+                Module Index
+            </a>
+
 
             <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
                    pattern=".+" required>
@@ -51,9 +58,6 @@
             </li>
             <li>
                     <a class="function" href="#cli_main">cli_main</a>
-            </li>
-            <li>
-                    <a class="function" href="#Config">Config</a>
             </li>
     </ul>
 
@@ -147,19 +151,19 @@ make lint
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
 </span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span> <span class="nn">logging</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">ColoredFormatter</span><span class="p">,</span> <span class="n">Config</span><span class="p">,</span> <span class="n">SuccessLogger</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">BaseClass</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.cli</span> <span class="kn">import</span> <span class="n">cli_main</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">BaseClass</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">.cli</span> <span class="kn">import</span> <span class="n">cli_main</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.helpers</span> <span class="kn">import</span> <span class="n">ColoredFormatter</span> <span class="k">as</span> <span class="n">_ColoredFormatter</span><span class="p">,</span> <span class="n">SuccessLogger</span> <span class="k">as</span> <span class="n">_SuccessLogger</span>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
 </span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="c1"># set up logging for the package</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="n">logging</span><span class="o">.</span><span class="n">setLoggerClass</span><span class="p">(</span><span class="n">SuccessLogger</span><span class="p">)</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="n">logging</span><span class="o">.</span><span class="n">setLoggerClass</span><span class="p">(</span><span class="n">_SuccessLogger</span><span class="p">)</span>
 </span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
 </span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 </span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a><span class="n">console</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">()</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="n">console</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">ColoredFormatter</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%(name)s</span><span class="s2">] (</span><span class="si">%(levelname)s</span><span class="s2">): </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">))</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a><span class="n">console</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">_ColoredFormatter</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%(name)s</span><span class="s2">] (</span><span class="si">%(levelname)s</span><span class="s2">): </span><span class="si">%(message)s</span><span class="s2">&quot;</span><span class="p">))</span>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">console</span><span class="p">)</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BaseClass&quot;</span><span class="p">,</span> <span class="s2">&quot;cli_main&quot;</span><span class="p">,</span> <span class="s2">&quot;Config&quot;</span><span class="p">,</span> <span class="s2">&quot;helpers&quot;</span><span class="p">,</span> <span class="s2">&quot;validation&quot;</span><span class="p">]</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;BaseClass&quot;</span><span class="p">,</span> <span class="s2">&quot;cli_main&quot;</span><span class="p">,</span> <span class="s2">&quot;helpers&quot;</span><span class="p">,</span> <span class="s2">&quot;validation&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 
@@ -280,76 +284,6 @@ make lint
 
 
             <div class="docstring"><p>CLI entrypoint for <code><a href="">new_project_name</a></code>. Uses <code><a href="#BaseClass">BaseClass</a></code>.</p>
-</div>
-
-
-                </section>
-                <section id="Config">
-                            <input id="Config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-
-        <span class="def">def</span>
-        <span class="name">Config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span></span>)</span>
-
-                <label class="view-source-button" for="Config-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#Config"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Config-98"><a href="#Config-98"><span class="linenos"> 98</span></a><span class="nd">@singleton</span>
-</span><span id="Config-99"><a href="#Config-99"><span class="linenos"> 99</span></a><span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
-</span><span id="Config-100"><a href="#Config-100"><span class="linenos">100</span></a>    <span class="sd">&quot;&quot;&quot;An object representation of a `yaml` config file. Each config section can be accessed as an attribute.&quot;&quot;&quot;</span>
-</span><span id="Config-101"><a href="#Config-101"><span class="linenos">101</span></a>
-</span><span id="Config-102"><a href="#Config-102"><span class="linenos">102</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="Config-103"><a href="#Config-103"><span class="linenos">103</span></a>        <span class="sd">&quot;&quot;&quot;Initialises the `Config` object.</span>
-</span><span id="Config-104"><a href="#Config-104"><span class="linenos">104</span></a>
-</span><span id="Config-105"><a href="#Config-105"><span class="linenos">105</span></a><span class="sd">        There is only one instance of a `Config` for each `config_file`, as</span>
-</span><span id="Config-106"><a href="#Config-106"><span class="linenos">106</span></a><span class="sd">        it&#39;s wrapped by `.decorators.singleton` (to prevent unnecessary processing).</span>
-</span><span id="Config-107"><a href="#Config-107"><span class="linenos">107</span></a>
-</span><span id="Config-108"><a href="#Config-108"><span class="linenos">108</span></a><span class="sd">        Args:</span>
-</span><span id="Config-109"><a href="#Config-109"><span class="linenos">109</span></a><span class="sd">            config_file (str): The config file to parse</span>
-</span><span id="Config-110"><a href="#Config-110"><span class="linenos">110</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Config-111"><a href="#Config-111"><span class="linenos">111</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
-</span><span id="Config-112"><a href="#Config-112"><span class="linenos">112</span></a>
-</span><span id="Config-113"><a href="#Config-113"><span class="linenos">113</span></a>    <span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="Config-114"><a href="#Config-114"><span class="linenos">114</span></a>        <span class="sd">&quot;&quot;&quot;Load the config file info this `Config` object.</span>
-</span><span id="Config-115"><a href="#Config-115"><span class="linenos">115</span></a>
-</span><span id="Config-116"><a href="#Config-116"><span class="linenos">116</span></a><span class="sd">        Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.</span>
-</span><span id="Config-117"><a href="#Config-117"><span class="linenos">117</span></a>
-</span><span id="Config-118"><a href="#Config-118"><span class="linenos">118</span></a><span class="sd">        Args:</span>
-</span><span id="Config-119"><a href="#Config-119"><span class="linenos">119</span></a><span class="sd">            config_file (str): The config file to parse</span>
-</span><span id="Config-120"><a href="#Config-120"><span class="linenos">120</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Config-121"><a href="#Config-121"><span class="linenos">121</span></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="Config-122"><a href="#Config-122"><span class="linenos">122</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="Config-123"><a href="#Config-123"><span class="linenos">123</span></a>                <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</span><span id="Config-124"><a href="#Config-124"><span class="linenos">124</span></a>            <span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="Config-125"><a href="#Config-125"><span class="linenos">125</span></a>                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error in configuration file!&quot;</span><span class="p">)</span>
-</span><span id="Config-126"><a href="#Config-126"><span class="linenos">126</span></a>                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</span><span id="Config-127"><a href="#Config-127"><span class="linenos">127</span></a>                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="Config-128"><a href="#Config-128"><span class="linenos">128</span></a>
-</span><span id="Config-129"><a href="#Config-129"><span class="linenos">129</span></a>        <span class="n">set_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
-</span><span id="Config-130"><a href="#Config-130"><span class="linenos">130</span></a>
-</span><span id="Config-131"><a href="#Config-131"><span class="linenos">131</span></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="Config-132"><a href="#Config-132"><span class="linenos">132</span></a>        <span class="sd">&quot;&quot;&quot;The string representation of the `Config` object.&quot;&quot;&quot;</span>
-</span><span id="Config-133"><a href="#Config-133"><span class="linenos">133</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="Config-134"><a href="#Config-134"><span class="linenos">134</span></a>
-</span><span id="Config-135"><a href="#Config-135"><span class="linenos">135</span></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="Config-136"><a href="#Config-136"><span class="linenos">136</span></a>        <span class="sd">&quot;&quot;&quot;The string representation of the `Config` object.&quot;&quot;&quot;</span>
-</span><span id="Config-137"><a href="#Config-137"><span class="linenos">137</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
-</span><span id="Config-138"><a href="#Config-138"><span class="linenos">138</span></a>
-</span><span id="Config-139"><a href="#Config-139"><span class="linenos">139</span></a>    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-</span><span id="Config-140"><a href="#Config-140"><span class="linenos">140</span></a>        <span class="sd">&quot;&quot;&quot;Defined to stop mypy from complaining about the `Config` object not having any attributes.</span>
-</span><span id="Config-141"><a href="#Config-141"><span class="linenos">141</span></a>
-</span><span id="Config-142"><a href="#Config-142"><span class="linenos">142</span></a><span class="sd">        Args:</span>
-</span><span id="Config-143"><a href="#Config-143"><span class="linenos">143</span></a><span class="sd">            name (str): The attribute which is being accessed</span>
-</span><span id="Config-144"><a href="#Config-144"><span class="linenos">144</span></a>
-</span><span id="Config-145"><a href="#Config-145"><span class="linenos">145</span></a><span class="sd">        Returns:</span>
-</span><span id="Config-146"><a href="#Config-146"><span class="linenos">146</span></a><span class="sd">            Any: A pretend return value to fool mypy</span>
-</span><span id="Config-147"><a href="#Config-147"><span class="linenos">147</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Config-148"><a href="#Config-148"><span class="linenos">148</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>An object representation of a <code>yaml</code> config file. Each config section can be accessed as an attribute.</p>
 </div>
 
 
