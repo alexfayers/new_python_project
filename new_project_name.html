@@ -29,6 +29,7 @@
     <li><a href="#development">Development</a></li>
     <li><a href="#tox">Tox</a></li>
     <li><a href="#documentation-reiterated">Documentation, reiterated</a></li>
+    <li><a href="#fetching-upstream-changes">Fetching upstream changes</a></li>
   </ul></li>
 </ul>
 
@@ -147,6 +148,31 @@ tox -e release patch  <span class="c1"># for a big change or feature addition</s
 <p>All of the documentation is generated using pdoc. Every function and every class needs a docstring anyway - it's <a href="https://peps.python.org/pep-0257/#what-is-a-docstring">good practice</a>.</p>
 
 <p>CI tests won't pass until all the docstrings are written and formatted correctly. This may be annoying for some people initially, but it's actually really helpful in the long run, because it forces you to document as you go.</p>
+
+<h2 id="fetching-upstream-changes">Fetching upstream changes</h2>
+
+<p>If you want, you can add this repo as an upstream remote, and then you can pull any updates to the template into your own repo!</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="c1"># Add the upstream remote:</span>
+git remote add upstream https://github.com/alexfayers/new_python_project
+<span class="c1"># Make sure we can&#39;t push to it:</span>
+git remote set-url --push upstream no_push
+</code></pre></div>
+
+<p>Then when you want to update, you can do something like this:</p>
+
+<div class="pdoc-code codehilite"><pre><span></span><code><span class="c1"># pull from upstream, ignoring the fact that our new repo isn&#39;t technically the same repo as the upstream</span>
+git pull upstream main --allow-unrelated-histories
+<span class="c1"># Only accept our changes if there are merge issues - these might happen because of the rename script</span>
+git checkout --ours .
+<span class="c1"># Stage all of the new changes to stop merge issue warnings popping up everywhere</span>
+git add .
+<span class="c1"># commit all of that</span>
+git commit -m <span class="s1">&#39;Merge upstream&#39;</span>
+
+<span class="c1"># ???</span>
+<span class="c1"># profit</span>
+</code></pre></div>
 </div>
 
                         <input id="new_project_name-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
