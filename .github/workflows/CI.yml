@@ -32,7 +32,6 @@ jobs:
       uses: EndBug/add-and-commit@v9
       with:
         message: "@auto Formatting"
-        push: --set-upstream origin main
 
   test:
     needs: lint
@@ -82,7 +81,6 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           message: "@auto Update docs"
-          push: --set-upstream origin main
 
       - name: Deploy new docs if they've been updated
         uses: JamesIves/github-pages-deploy-action@v4.3.3
