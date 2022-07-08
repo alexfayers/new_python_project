@@ -4,6 +4,15 @@ Changelog
 
 (main)
 ------
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Fix VERSION path in setup script. [alex.fayers]
+
+
+v1.1.1 (2022-07-08)
+-------------------
+- Bump version: 1.1.0 -> 1.1.1. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Update readme to include vscode extension pack! [alex.fayers]
 
 
