@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Update readme to include vscode extension pack! [alex.fayers]
+
+
+v1.1.0 (2022-07-08)
+-------------------
+- Bump version: 1.0.0 -> 1.1.0. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Remove trailing whitespace pre-commit because it fails after automated
   file writes, which is annoying. [alex.fayers]
 
