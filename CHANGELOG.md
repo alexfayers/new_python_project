@@ -4,6 +4,10 @@ Changelog
 
 (main)
 ------
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Fix release. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Remove accident doc files. [alex.fayers]
 - Merge branch 'main' of
   https://github.com/alexfayers/new_python_project. [alex.fayers]
