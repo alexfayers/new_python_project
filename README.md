@@ -8,6 +8,8 @@ After you've created your new repo, wait for the [rename_templates](.github/work
 
 Then you can clone the repo locally, and get started on some coding.
 
+*I recommend using [Visual Studio Code](https://code.visualstudio.com) with my extension pack ([Alex's New Python Project Template - Extensions](https://marketplace.visualstudio.com/items?itemName=alexfayers.alexs-nppt-extensions))*
+
 ## Development
 
 The template includes a few of my preferences for writing Python:
