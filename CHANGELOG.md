@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Workflow concurrency. [alex.fayers]
+
+
+v1.1.2 (2022-07-08)
+-------------------
+- Bump version: 1.1.1 -> 1.1.2. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Merge branch 'main' of
   https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix VERSION path in setup script. [alex.fayers]
