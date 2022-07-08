@@ -4,6 +4,28 @@ Changelog
 
 (main)
 ------
+- Remove accident doc files. [alex.fayers]
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Fix doc gen. [alex.fayers]
+- BREAKING: Move source into "src" directory. This prevents unwanted
+  imports of the code, e.g. during tests. [alex.fayers]
+- Split out mypy type requirements and re-enable git push tags on
+  release. [alex.fayers]
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Remove upstream set on CI workflow, may be causing isssues with
+  private repos. [alex.fayers]
+- Add upstream instructions. [alex.fayers]
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Fix readme rename case. [alex.fayers]
+
+
+v0.5.2 (2022-06-06)
+-------------------
+- Bump version: 0.5.1 -> 0.5.2. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Temp disable push on release. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Add git attributes and disable whitespace check. [alex.fayers]
