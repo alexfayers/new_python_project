@@ -184,12 +184,13 @@ def remove_or_update_template_files() -> None:
     """Remove, rename, and update files which shouldn't be in repos which use the template."""
     print("[Reset Files]\t@@ Looking for files to reset to an initial state...")
 
-    version_file = PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")
+    version_file = PROJECT_PATH / Path(f"src/{REPLACEMENT_BASE.lower()}_name/VERSION")
     if version_file.is_file():
         print("[Reset Files]\t@@ Resetting 'VERSION' file to '0.1.0'")
         if LIVE_MODE:
             with open(
-                (PROJECT_PATH / Path(f"{REPLACEMENT_BASE.lower()}_name/VERSION")), "w"
+                (PROJECT_PATH / Path(f"src/{REPLACEMENT_BASE.lower()}_name/VERSION")),
+                "w",
             ) as f:
                 f.write("0.1.0\n")
     else:
