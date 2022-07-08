@@ -4,6 +4,14 @@ Changelog
 
 (main)
 ------
+- Remove trailing whitespace pre-commit because it fails after automated
+  file writes, which is annoying. [alex.fayers]
+
+
+v1.0.0 (2022-07-08)
+-------------------
+- Bump version: 0.5.2 -> 1.0.0. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Merge branch 'main' of
   https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix release. [alex.fayers]
