@@ -1,4 +1,4 @@
-""".. include:: ../README.md"""  # noqa
+""".. include:: ../../README.md"""  # noqa
 
 import logging
 
