@@ -252,4 +252,5 @@ if __name__ == "__main__":
     replacement_map = load_replacement_values()
     remove_or_update_template_files()
     replace_placeholders(replacement_map)
+    disable_actions()
     print("[Done]")
