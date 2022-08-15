@@ -32,6 +32,10 @@ jobs:
     - name: Lint and format with tox
       run: tox -e lint
 
+    - name: Lint and format with tox again to make sure auto-formatting completed
+      if: always()
+      run: tox -e lint
+
     - name: If linting passes, upload any formatting changes
       uses: EndBug/add-and-commit@v9
       with:
@@ -58,17 +62,8 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install tox tox-gh-actions
 
-    - name: Lint and format with tox
-      run: tox -e lint
-
-    - name: Lint and format with tox again to make sure auto-formatting completed
-      if: always()
-      run: tox -e lint
-
-    - name: Upload any formatting changes from linting
-      uses: EndBug/add-and-commit@v9
-      with:
-        message: "@auto Formatting"
+    - name: Test with tox
+      run: tox
 
   docs:
     needs: test
