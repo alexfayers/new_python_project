@@ -30,10 +30,10 @@ jobs:
         python -m pip install tox
 
     - name: Lint and format with tox
+      continue-on-error: true
       run: tox -e lint
 
     - name: Lint and format with tox again to make sure auto-formatting completed
-      if: always()
       run: tox -e lint
 
     - name: If linting passes, upload any formatting changes
@@ -88,6 +88,7 @@ jobs:
       - name: Add the the latest docs back to the repo if they've been updated
         uses: EndBug/add-and-commit@v9
         with:
+          pull: '--rebase --autostash'
           message: "@auto Update docs"
 
       - name: Deploy new docs if they've been updated
