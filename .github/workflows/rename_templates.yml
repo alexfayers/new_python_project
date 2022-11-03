@@ -31,11 +31,11 @@ jobs:
         id: is_template
         run: echo "::set-output name=is_template::$(ls .github/template.yml &> /dev/null && echo true || echo false)"
 
-      - name: Set up Python 3.10
+      - name: Set up Python 3.11
         if: steps.is_template.outputs.is_template == 'true'
         uses: actions/setup-python@v3
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Rename the project
         if: steps.is_template.outputs.is_template == 'true'
