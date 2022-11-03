@@ -2,7 +2,7 @@
 
 import logging
 
-from .helpers import Config
+from ._helpers import Config
 
 
 class BaseClass:

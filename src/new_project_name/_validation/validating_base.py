@@ -22,7 +22,7 @@ class ValidatingBaseClass:
     and any methods are are required to be implemented in child classes are defined within the `required_methods`
     class variable.
 
-    Example usage can be seen in `new_project_name.validation.examples`.
+    Example usage can be seen in `new_project_name._validation.examples`.
     """
 
     required_methods: List[str] = []

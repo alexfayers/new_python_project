@@ -2,7 +2,7 @@
 
 from pytest import LogCaptureFixture
 
-from new_project_name.helpers.config_loader import Config, ConfigSection
+from new_project_name._helpers.config_loader import Config, ConfigSection
 
 
 def test_config_loader(caplog: LogCaptureFixture) -> None:

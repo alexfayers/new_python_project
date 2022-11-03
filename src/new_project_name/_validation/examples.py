@@ -1,4 +1,4 @@
-"""Example usages for the `new_project_name.validation.ValidatingBaseClass` class."""
+"""Example usages for the `new_project_name._validation.ValidatingBaseClass` class."""
 
 from typing import List
 
@@ -8,7 +8,7 @@ from .validating_base import ValidatingBaseClass
 
 
 class ActionExample(ValidatingBaseClass):
-    """Shows an example usage of the `new_project_name.validation.ValidatingBaseClass` class."""
+    """Shows an example usage of the `new_project_name._validation.ValidatingBaseClass` class."""
 
     required_methods: List[str] = ["action"]
     validated_methods: List[str] = ["action"]
@@ -71,7 +71,7 @@ class MultiplyerExample(ActionExample):
 
 
 def run_example() -> None:
-    """An example usage of the `new_project_name.validation.ValidatingBaseClass` class.
+    """An example usage of the `new_project_name._validation.ValidatingBaseClass` class.
 
     Simply executes two different methods using the same automatic type validation.
     """
