@@ -2,10 +2,10 @@
 
 import logging
 
-from .base import BaseClass
-from .cli import cli_main
 from ._helpers import ColoredFormatter as _ColoredFormatter
 from ._helpers import SuccessLogger as _SuccessLogger
+from .base import BaseClass
+from .cli import cli_main
 
 # set up logging for the package
 logging.setLoggerClass(_SuccessLogger)
