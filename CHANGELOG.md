@@ -4,6 +4,24 @@ Changelog
 
 (main)
 ------
+- Lint + docs. [alex.fayers]
+- Remove helper tests. [alex.fayers]
+- Privatise helpers and validation modules. [alex.fayers]
+- Update template readme. [alex.fayers]
+- Drop 3.7, add 3.11 support. [alex.fayers]
+- Only run docs update on non-pull req. [alex.fayers]
+- Cicd improvements. [alex.fayers]
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alex.fayers]
+- Fix linting check position. [alex.fayers]
+- Better CI linting. [alex.fayers]
+- Template checks. [alex.fayers]
+
+
+v1.1.3 (2022-07-08)
+-------------------
+- Bump version: 1.1.2 -> 1.1.3. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Workflow concurrency. [alex.fayers]
 
 
