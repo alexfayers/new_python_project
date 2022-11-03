@@ -4,6 +4,14 @@ Changelog
 
 (main)
 ------
+- 3.10 -> 3.11 for workflows. [alex.fayers]
+- Add an example test. [alex.fayers]
+
+
+v1.2.0 (2022-11-03)
+-------------------
+- Bump version: 1.1.3 -> 1.2.0. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Lint + docs. [alex.fayers]
 - Remove helper tests. [alex.fayers]
 - Privatise helpers and validation modules. [alex.fayers]
