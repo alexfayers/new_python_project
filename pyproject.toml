@@ -17,8 +17,8 @@ new_project_name = "new_project_name:cli_main"
 
 [tool.poetry.dependencies]
 python = ">=3.8,<4.0"
-types-PyYAML = "^6.0.12.1"
 typeguard = "^2.13.3"
+pyyaml = "^6.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.0"
