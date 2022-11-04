@@ -94,11 +94,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install tox
 
-    - name: Cache tox environment
-      uses: actions/cache@v3
-      with:
-        path: .tox
-        key: 3.11-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
+      - name: Cache tox environment
+        uses: actions/cache@v3
+        with:
+          path: .tox
+          key: 3.11-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
 
       - name: Build documentation with tox
         run: tox -e docs
