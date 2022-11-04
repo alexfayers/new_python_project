@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Adjust CI. [alex.fayers]
+
+
+v2.1.2 (2022-11-04)
+-------------------
+- Bump version: 2.1.1 -> 2.1.2. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Update tox lint commands. [alex.fayers]
 
 
