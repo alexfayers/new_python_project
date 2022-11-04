@@ -41,6 +41,6 @@ git add .
 git commit -m "Bump version: $current_version -> $new_version"
 
 # Create a new tag and push it to the remote repository
-git tag -a "$new_version" -m "Release $new_version"
+git tag -a "v$new_version" -m "Release $new_version"
 
 git push --follow-tags
