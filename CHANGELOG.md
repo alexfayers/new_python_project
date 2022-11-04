@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Update tox lint commands. [alex.fayers]
+
+
+v2.1.1 (2022-11-04)
+-------------------
+- Bump version: 2.1.0 -> 2.1.1. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Update lock. [alex.fayers]
 
 
