@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Update release script. [alex.fayers]
+
+
+v2.0.0 (2022-11-04)
+-------------------
+- Bump version: 1.2.1 -> 2.0.0. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Convert to poetry and pyproject.toml. [alex.fayers]
 
 
