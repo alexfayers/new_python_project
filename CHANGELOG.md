@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Fix deps. [alex.fayers]
+
+
+v2.0.1 (2022-11-04)
+-------------------
+- Bump version: 2.0.0 -> 2.0.1. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Update release script. [alex.fayers]
 
 
