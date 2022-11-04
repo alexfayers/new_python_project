@@ -34,7 +34,13 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .tox
-        key: 3.11-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
+        key: 3.11-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('tox.ini') }}
+
+    - name: Cache pre-commit environment
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pre-commit
+        key: 3.11-pre-commit-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
 
     - name: Lint and format with tox
       run: tox -e lint
