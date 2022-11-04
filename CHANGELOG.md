@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Convert to poetry and pyproject.toml. [alex.fayers]
+
+
+v1.2.1 (2022-11-03)
+-------------------
+- Bump version: 1.2.0 -> 1.2.1. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - 3.10 -> 3.11 for workflows. [alex.fayers]
 - Add an example test. [alex.fayers]
 
@@ -225,5 +232,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
 
 
