@@ -4,6 +4,19 @@ Changelog
 
 (main)
 ------
+- Another cache key fix. [alex.fayers]
+- Update tox hashes. [alex.fayers]
+- Cache pre-commit bits. [alex.fayers]
+- Update workspace extension recommendations. [alex.fayers]
+- Fix indentation. [alex.fayers]
+- Tox caching. [alex.fayers]
+- Update setup python action. [alex.fayers]
+
+
+v2.1.3 (2022-11-04)
+-------------------
+- Bump version: 2.1.2 -> 2.1.3. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Adjust CI. [alex.fayers]
 
 
