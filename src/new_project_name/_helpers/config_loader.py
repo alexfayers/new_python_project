@@ -89,9 +89,7 @@ class ConfigSection:
             AttributeError: Raised if the attribute does not exist
         """
         if not name.startswith("_"):
-            raise AttributeError(
-                f"The '{name}' key does not exist in the '{self._section_name}' section"
-            )
+            raise AttributeError(f"The '{name}' key does not exist in the '{self._section_name}' section")
 
 
 @singleton

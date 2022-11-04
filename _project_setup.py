@@ -1,5 +1,5 @@
 import argparse
-import configparser
+import re
 import sys
 from pathlib import Path
 from typing import Dict, List
@@ -21,12 +21,8 @@ def load_replacement_values() -> Dict[str, str]:
     """
     parser = argparse.ArgumentParser()
     for value in REPLACE_KEYS:
-        parser.add_argument(
-            f"{value.lower()}", type=str, help=f"New {value} for project"
-        )
-    parser.add_argument(
-        "-l", "--live", action="store_true", help="Perform live replacements"
-    )
+        parser.add_argument(f"{value.lower()}", type=str, help=f"New {value} for project")
+    parser.add_argument("-l", "--live", action="store_true", help="Perform live replacements")
 
     args = parser.parse_args()
 
@@ -128,43 +124,31 @@ def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
     if success_count <= 0:
         print("[File content replace]\t@@ No placeholders replaced.")
     else:
-        print(
-            f"[File content replace]\t@@ {success_count} placeholder{'s' if success_count > 1 else ''} replaced."
-        )
+        print(f"[File content replace]\t@@ {success_count} placeholder{'s' if success_count > 1 else ''} replaced.")
 
     # rename files
     success_count = 0
     print("[File rename]\t\t@@ Looking for files to rename...")
     for target_file in replace_files:
-        if (
-            target_file.is_file()
-            and target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower()
-        ):
+        if target_file.is_file() and target_file.stem.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
             print(
                 "[File rename]\t\t\t"
                 f"Renaming '{target_file}' to '{target_file.parent / f'{NEW_PROJECT_NAME}{target_file.suffix}'}'"
             )
             if LIVE_MODE:
-                target_file.rename(
-                    target_file.parent / f"{NEW_PROJECT_NAME}{target_file.suffix}"
-                )
+                target_file.rename(target_file.parent / f"{NEW_PROJECT_NAME}{target_file.suffix}")
             success_count += 1
 
     if success_count <= 0:
         print("[File rename]\t\t@@ No files renamed.")
     else:
-        print(
-            f"[File rename]\t\t@@ {success_count} file{'s' if success_count > 1 else ''} renamed."
-        )
+        print(f"[File rename]\t\t@@ {success_count} file{'s' if success_count > 1 else ''} renamed.")
 
     # rename directories
     success_count = 0
     print("[Directory rename]\t@@ Looking for directories to rename...")
     for target_directory in search_directories:
-        if (
-            target_directory.is_dir()
-            and target_directory.name.lower() == f"{REPLACEMENT_BASE}_NAME".lower()
-        ):
+        if target_directory.is_dir() and target_directory.name.lower() == f"{REPLACEMENT_BASE}_NAME".lower():
             print(
                 f"[Directory rename]\t\tRenaming '{target_directory}' to '{target_directory.parent / NEW_PROJECT_NAME}'"
             )
@@ -175,9 +159,7 @@ def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
     if success_count <= 0:
         print("[Directory rename]\t@@ No directories renamed.")
     else:
-        print(
-            f"[Directory rename]\t@@ {success_count} directory{'s' if success_count > 1 else ''} renamed."
-        )
+        print(f"[Directory rename]\t@@ {success_count} directory{'s' if success_count > 1 else ''} renamed.")
 
 
 def remove_or_update_template_files() -> None:
@@ -194,27 +176,24 @@ def remove_or_update_template_files() -> None:
             ) as f:
                 f.write("0.1.0\n")
     else:
-        print(
-            "[Reset Files]\t@@ Couldn't find 'VERSION' file. Skipping 'VERSION' reset."
-        )
+        print("[Reset Files]\t@@ Couldn't find 'VERSION' file. Skipping 'VERSION' reset.")
 
-    setupcfg_file = PROJECT_PATH / Path("setup.cfg")
-    if setupcfg_file.is_file():
-        print(
-            "[Reset Files]\t@@ Resetting bumpversion 'current_version' in 'setup.cfg' to '0.1.0'"
-        )
+    pyproject_file = PROJECT_PATH / Path("pyproject.toml")
+    if pyproject_file.is_file():
+        print("[Reset Files]\t@@ Resetting version 'version' in 'pyproject.toml' to '0.1.0'")
 
-        config = configparser.ConfigParser()
-        config.read(setupcfg_file)
-        config.set("bumpversion", "current_version", "0.1.0")
+        pyproject_content = ""
+
+        with open(pyproject_file, "r") as f:
+            pyproject_content = f.read()
 
         if LIVE_MODE:
-            with open(setupcfg_file, "w") as configfile:
-                config.write(configfile)
+            with open(pyproject_file, "w") as config_file:
+                # this is a bit hacky but eh
+                # TODO: parse and rewrite pyproject.toml properly
+                config_file.write(re.sub(r'\nversion\s=\s".*"', '\nversion = "0.1.0"', pyproject_content))
     else:
-        print(
-            "[Reset Files]\t@@ Couldn't find 'setup.cfg' file. Skipping resetting 'current_version'."
-        )
+        print("[Reset Files]\t@@ Couldn't find 'pyproject.toml' file. Skipping resetting 'current_version'.")
 
     changelogfile = PROJECT_PATH / Path("CHANGELOG.md")
     if changelogfile.is_file():
@@ -222,9 +201,7 @@ def remove_or_update_template_files() -> None:
         if LIVE_MODE:
             changelogfile.unlink()
     else:
-        print(
-            "[Reset Files]\t@@ Couldn't find 'CHANGELOG.md' file. Skipping 'CHANGELOG.md' removal."
-        )
+        print("[Reset Files]\t@@ Couldn't find 'CHANGELOG.md' file. Skipping 'CHANGELOG.md' removal.")
 
     template_readme = PROJECT_PATH / Path("TEMPLATE_README.md")
     if template_readme.is_file():
@@ -232,18 +209,14 @@ def remove_or_update_template_files() -> None:
         if LIVE_MODE:
             template_readme.rename(PROJECT_PATH / Path("README.md"))
     else:
-        print(
-            "[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename."
-        )
+        print("[Reset Files]\t@@ Couldn't find 'TEMPLATE_README.md' file. Skipping 'TEMPLATE_README.md' rename.")
 
 
 def disable_actions() -> None:
     """Remove template-related actions from the github workflows."""
     template_indicator = PROJECT_PATH / Path(".github/template.yml")
     if template_indicator.is_file():
-        print(
-            "[Disable Actions]\t@@ Disabling template actions by removing template.yml"
-        )
+        print("[Disable Actions]\t@@ Disabling template actions by removing template.yml")
         if LIVE_MODE:
             template_indicator.unlink()
 

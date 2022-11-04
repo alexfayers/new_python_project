@@ -52,9 +52,7 @@ class ValidatingBaseClass:
         for required_method in self.required_methods:
             method = getattr(self, required_method, None)
             if not callable(method):
-                raise NotImplementedError(
-                    f"The {required_method} method must be defined."
-                )
+                raise NotImplementedError(f"The {required_method} method must be defined.")
         self._self_validated = True
         logger.debug(f"-> Methods of '{qualified_name(self)}' are ok")
 
@@ -102,17 +100,11 @@ class ValidatingBaseClass:
         """
         method = super().__getattribute__(__name)
 
-        if (
-            callable(method)
-            and self._self_validated
-            and __name in self.validated_methods
-        ):
+        if callable(method) and self._self_validated and __name in self.validated_methods:
             validator_name = f"validate_{__name}"
             validator = super().__getattribute__(validator_name)
             if not validator:
-                raise NotImplementedError(
-                    f"The {__name} method does not have a validator ({validator_name})"
-                )
+                raise NotImplementedError(f"The {__name} method does not have a validator ({validator_name})")
 
             @wraps(method)
             def _validated(*args: Any, **kwargs: Any) -> Any:
@@ -124,9 +116,7 @@ class ValidatingBaseClass:
                 method_memo = _CallMemo(method, args=args, kwargs=kwargs)
                 self._validate_argument_types(method_memo)
 
-                logger.debug(
-                    f"Validating inputs for '{function_name(method)}' using '{function_name(validator)}'"
-                )
+                logger.debug(f"Validating inputs for '{function_name(method)}' using '{function_name(validator)}'")
                 validator(method_memo)
                 logger.debug(f"-> Inputs for '{function_name(method)}' are ok")
                 result = method(*args, **kwargs)

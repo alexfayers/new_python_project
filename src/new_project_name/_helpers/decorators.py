@@ -19,9 +19,7 @@ def singleton(cls: Callable) -> Callable:
 
     @wraps(cls)
     def _singleton(*args: Any, **kwargs: Any) -> Any:
-        cls_info = (
-            str(cls) + str(args) + str(kwargs)
-        )  # is there a better way to do this?
+        cls_info = str(cls) + str(args) + str(kwargs)  # is there a better way to do this?
         if cls_info not in instances:
             instances[cls_info] = cls(*args, **kwargs)
         return instances[cls_info]

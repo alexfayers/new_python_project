@@ -56,15 +56,11 @@ class ColoredFormatter(logging.Formatter):
         Returns:
             str: The formatted log record
         """
-        new_record = copy.copy(
-            record
-        )  # create a copy of the record so that the original is not changed
+        new_record = copy.copy(record)  # create a copy of the record so that the original is not changed
 
         levelname = new_record.levelname
         if levelname in COLORS:
-            levelname_color = (
-                COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
-            )
+            levelname_color = COLOR_SEQ % (30 + COLORS[levelname]) + levelname + RESET_SEQ
             new_record.levelname = levelname_color
         return super().format(new_record)
 
@@ -87,9 +83,7 @@ class WebFormatter(logging.Formatter):
         Returns:
             str: The formatted log record
         """
-        new_record = copy.copy(
-            record
-        )  # create a copy of the record so that the original is not changed
+        new_record = copy.copy(record)  # create a copy of the record so that the original is not changed
 
         levelname = new_record.levelname
         if levelname in self.COLORS:
@@ -98,9 +92,7 @@ class WebFormatter(logging.Formatter):
             for replacement_field in replacement_fields:
                 value = new_record.__dict__[replacement_field]
                 new_record.__dict__[replacement_field] = (
-                    f"<span class='text-{self.COLORS[levelname]}'>"
-                    f"{html.escape(value)}"
-                    "</span>"
+                    f"<span class='text-{self.COLORS[levelname]}'>" f"{html.escape(value)}" "</span>"
                 )
 
         return super().format(new_record)

@@ -1,3 +1,99 @@
 [build-system]
-requires = ["setuptools>=46.1.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "new_project_readable_name"
+version = "1.2.1"
+description = "new_project_description"
+authors = ["alex.fayers <alex@fayers.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "new_project_name", from = "src"}]
+include = ["LICENSE", "src/new_project_name/py.typed", "src/new_project_name/VERSION"]
+
+[tool.poetry.scripts]
+new_project_name = "new_project_name:cli_main"
+
+[tool.poetry.dependencies]
+python = ">=3.8,<4.0"
+types-PyYAML = "^6.0.12.1"
+typeguard = "^2.13.3"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.0"
+tox = "^3.27.0"
+
+[tool.poetry.group.lint.dependencies]
+pre-commit = "^2.20.0"
+mypy = "^0.971"
+
+[tool.poetry.group.devlint.dependencies]
+isort = "^5.10.1"
+black = "^22.6.0"
+mypy = "^0.971"
+Flake8-pyproject = "^1.1.0.post0"
+flake8 = "^5.0.4"
+pydocstyle = "^6.1.1"
+flake8-docstrings = "^1.6.0"
+
+[tool.poetry.group.types.dependencies]
+types-PyYAML = "^6.0.11"
+
+[tool.poetry.group.docs]
+optional = true
+
+[tool.poetry.group.docs.dependencies]
+pdoc = "^12.0.2"
+
+[tool.poetry.group.release]
+optional = true
+
+[tool.poetry.group.release.dependencies]
+gitchangelog = "^3.0.4"
+poetry-bumpversion = "^0.3.0"
+
+[tool.poetry.group.dev.dependencies]
+tox-poetry-installer = {extras = ["poetry"], version = "^0.10.0"}
+
+[tool.poetry.extras]
+test = ["pytest", "tox"]
+lint = ["pre-commit", "mypy"]
+devlint = ["isort", "black", "mypy", "Flake8-pyproject", "flake8", "pydocstyle", "flake8-docstrings"]
+types = ["types-PyYAML"]
+docs = ["pdoc"]
+release = ["gitchangelog", "poetry-bumpversion"]
+dev = ["tox-poetry-installer"]
+
+[tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
+
+[tool.isort]
+profile = 'black'
+
+[tool.black]
+line-length = 120
+exclude = ['.*', 'docs']
+
+[tool.pydocstyle]
+match = '(?!test)(?!setup)[^\._].*\.py'
+match-dir = '(?!tests)(?!build)(?!docs)[^\.].*'
+inherit = false
+convention = 'google'
+
+[tool.mypy]
+ignore_missing_imports = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_return_any = true
+warn_unreachable = true
+strict_equality = true
+pretty = true
+exclude = '(?x)( ^setup\.py$ | ^__pycache__ | ^build )'
+
+
