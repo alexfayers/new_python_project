@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Update lock. [alex.fayers]
+
+
+v2.1.0 (2022-11-04)
+-------------------
+- Bump version: 2.0.1 -> 2.1.0. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Fix deps. [alex.fayers]
 
 
