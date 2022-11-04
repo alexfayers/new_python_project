@@ -76,7 +76,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: .tox
-        key: ${{ matrix.python-version }}-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
+        key: ${{ matrix.python-version }}-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('tox.ini') }}
 
     - name: Test with tox
       run: tox
@@ -104,7 +104,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .tox
-          key: 3.11-tox-${{ hashFiles('pyproject.toml') }}-${{ hashFiles('.pre-commit-config.yaml') }}
+          key: 3.11-tox-${{ hashFiles('pyproject.toml') }}--${{ hashFiles('tox.ini') }}
 
       - name: Build documentation with tox
         run: tox -e docs
