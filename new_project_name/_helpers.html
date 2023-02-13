@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="pdoc 12.2.0"/>
+    <meta name="generator" content="pdoc 12.3.1"/>
     <title>new_project_name._helpers API documentation</title>
 
     <style>/*! * Bootstrap Reboot v5.0.0 (https://getbootstrap.com/) * Copyright 2011-2021 The Bootstrap Authors * Copyright 2011-2021 Twitter, Inc. * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE) * Forked from Normalize.css, licensed MIT (https://github.com/necolas/normalize.css/blob/master/LICENSE.md) */*,::after,::before{box-sizing:border-box}@media (prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}h1{font-size:calc(1.375rem + 1.5vw)}@media (min-width:1200px){h1{font-size:2.5rem}}h2{font-size:calc(1.325rem + .9vw)}@media (min-width:1200px){h2{font-size:2rem}}h3{font-size:calc(1.3rem + .6vw)}@media (min-width:1200px){h3{font-size:1.75rem}}h4{font-size:calc(1.275rem + .3vw)}@media (min-width:1200px){h4{font-size:1.5rem}}h5{font-size:1.25rem}h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}small{font-size:.875em}mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875em;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media (min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}</style>
@@ -31,18 +31,6 @@
         <h2>API Documentation</h2>
             <ul class="memberlist">
             <li>
-                    <a class="function" href="#Config">Config</a>
-            </li>
-            <li>
-                    <a class="class" href="#ConfigSection">ConfigSection</a>
-                            <ul class="memberlist">
-                        <li>
-                                <a class="function" href="#ConfigSection.__init__">ConfigSection</a>
-                        </li>
-                </ul>
-
-            </li>
-            <li>
                     <a class="class" href="#SuccessLogger">SuccessLogger</a>
                             <ul class="memberlist">
                         <li>
@@ -50,6 +38,9 @@
                         </li>
                         <li>
                                 <a class="function" href="#SuccessLogger.success">success</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SuccessLogger.verbose">verbose</a>
                         </li>
                 </ul>
 
@@ -86,212 +77,19 @@
 
                         <label class="view-source-button" for="mod-_helpers-view-source"><span>View Source</span></label>
 
-                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">&quot;&quot;&quot;Helper functions and classes to make life easier. Mainly for internal use within the package.&quot;&quot;&quot;</span>
-</span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">import</span> <span class="nn">logging</span>
-</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">.config_loader</span> <span class="kn">import</span> <span class="n">Config</span><span class="p">,</span> <span class="n">ConfigSection</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">.nice_logger</span> <span class="kn">import</span> <span class="n">ColoredFormatter</span><span class="p">,</span> <span class="n">SuccessLogger</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Config&quot;</span><span class="p">,</span> <span class="s2">&quot;ConfigSection&quot;</span><span class="p">,</span> <span class="s2">&quot;SuccessLogger&quot;</span><span class="p">,</span> <span class="s2">&quot;ColoredFormatter&quot;</span><span class="p">]</span>
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="sd">&quot;&quot;&quot;Helper functions and classes to make life easier. Mainly for internal use within the package.&quot;&quot;&quot;</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="kn">import</span> <span class="nn">logging</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a>
+</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a><span class="kn">from</span> <span class="nn">.nice_logger</span> <span class="kn">import</span> <span class="n">ColoredFormatter</span><span class="p">,</span> <span class="n">SuccessLogger</span>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">6</span></a>
+</span><span id="L-7"><a href="#L-7"><span class="linenos">7</span></a><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos">8</span></a>
+</span><span id="L-9"><a href="#L-9"><span class="linenos">9</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;SuccessLogger&quot;</span><span class="p">,</span> <span class="s2">&quot;ColoredFormatter&quot;</span><span class="p">]</span>
 </span></pre></div>
 
 
             </section>
-                <section id="Config">
-                            <input id="Config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="def">def</span>
-        <span class="name">Config</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span></span><span class="return-annotation">):</span></span>
-
-                <label class="view-source-button" for="Config-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#Config"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="Config-96"><a href="#Config-96"><span class="linenos"> 96</span></a><span class="nd">@singleton</span>
-</span><span id="Config-97"><a href="#Config-97"><span class="linenos"> 97</span></a><span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
-</span><span id="Config-98"><a href="#Config-98"><span class="linenos"> 98</span></a>    <span class="sd">&quot;&quot;&quot;An object representation of a `yaml` config file. Each config section can be accessed as an attribute.&quot;&quot;&quot;</span>
-</span><span id="Config-99"><a href="#Config-99"><span class="linenos"> 99</span></a>
-</span><span id="Config-100"><a href="#Config-100"><span class="linenos">100</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-</span><span id="Config-101"><a href="#Config-101"><span class="linenos">101</span></a>        <span class="sd">&quot;&quot;&quot;Initialises the `Config` object.</span>
-</span><span id="Config-102"><a href="#Config-102"><span class="linenos">102</span></a>
-</span><span id="Config-103"><a href="#Config-103"><span class="linenos">103</span></a><span class="sd">        There is only one instance of a `Config` for each `config_file`, as</span>
-</span><span id="Config-104"><a href="#Config-104"><span class="linenos">104</span></a><span class="sd">        it&#39;s wrapped by `.decorators.singleton` (to prevent unnecessary processing).</span>
-</span><span id="Config-105"><a href="#Config-105"><span class="linenos">105</span></a>
-</span><span id="Config-106"><a href="#Config-106"><span class="linenos">106</span></a><span class="sd">        Args:</span>
-</span><span id="Config-107"><a href="#Config-107"><span class="linenos">107</span></a><span class="sd">            config_file (str): The config file to parse</span>
-</span><span id="Config-108"><a href="#Config-108"><span class="linenos">108</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Config-109"><a href="#Config-109"><span class="linenos">109</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
-</span><span id="Config-110"><a href="#Config-110"><span class="linenos">110</span></a>
-</span><span id="Config-111"><a href="#Config-111"><span class="linenos">111</span></a>    <span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="Config-112"><a href="#Config-112"><span class="linenos">112</span></a>        <span class="sd">&quot;&quot;&quot;Load the config file info this `Config` object.</span>
-</span><span id="Config-113"><a href="#Config-113"><span class="linenos">113</span></a>
-</span><span id="Config-114"><a href="#Config-114"><span class="linenos">114</span></a><span class="sd">        Each key is set as an attribute of this `Config`, which contains an instance of a `ConfigSection`.</span>
-</span><span id="Config-115"><a href="#Config-115"><span class="linenos">115</span></a>
-</span><span id="Config-116"><a href="#Config-116"><span class="linenos">116</span></a><span class="sd">        Args:</span>
-</span><span id="Config-117"><a href="#Config-117"><span class="linenos">117</span></a><span class="sd">            config_file (str): The config file to parse</span>
-</span><span id="Config-118"><a href="#Config-118"><span class="linenos">118</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Config-119"><a href="#Config-119"><span class="linenos">119</span></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="Config-120"><a href="#Config-120"><span class="linenos">120</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="Config-121"><a href="#Config-121"><span class="linenos">121</span></a>                <span class="n">config</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-</span><span id="Config-122"><a href="#Config-122"><span class="linenos">122</span></a>            <span class="k">except</span> <span class="n">yaml</span><span class="o">.</span><span class="n">YAMLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span id="Config-123"><a href="#Config-123"><span class="linenos">123</span></a>                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Error in configuration file!&quot;</span><span class="p">)</span>
-</span><span id="Config-124"><a href="#Config-124"><span class="linenos">124</span></a>                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</span><span id="Config-125"><a href="#Config-125"><span class="linenos">125</span></a>                <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span><span id="Config-126"><a href="#Config-126"><span class="linenos">126</span></a>
-</span><span id="Config-127"><a href="#Config-127"><span class="linenos">127</span></a>        <span class="n">set_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
-</span><span id="Config-128"><a href="#Config-128"><span class="linenos">128</span></a>
-</span><span id="Config-129"><a href="#Config-129"><span class="linenos">129</span></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="Config-130"><a href="#Config-130"><span class="linenos">130</span></a>        <span class="sd">&quot;&quot;&quot;The string representation of the `Config` object.&quot;&quot;&quot;</span>
-</span><span id="Config-131"><a href="#Config-131"><span class="linenos">131</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="Config-132"><a href="#Config-132"><span class="linenos">132</span></a>
-</span><span id="Config-133"><a href="#Config-133"><span class="linenos">133</span></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="Config-134"><a href="#Config-134"><span class="linenos">134</span></a>        <span class="sd">&quot;&quot;&quot;The string representation of the `Config` object.&quot;&quot;&quot;</span>
-</span><span id="Config-135"><a href="#Config-135"><span class="linenos">135</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
-</span><span id="Config-136"><a href="#Config-136"><span class="linenos">136</span></a>
-</span><span id="Config-137"><a href="#Config-137"><span class="linenos">137</span></a>    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-</span><span id="Config-138"><a href="#Config-138"><span class="linenos">138</span></a>        <span class="sd">&quot;&quot;&quot;Defined to stop mypy from complaining about the `Config` object not having any attributes.</span>
-</span><span id="Config-139"><a href="#Config-139"><span class="linenos">139</span></a>
-</span><span id="Config-140"><a href="#Config-140"><span class="linenos">140</span></a><span class="sd">        Args:</span>
-</span><span id="Config-141"><a href="#Config-141"><span class="linenos">141</span></a><span class="sd">            name (str): The attribute which is being accessed</span>
-</span><span id="Config-142"><a href="#Config-142"><span class="linenos">142</span></a>
-</span><span id="Config-143"><a href="#Config-143"><span class="linenos">143</span></a><span class="sd">        Returns:</span>
-</span><span id="Config-144"><a href="#Config-144"><span class="linenos">144</span></a><span class="sd">            Any: A pretend return value to fool mypy</span>
-</span><span id="Config-145"><a href="#Config-145"><span class="linenos">145</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="Config-146"><a href="#Config-146"><span class="linenos">146</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__getattribute__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>An object representation of a <code>yaml</code> config file. Each config section can be accessed as an attribute.</p>
-</div>
-
-
-                </section>
-                <section id="ConfigSection">
-                            <input id="ConfigSection-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr class">
-            
-    <span class="def">class</span>
-    <span class="name">ConfigSection</span>:
-
-                <label class="view-source-button" for="ConfigSection-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ConfigSection"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ConfigSection-32"><a href="#ConfigSection-32"><span class="linenos">32</span></a><span class="k">class</span> <span class="nc">ConfigSection</span><span class="p">:</span>
-</span><span id="ConfigSection-33"><a href="#ConfigSection-33"><span class="linenos">33</span></a>    <span class="sd">&quot;&quot;&quot;An object representation of a section within a `yaml` config file.</span>
-</span><span id="ConfigSection-34"><a href="#ConfigSection-34"><span class="linenos">34</span></a>
-</span><span id="ConfigSection-35"><a href="#ConfigSection-35"><span class="linenos">35</span></a><span class="sd">    Each config item can be accessed as an attribute.</span>
-</span><span id="ConfigSection-36"><a href="#ConfigSection-36"><span class="linenos">36</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="ConfigSection-37"><a href="#ConfigSection-37"><span class="linenos">37</span></a>
-</span><span id="ConfigSection-38"><a href="#ConfigSection-38"><span class="linenos">38</span></a>    <span class="n">BLOCK_WRITE</span> <span class="o">=</span> <span class="kc">False</span>
-</span><span id="ConfigSection-39"><a href="#ConfigSection-39"><span class="linenos">39</span></a>
-</span><span id="ConfigSection-40"><a href="#ConfigSection-40"><span class="linenos">40</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ConfigSection-41"><a href="#ConfigSection-41"><span class="linenos">41</span></a>        <span class="sd">&quot;&quot;&quot;Initialises a ConfigSection object.</span>
-</span><span id="ConfigSection-42"><a href="#ConfigSection-42"><span class="linenos">42</span></a>
-</span><span id="ConfigSection-43"><a href="#ConfigSection-43"><span class="linenos">43</span></a><span class="sd">        Args:</span>
-</span><span id="ConfigSection-44"><a href="#ConfigSection-44"><span class="linenos">44</span></a><span class="sd">            config (Dict[str, Any]): The config section to be represented by this object</span>
-</span><span id="ConfigSection-45"><a href="#ConfigSection-45"><span class="linenos">45</span></a><span class="sd">            section_name (str, optional): The name of the section (used for debugging). Defaults to &#39;&#39;.</span>
-</span><span id="ConfigSection-46"><a href="#ConfigSection-46"><span class="linenos">46</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ConfigSection-47"><a href="#ConfigSection-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_section_name</span> <span class="o">=</span> <span class="n">section_name</span>
-</span><span id="ConfigSection-48"><a href="#ConfigSection-48"><span class="linenos">48</span></a>
-</span><span id="ConfigSection-49"><a href="#ConfigSection-49"><span class="linenos">49</span></a>        <span class="n">set_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
-</span><span id="ConfigSection-50"><a href="#ConfigSection-50"><span class="linenos">50</span></a>
-</span><span id="ConfigSection-51"><a href="#ConfigSection-51"><span class="linenos">51</span></a>        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded the &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_section_name</span><span class="si">}</span><span class="s2">&#39; config section&quot;</span><span class="p">)</span>
-</span><span id="ConfigSection-52"><a href="#ConfigSection-52"><span class="linenos">52</span></a>
-</span><span id="ConfigSection-53"><a href="#ConfigSection-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">BLOCK_WRITE</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="ConfigSection-54"><a href="#ConfigSection-54"><span class="linenos">54</span></a>
-</span><span id="ConfigSection-55"><a href="#ConfigSection-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ConfigSection-56"><a href="#ConfigSection-56"><span class="linenos">56</span></a>        <span class="sd">&quot;&quot;&quot;Called when an attribute is attempted to be set.</span>
-</span><span id="ConfigSection-57"><a href="#ConfigSection-57"><span class="linenos">57</span></a>
-</span><span id="ConfigSection-58"><a href="#ConfigSection-58"><span class="linenos">58</span></a><span class="sd">        Prevents changes to attributes if the `BLOCK_WRITE` flag is set to True.</span>
-</span><span id="ConfigSection-59"><a href="#ConfigSection-59"><span class="linenos">59</span></a>
-</span><span id="ConfigSection-60"><a href="#ConfigSection-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="ConfigSection-61"><a href="#ConfigSection-61"><span class="linenos">61</span></a><span class="sd">            name (str): The attribute which is being set</span>
-</span><span id="ConfigSection-62"><a href="#ConfigSection-62"><span class="linenos">62</span></a><span class="sd">            value (Any): The new value of the attribute</span>
-</span><span id="ConfigSection-63"><a href="#ConfigSection-63"><span class="linenos">63</span></a>
-</span><span id="ConfigSection-64"><a href="#ConfigSection-64"><span class="linenos">64</span></a><span class="sd">        Raises:</span>
-</span><span id="ConfigSection-65"><a href="#ConfigSection-65"><span class="linenos">65</span></a><span class="sd">            AttributeError: Raised if the `BLOCK_WRITE` flag is set to True</span>
-</span><span id="ConfigSection-66"><a href="#ConfigSection-66"><span class="linenos">66</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ConfigSection-67"><a href="#ConfigSection-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">BLOCK_WRITE</span> <span class="ow">or</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;_section_name&quot;</span><span class="p">:</span>
-</span><span id="ConfigSection-68"><a href="#ConfigSection-68"><span class="linenos">68</span></a>            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-</span><span id="ConfigSection-69"><a href="#ConfigSection-69"><span class="linenos">69</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="ConfigSection-70"><a href="#ConfigSection-70"><span class="linenos">70</span></a>            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is not writable&quot;</span><span class="p">)</span>
-</span><span id="ConfigSection-71"><a href="#ConfigSection-71"><span class="linenos">71</span></a>
-</span><span id="ConfigSection-72"><a href="#ConfigSection-72"><span class="linenos">72</span></a>    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="ConfigSection-73"><a href="#ConfigSection-73"><span class="linenos">73</span></a>        <span class="sd">&quot;&quot;&quot;The string representation of the `ConfigSection` object.&quot;&quot;&quot;</span>
-</span><span id="ConfigSection-74"><a href="#ConfigSection-74"><span class="linenos">74</span></a>        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="si">}</span><span class="s2">&quot;</span>
-</span><span id="ConfigSection-75"><a href="#ConfigSection-75"><span class="linenos">75</span></a>
-</span><span id="ConfigSection-76"><a href="#ConfigSection-76"><span class="linenos">76</span></a>    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="ConfigSection-77"><a href="#ConfigSection-77"><span class="linenos">77</span></a>        <span class="sd">&quot;&quot;&quot;The string representation of the `ConfigSection` object.&quot;&quot;&quot;</span>
-</span><span id="ConfigSection-78"><a href="#ConfigSection-78"><span class="linenos">78</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span>
-</span><span id="ConfigSection-79"><a href="#ConfigSection-79"><span class="linenos">79</span></a>
-</span><span id="ConfigSection-80"><a href="#ConfigSection-80"><span class="linenos">80</span></a>    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-</span><span id="ConfigSection-81"><a href="#ConfigSection-81"><span class="linenos">81</span></a>        <span class="sd">&quot;&quot;&quot;Called when `self.__getattribute__` raises an error.</span>
-</span><span id="ConfigSection-82"><a href="#ConfigSection-82"><span class="linenos">82</span></a>
-</span><span id="ConfigSection-83"><a href="#ConfigSection-83"><span class="linenos">83</span></a><span class="sd">        If this is called, we can be pretty sure that the target attribute does not</span>
-</span><span id="ConfigSection-84"><a href="#ConfigSection-84"><span class="linenos">84</span></a><span class="sd">        exist, and raise our own error.</span>
-</span><span id="ConfigSection-85"><a href="#ConfigSection-85"><span class="linenos">85</span></a>
-</span><span id="ConfigSection-86"><a href="#ConfigSection-86"><span class="linenos">86</span></a><span class="sd">        Args:</span>
-</span><span id="ConfigSection-87"><a href="#ConfigSection-87"><span class="linenos">87</span></a><span class="sd">            name (str): The attribute which is being accessed</span>
-</span><span id="ConfigSection-88"><a href="#ConfigSection-88"><span class="linenos">88</span></a>
-</span><span id="ConfigSection-89"><a href="#ConfigSection-89"><span class="linenos">89</span></a><span class="sd">        Raises:</span>
-</span><span id="ConfigSection-90"><a href="#ConfigSection-90"><span class="linenos">90</span></a><span class="sd">            AttributeError: Raised if the attribute does not exist</span>
-</span><span id="ConfigSection-91"><a href="#ConfigSection-91"><span class="linenos">91</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ConfigSection-92"><a href="#ConfigSection-92"><span class="linenos">92</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">):</span>
-</span><span id="ConfigSection-93"><a href="#ConfigSection-93"><span class="linenos">93</span></a>            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; key does not exist in the &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_section_name</span><span class="si">}</span><span class="s2">&#39; section&quot;</span><span class="p">)</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>An object representation of a section within a <code>yaml</code> config file.</p>
-
-<p>Each config item can be accessed as an attribute.</p>
-</div>
-
-
-                            <div id="ConfigSection.__init__" class="classattr">
-                                        <input id="ConfigSection.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
-<div class="attr function">
-            
-        <span class="name">ConfigSection</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>, </span><span class="param"><span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span></span>)</span>
-
-                <label class="view-source-button" for="ConfigSection.__init__-view-source"><span>View Source</span></label>
-
-    </div>
-    <a class="headerlink" href="#ConfigSection.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ConfigSection.__init__-40"><a href="#ConfigSection.__init__-40"><span class="linenos">40</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">section_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ConfigSection.__init__-41"><a href="#ConfigSection.__init__-41"><span class="linenos">41</span></a>        <span class="sd">&quot;&quot;&quot;Initialises a ConfigSection object.</span>
-</span><span id="ConfigSection.__init__-42"><a href="#ConfigSection.__init__-42"><span class="linenos">42</span></a>
-</span><span id="ConfigSection.__init__-43"><a href="#ConfigSection.__init__-43"><span class="linenos">43</span></a><span class="sd">        Args:</span>
-</span><span id="ConfigSection.__init__-44"><a href="#ConfigSection.__init__-44"><span class="linenos">44</span></a><span class="sd">            config (Dict[str, Any]): The config section to be represented by this object</span>
-</span><span id="ConfigSection.__init__-45"><a href="#ConfigSection.__init__-45"><span class="linenos">45</span></a><span class="sd">            section_name (str, optional): The name of the section (used for debugging). Defaults to &#39;&#39;.</span>
-</span><span id="ConfigSection.__init__-46"><a href="#ConfigSection.__init__-46"><span class="linenos">46</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ConfigSection.__init__-47"><a href="#ConfigSection.__init__-47"><span class="linenos">47</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_section_name</span> <span class="o">=</span> <span class="n">section_name</span>
-</span><span id="ConfigSection.__init__-48"><a href="#ConfigSection.__init__-48"><span class="linenos">48</span></a>
-</span><span id="ConfigSection.__init__-49"><a href="#ConfigSection.__init__-49"><span class="linenos">49</span></a>        <span class="n">set_attributes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
-</span><span id="ConfigSection.__init__-50"><a href="#ConfigSection.__init__-50"><span class="linenos">50</span></a>
-</span><span id="ConfigSection.__init__-51"><a href="#ConfigSection.__init__-51"><span class="linenos">51</span></a>        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded the &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_section_name</span><span class="si">}</span><span class="s2">&#39; config section&quot;</span><span class="p">)</span>
-</span><span id="ConfigSection.__init__-52"><a href="#ConfigSection.__init__-52"><span class="linenos">52</span></a>
-</span><span id="ConfigSection.__init__-53"><a href="#ConfigSection.__init__-53"><span class="linenos">53</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">BLOCK_WRITE</span> <span class="o">=</span> <span class="kc">True</span>
-</span></pre></div>
-
-
-            <div class="docstring"><p>Initialises a ConfigSection object.</p>
-
-<h6 id="args">Args</h6>
-
-<ul>
-<li><strong>config (Dict[str, Any]):</strong>  The config section to be represented by this object</li>
-<li><strong>section_name (str, optional):</strong>  The name of the section (used for debugging). Defaults to ''.</li>
-</ul>
-</div>
-
-
-                            </div>
-                </section>
                 <section id="SuccessLogger">
                             <input id="SuccessLogger-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr class">
@@ -303,29 +101,39 @@
 
     </div>
     <a class="headerlink" href="#SuccessLogger"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger-114"><a href="#SuccessLogger-114"><span class="linenos">114</span></a><span class="k">class</span> <span class="nc">SuccessLogger</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">):</span>
-</span><span id="SuccessLogger-115"><a href="#SuccessLogger-115"><span class="linenos">115</span></a>    <span class="sd">&quot;&quot;&quot;A logger which provides a `success` level - good to use with a `ColoredFormatter`.&quot;&quot;&quot;</span>
-</span><span id="SuccessLogger-116"><a href="#SuccessLogger-116"><span class="linenos">116</span></a>
-</span><span id="SuccessLogger-117"><a href="#SuccessLogger-117"><span class="linenos">117</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SuccessLogger-118"><a href="#SuccessLogger-118"><span class="linenos">118</span></a>        <span class="sd">&quot;&quot;&quot;Initialises a `SuccessLogger`.</span>
-</span><span id="SuccessLogger-119"><a href="#SuccessLogger-119"><span class="linenos">119</span></a>
-</span><span id="SuccessLogger-120"><a href="#SuccessLogger-120"><span class="linenos">120</span></a><span class="sd">        Args:</span>
-</span><span id="SuccessLogger-121"><a href="#SuccessLogger-121"><span class="linenos">121</span></a><span class="sd">            name (str): The name of the logger</span>
-</span><span id="SuccessLogger-122"><a href="#SuccessLogger-122"><span class="linenos">122</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SuccessLogger-123"><a href="#SuccessLogger-123"><span class="linenos">123</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="SuccessLogger-124"><a href="#SuccessLogger-124"><span class="linenos">124</span></a>
-</span><span id="SuccessLogger-125"><a href="#SuccessLogger-125"><span class="linenos">125</span></a>        <span class="c1"># self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages</span>
-</span><span id="SuccessLogger-126"><a href="#SuccessLogger-126"><span class="linenos">126</span></a>
-</span><span id="SuccessLogger-127"><a href="#SuccessLogger-127"><span class="linenos">127</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">addLevelName</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger-118"><a href="#SuccessLogger-118"><span class="linenos">118</span></a><span class="k">class</span> <span class="nc">SuccessLogger</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="p">):</span>
+</span><span id="SuccessLogger-119"><a href="#SuccessLogger-119"><span class="linenos">119</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A logger which provides a `success` level - good to use with a `ColoredFormatter`.&quot;&quot;&quot;</span>
+</span><span id="SuccessLogger-120"><a href="#SuccessLogger-120"><span class="linenos">120</span></a>
+</span><span id="SuccessLogger-121"><a href="#SuccessLogger-121"><span class="linenos">121</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SuccessLogger-122"><a href="#SuccessLogger-122"><span class="linenos">122</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialises a `SuccessLogger`.</span>
+</span><span id="SuccessLogger-123"><a href="#SuccessLogger-123"><span class="linenos">123</span></a>
+</span><span id="SuccessLogger-124"><a href="#SuccessLogger-124"><span class="linenos">124</span></a><span class="sd">        Args:</span>
+</span><span id="SuccessLogger-125"><a href="#SuccessLogger-125"><span class="linenos">125</span></a><span class="sd">            name (str): The name of the logger</span>
+</span><span id="SuccessLogger-126"><a href="#SuccessLogger-126"><span class="linenos">126</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SuccessLogger-127"><a href="#SuccessLogger-127"><span class="linenos">127</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span><span id="SuccessLogger-128"><a href="#SuccessLogger-128"><span class="linenos">128</span></a>
-</span><span id="SuccessLogger-129"><a href="#SuccessLogger-129"><span class="linenos">129</span></a>    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SuccessLogger-130"><a href="#SuccessLogger-130"><span class="linenos">130</span></a>        <span class="sd">&quot;&quot;&quot;Enables the &quot;success&quot; log type for all loggers using `SuccessLogger`.</span>
-</span><span id="SuccessLogger-131"><a href="#SuccessLogger-131"><span class="linenos">131</span></a>
-</span><span id="SuccessLogger-132"><a href="#SuccessLogger-132"><span class="linenos">132</span></a><span class="sd">        Args:</span>
-</span><span id="SuccessLogger-133"><a href="#SuccessLogger-133"><span class="linenos">133</span></a><span class="sd">            msg (str): The message to log</span>
-</span><span id="SuccessLogger-134"><a href="#SuccessLogger-134"><span class="linenos">134</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SuccessLogger-135"><a href="#SuccessLogger-135"><span class="linenos">135</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">):</span>
-</span><span id="SuccessLogger-136"><a href="#SuccessLogger-136"><span class="linenos">136</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="SuccessLogger-129"><a href="#SuccessLogger-129"><span class="linenos">129</span></a>        <span class="c1"># self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages</span>
+</span><span id="SuccessLogger-130"><a href="#SuccessLogger-130"><span class="linenos">130</span></a>
+</span><span id="SuccessLogger-131"><a href="#SuccessLogger-131"><span class="linenos">131</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">addLevelName</span><span class="p">(</span><span class="n">VERBOSE_LEVEL</span><span class="p">,</span> <span class="s2">&quot;VERBOSE&quot;</span><span class="p">)</span>
+</span><span id="SuccessLogger-132"><a href="#SuccessLogger-132"><span class="linenos">132</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">addLevelName</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span>
+</span><span id="SuccessLogger-133"><a href="#SuccessLogger-133"><span class="linenos">133</span></a>
+</span><span id="SuccessLogger-134"><a href="#SuccessLogger-134"><span class="linenos">134</span></a>    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SuccessLogger-135"><a href="#SuccessLogger-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Enables the &quot;success&quot; log type for all loggers using `SuccessLogger`.</span>
+</span><span id="SuccessLogger-136"><a href="#SuccessLogger-136"><span class="linenos">136</span></a>
+</span><span id="SuccessLogger-137"><a href="#SuccessLogger-137"><span class="linenos">137</span></a><span class="sd">        Args:</span>
+</span><span id="SuccessLogger-138"><a href="#SuccessLogger-138"><span class="linenos">138</span></a><span class="sd">            msg (str): The message to log</span>
+</span><span id="SuccessLogger-139"><a href="#SuccessLogger-139"><span class="linenos">139</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SuccessLogger-140"><a href="#SuccessLogger-140"><span class="linenos">140</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">):</span>
+</span><span id="SuccessLogger-141"><a href="#SuccessLogger-141"><span class="linenos">141</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="SuccessLogger-142"><a href="#SuccessLogger-142"><span class="linenos">142</span></a>
+</span><span id="SuccessLogger-143"><a href="#SuccessLogger-143"><span class="linenos">143</span></a>    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SuccessLogger-144"><a href="#SuccessLogger-144"><span class="linenos">144</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Enables the &quot;verbose&quot; log type for all loggers using `SuccessLogger`.</span>
+</span><span id="SuccessLogger-145"><a href="#SuccessLogger-145"><span class="linenos">145</span></a>
+</span><span id="SuccessLogger-146"><a href="#SuccessLogger-146"><span class="linenos">146</span></a><span class="sd">        Args:</span>
+</span><span id="SuccessLogger-147"><a href="#SuccessLogger-147"><span class="linenos">147</span></a><span class="sd">            msg (str): The message to log</span>
+</span><span id="SuccessLogger-148"><a href="#SuccessLogger-148"><span class="linenos">148</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SuccessLogger-149"><a href="#SuccessLogger-149"><span class="linenos">149</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">VERBOSE_LEVEL</span><span class="p">):</span>
+</span><span id="SuccessLogger-150"><a href="#SuccessLogger-150"><span class="linenos">150</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">VERBOSE_LEVEL</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -343,23 +151,24 @@
 
     </div>
     <a class="headerlink" href="#SuccessLogger.__init__"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger.__init__-117"><a href="#SuccessLogger.__init__-117"><span class="linenos">117</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SuccessLogger.__init__-118"><a href="#SuccessLogger.__init__-118"><span class="linenos">118</span></a>        <span class="sd">&quot;&quot;&quot;Initialises a `SuccessLogger`.</span>
-</span><span id="SuccessLogger.__init__-119"><a href="#SuccessLogger.__init__-119"><span class="linenos">119</span></a>
-</span><span id="SuccessLogger.__init__-120"><a href="#SuccessLogger.__init__-120"><span class="linenos">120</span></a><span class="sd">        Args:</span>
-</span><span id="SuccessLogger.__init__-121"><a href="#SuccessLogger.__init__-121"><span class="linenos">121</span></a><span class="sd">            name (str): The name of the logger</span>
-</span><span id="SuccessLogger.__init__-122"><a href="#SuccessLogger.__init__-122"><span class="linenos">122</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SuccessLogger.__init__-123"><a href="#SuccessLogger.__init__-123"><span class="linenos">123</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="SuccessLogger.__init__-124"><a href="#SuccessLogger.__init__-124"><span class="linenos">124</span></a>
-</span><span id="SuccessLogger.__init__-125"><a href="#SuccessLogger.__init__-125"><span class="linenos">125</span></a>        <span class="c1"># self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages</span>
-</span><span id="SuccessLogger.__init__-126"><a href="#SuccessLogger.__init__-126"><span class="linenos">126</span></a>
-</span><span id="SuccessLogger.__init__-127"><a href="#SuccessLogger.__init__-127"><span class="linenos">127</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">addLevelName</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger.__init__-121"><a href="#SuccessLogger.__init__-121"><span class="linenos">121</span></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SuccessLogger.__init__-122"><a href="#SuccessLogger.__init__-122"><span class="linenos">122</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialises a `SuccessLogger`.</span>
+</span><span id="SuccessLogger.__init__-123"><a href="#SuccessLogger.__init__-123"><span class="linenos">123</span></a>
+</span><span id="SuccessLogger.__init__-124"><a href="#SuccessLogger.__init__-124"><span class="linenos">124</span></a><span class="sd">        Args:</span>
+</span><span id="SuccessLogger.__init__-125"><a href="#SuccessLogger.__init__-125"><span class="linenos">125</span></a><span class="sd">            name (str): The name of the logger</span>
+</span><span id="SuccessLogger.__init__-126"><a href="#SuccessLogger.__init__-126"><span class="linenos">126</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SuccessLogger.__init__-127"><a href="#SuccessLogger.__init__-127"><span class="linenos">127</span></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="SuccessLogger.__init__-128"><a href="#SuccessLogger.__init__-128"><span class="linenos">128</span></a>
+</span><span id="SuccessLogger.__init__-129"><a href="#SuccessLogger.__init__-129"><span class="linenos">129</span></a>        <span class="c1"># self.propagate = True  # don&#39;t propagate to parent loggers, otherwise we get duplicate messages</span>
+</span><span id="SuccessLogger.__init__-130"><a href="#SuccessLogger.__init__-130"><span class="linenos">130</span></a>
+</span><span id="SuccessLogger.__init__-131"><a href="#SuccessLogger.__init__-131"><span class="linenos">131</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">addLevelName</span><span class="p">(</span><span class="n">VERBOSE_LEVEL</span><span class="p">,</span> <span class="s2">&quot;VERBOSE&quot;</span><span class="p">)</span>
+</span><span id="SuccessLogger.__init__-132"><a href="#SuccessLogger.__init__-132"><span class="linenos">132</span></a>        <span class="n">logging</span><span class="o">.</span><span class="n">addLevelName</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="s2">&quot;SUCCESS&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Initialises a <code><a href="#SuccessLogger">SuccessLogger</a></code>.</p>
 
-<h6 id="args">Args</h6>
+<h6 id="arguments">Arguments:</h6>
 
 <ul>
 <li><strong>name (str):</strong>  The name of the logger</li>
@@ -379,20 +188,53 @@
 
     </div>
     <a class="headerlink" href="#SuccessLogger.success"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger.success-129"><a href="#SuccessLogger.success-129"><span class="linenos">129</span></a>    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="SuccessLogger.success-130"><a href="#SuccessLogger.success-130"><span class="linenos">130</span></a>        <span class="sd">&quot;&quot;&quot;Enables the &quot;success&quot; log type for all loggers using `SuccessLogger`.</span>
-</span><span id="SuccessLogger.success-131"><a href="#SuccessLogger.success-131"><span class="linenos">131</span></a>
-</span><span id="SuccessLogger.success-132"><a href="#SuccessLogger.success-132"><span class="linenos">132</span></a><span class="sd">        Args:</span>
-</span><span id="SuccessLogger.success-133"><a href="#SuccessLogger.success-133"><span class="linenos">133</span></a><span class="sd">            msg (str): The message to log</span>
-</span><span id="SuccessLogger.success-134"><a href="#SuccessLogger.success-134"><span class="linenos">134</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="SuccessLogger.success-135"><a href="#SuccessLogger.success-135"><span class="linenos">135</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">):</span>
-</span><span id="SuccessLogger.success-136"><a href="#SuccessLogger.success-136"><span class="linenos">136</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger.success-134"><a href="#SuccessLogger.success-134"><span class="linenos">134</span></a>    <span class="k">def</span> <span class="nf">success</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SuccessLogger.success-135"><a href="#SuccessLogger.success-135"><span class="linenos">135</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Enables the &quot;success&quot; log type for all loggers using `SuccessLogger`.</span>
+</span><span id="SuccessLogger.success-136"><a href="#SuccessLogger.success-136"><span class="linenos">136</span></a>
+</span><span id="SuccessLogger.success-137"><a href="#SuccessLogger.success-137"><span class="linenos">137</span></a><span class="sd">        Args:</span>
+</span><span id="SuccessLogger.success-138"><a href="#SuccessLogger.success-138"><span class="linenos">138</span></a><span class="sd">            msg (str): The message to log</span>
+</span><span id="SuccessLogger.success-139"><a href="#SuccessLogger.success-139"><span class="linenos">139</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SuccessLogger.success-140"><a href="#SuccessLogger.success-140"><span class="linenos">140</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">):</span>
+</span><span id="SuccessLogger.success-141"><a href="#SuccessLogger.success-141"><span class="linenos">141</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">SUCCESS_LEVEL</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Enables the "success" log type for all loggers using <code><a href="#SuccessLogger">SuccessLogger</a></code>.</p>
 
-<h6 id="args">Args</h6>
+<h6 id="arguments">Arguments:</h6>
+
+<ul>
+<li><strong>msg (str):</strong>  The message to log</li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="SuccessLogger.verbose" class="classattr">
+                                        <input id="SuccessLogger.verbose-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">verbose</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">msg</span><span class="p">:</span> <span class="nb">str</span>, </span><span class="param"><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span>, </span><span class="param"><span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span></span><span class="return-annotation">) -> <span class="kc">None</span>:</span></span>
+
+                <label class="view-source-button" for="SuccessLogger.verbose-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SuccessLogger.verbose"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SuccessLogger.verbose-143"><a href="#SuccessLogger.verbose-143"><span class="linenos">143</span></a>    <span class="k">def</span> <span class="nf">verbose</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">msg</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SuccessLogger.verbose-144"><a href="#SuccessLogger.verbose-144"><span class="linenos">144</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Enables the &quot;verbose&quot; log type for all loggers using `SuccessLogger`.</span>
+</span><span id="SuccessLogger.verbose-145"><a href="#SuccessLogger.verbose-145"><span class="linenos">145</span></a>
+</span><span id="SuccessLogger.verbose-146"><a href="#SuccessLogger.verbose-146"><span class="linenos">146</span></a><span class="sd">        Args:</span>
+</span><span id="SuccessLogger.verbose-147"><a href="#SuccessLogger.verbose-147"><span class="linenos">147</span></a><span class="sd">            msg (str): The message to log</span>
+</span><span id="SuccessLogger.verbose-148"><a href="#SuccessLogger.verbose-148"><span class="linenos">148</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SuccessLogger.verbose-149"><a href="#SuccessLogger.verbose-149"><span class="linenos">149</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isEnabledFor</span><span class="p">(</span><span class="n">VERBOSE_LEVEL</span><span class="p">):</span>
+</span><span id="SuccessLogger.verbose-150"><a href="#SuccessLogger.verbose-150"><span class="linenos">150</span></a>            <span class="bp">self</span><span class="o">.</span><span class="n">_log</span><span class="p">(</span><span class="n">VERBOSE_LEVEL</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Enables the "verbose" log type for all loggers using <code><a href="#SuccessLogger">SuccessLogger</a></code>.</p>
+
+<h6 id="arguments">Arguments:</h6>
 
 <ul>
 <li><strong>msg (str):</strong>  The message to log</li>
@@ -447,25 +289,25 @@
 
     </div>
     <a class="headerlink" href="#ColoredFormatter"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ColoredFormatter-48"><a href="#ColoredFormatter-48"><span class="linenos">48</span></a><span class="k">class</span> <span class="nc">ColoredFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
-</span><span id="ColoredFormatter-49"><a href="#ColoredFormatter-49"><span class="linenos">49</span></a>    <span class="sd">&quot;&quot;&quot;A logging formatter which enables ANSI colors for each log level.&quot;&quot;&quot;</span>
-</span><span id="ColoredFormatter-50"><a href="#ColoredFormatter-50"><span class="linenos">50</span></a>
-</span><span id="ColoredFormatter-51"><a href="#ColoredFormatter-51"><span class="linenos">51</span></a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="ColoredFormatter-52"><a href="#ColoredFormatter-52"><span class="linenos">52</span></a>        <span class="sd">&quot;&quot;&quot;Formats the `record`, ensuring coloured output.</span>
-</span><span id="ColoredFormatter-53"><a href="#ColoredFormatter-53"><span class="linenos">53</span></a>
-</span><span id="ColoredFormatter-54"><a href="#ColoredFormatter-54"><span class="linenos">54</span></a><span class="sd">        Args:</span>
-</span><span id="ColoredFormatter-55"><a href="#ColoredFormatter-55"><span class="linenos">55</span></a><span class="sd">            record (logging.LogRecord): The log record to format</span>
-</span><span id="ColoredFormatter-56"><a href="#ColoredFormatter-56"><span class="linenos">56</span></a>
-</span><span id="ColoredFormatter-57"><a href="#ColoredFormatter-57"><span class="linenos">57</span></a><span class="sd">        Returns:</span>
-</span><span id="ColoredFormatter-58"><a href="#ColoredFormatter-58"><span class="linenos">58</span></a><span class="sd">            str: The formatted log record</span>
-</span><span id="ColoredFormatter-59"><a href="#ColoredFormatter-59"><span class="linenos">59</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ColoredFormatter-60"><a href="#ColoredFormatter-60"><span class="linenos">60</span></a>        <span class="n">new_record</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>  <span class="c1"># create a copy of the record so that the original is not changed</span>
-</span><span id="ColoredFormatter-61"><a href="#ColoredFormatter-61"><span class="linenos">61</span></a>
-</span><span id="ColoredFormatter-62"><a href="#ColoredFormatter-62"><span class="linenos">62</span></a>        <span class="n">levelname</span> <span class="o">=</span> <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span>
-</span><span id="ColoredFormatter-63"><a href="#ColoredFormatter-63"><span class="linenos">63</span></a>        <span class="k">if</span> <span class="n">levelname</span> <span class="ow">in</span> <span class="n">COLORS</span><span class="p">:</span>
-</span><span id="ColoredFormatter-64"><a href="#ColoredFormatter-64"><span class="linenos">64</span></a>            <span class="n">levelname_color</span> <span class="o">=</span> <span class="n">COLOR_SEQ</span> <span class="o">%</span> <span class="p">(</span><span class="mi">30</span> <span class="o">+</span> <span class="n">COLORS</span><span class="p">[</span><span class="n">levelname</span><span class="p">])</span> <span class="o">+</span> <span class="n">levelname</span> <span class="o">+</span> <span class="n">RESET_SEQ</span>
-</span><span id="ColoredFormatter-65"><a href="#ColoredFormatter-65"><span class="linenos">65</span></a>            <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="n">levelname_color</span>
-</span><span id="ColoredFormatter-66"><a href="#ColoredFormatter-66"><span class="linenos">66</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_record</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ColoredFormatter-52"><a href="#ColoredFormatter-52"><span class="linenos">52</span></a><span class="k">class</span> <span class="nc">ColoredFormatter</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+</span><span id="ColoredFormatter-53"><a href="#ColoredFormatter-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A logging formatter which enables ANSI colors for each log level.&quot;&quot;&quot;</span>
+</span><span id="ColoredFormatter-54"><a href="#ColoredFormatter-54"><span class="linenos">54</span></a>
+</span><span id="ColoredFormatter-55"><a href="#ColoredFormatter-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="ColoredFormatter-56"><a href="#ColoredFormatter-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Formats the `record`, ensuring coloured output.</span>
+</span><span id="ColoredFormatter-57"><a href="#ColoredFormatter-57"><span class="linenos">57</span></a>
+</span><span id="ColoredFormatter-58"><a href="#ColoredFormatter-58"><span class="linenos">58</span></a><span class="sd">        Args:</span>
+</span><span id="ColoredFormatter-59"><a href="#ColoredFormatter-59"><span class="linenos">59</span></a><span class="sd">            record (logging.LogRecord): The log record to format</span>
+</span><span id="ColoredFormatter-60"><a href="#ColoredFormatter-60"><span class="linenos">60</span></a>
+</span><span id="ColoredFormatter-61"><a href="#ColoredFormatter-61"><span class="linenos">61</span></a><span class="sd">        Returns:</span>
+</span><span id="ColoredFormatter-62"><a href="#ColoredFormatter-62"><span class="linenos">62</span></a><span class="sd">            str: The formatted log record</span>
+</span><span id="ColoredFormatter-63"><a href="#ColoredFormatter-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="ColoredFormatter-64"><a href="#ColoredFormatter-64"><span class="linenos">64</span></a>        <span class="n">new_record</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>  <span class="c1"># create a copy of the record so that the original is not changed</span>
+</span><span id="ColoredFormatter-65"><a href="#ColoredFormatter-65"><span class="linenos">65</span></a>
+</span><span id="ColoredFormatter-66"><a href="#ColoredFormatter-66"><span class="linenos">66</span></a>        <span class="n">levelname</span> <span class="o">=</span> <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span>
+</span><span id="ColoredFormatter-67"><a href="#ColoredFormatter-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="n">levelname</span> <span class="ow">in</span> <span class="n">COLORS</span><span class="p">:</span>
+</span><span id="ColoredFormatter-68"><a href="#ColoredFormatter-68"><span class="linenos">68</span></a>            <span class="n">levelname_color</span> <span class="o">=</span> <span class="n">COLOR_SEQ</span> <span class="o">%</span> <span class="p">(</span><span class="mi">30</span> <span class="o">+</span> <span class="n">COLORS</span><span class="p">[</span><span class="n">levelname</span><span class="p">])</span> <span class="o">+</span> <span class="n">levelname</span> <span class="o">+</span> <span class="n">RESET_SEQ</span>
+</span><span id="ColoredFormatter-69"><a href="#ColoredFormatter-69"><span class="linenos">69</span></a>            <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="n">levelname_color</span>
+</span><span id="ColoredFormatter-70"><a href="#ColoredFormatter-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_record</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -484,34 +326,34 @@
 
     </div>
     <a class="headerlink" href="#ColoredFormatter.format"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ColoredFormatter.format-51"><a href="#ColoredFormatter.format-51"><span class="linenos">51</span></a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-</span><span id="ColoredFormatter.format-52"><a href="#ColoredFormatter.format-52"><span class="linenos">52</span></a>        <span class="sd">&quot;&quot;&quot;Formats the `record`, ensuring coloured output.</span>
-</span><span id="ColoredFormatter.format-53"><a href="#ColoredFormatter.format-53"><span class="linenos">53</span></a>
-</span><span id="ColoredFormatter.format-54"><a href="#ColoredFormatter.format-54"><span class="linenos">54</span></a><span class="sd">        Args:</span>
-</span><span id="ColoredFormatter.format-55"><a href="#ColoredFormatter.format-55"><span class="linenos">55</span></a><span class="sd">            record (logging.LogRecord): The log record to format</span>
-</span><span id="ColoredFormatter.format-56"><a href="#ColoredFormatter.format-56"><span class="linenos">56</span></a>
-</span><span id="ColoredFormatter.format-57"><a href="#ColoredFormatter.format-57"><span class="linenos">57</span></a><span class="sd">        Returns:</span>
-</span><span id="ColoredFormatter.format-58"><a href="#ColoredFormatter.format-58"><span class="linenos">58</span></a><span class="sd">            str: The formatted log record</span>
-</span><span id="ColoredFormatter.format-59"><a href="#ColoredFormatter.format-59"><span class="linenos">59</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ColoredFormatter.format-60"><a href="#ColoredFormatter.format-60"><span class="linenos">60</span></a>        <span class="n">new_record</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>  <span class="c1"># create a copy of the record so that the original is not changed</span>
-</span><span id="ColoredFormatter.format-61"><a href="#ColoredFormatter.format-61"><span class="linenos">61</span></a>
-</span><span id="ColoredFormatter.format-62"><a href="#ColoredFormatter.format-62"><span class="linenos">62</span></a>        <span class="n">levelname</span> <span class="o">=</span> <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span>
-</span><span id="ColoredFormatter.format-63"><a href="#ColoredFormatter.format-63"><span class="linenos">63</span></a>        <span class="k">if</span> <span class="n">levelname</span> <span class="ow">in</span> <span class="n">COLORS</span><span class="p">:</span>
-</span><span id="ColoredFormatter.format-64"><a href="#ColoredFormatter.format-64"><span class="linenos">64</span></a>            <span class="n">levelname_color</span> <span class="o">=</span> <span class="n">COLOR_SEQ</span> <span class="o">%</span> <span class="p">(</span><span class="mi">30</span> <span class="o">+</span> <span class="n">COLORS</span><span class="p">[</span><span class="n">levelname</span><span class="p">])</span> <span class="o">+</span> <span class="n">levelname</span> <span class="o">+</span> <span class="n">RESET_SEQ</span>
-</span><span id="ColoredFormatter.format-65"><a href="#ColoredFormatter.format-65"><span class="linenos">65</span></a>            <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="n">levelname_color</span>
-</span><span id="ColoredFormatter.format-66"><a href="#ColoredFormatter.format-66"><span class="linenos">66</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_record</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ColoredFormatter.format-55"><a href="#ColoredFormatter.format-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+</span><span id="ColoredFormatter.format-56"><a href="#ColoredFormatter.format-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Formats the `record`, ensuring coloured output.</span>
+</span><span id="ColoredFormatter.format-57"><a href="#ColoredFormatter.format-57"><span class="linenos">57</span></a>
+</span><span id="ColoredFormatter.format-58"><a href="#ColoredFormatter.format-58"><span class="linenos">58</span></a><span class="sd">        Args:</span>
+</span><span id="ColoredFormatter.format-59"><a href="#ColoredFormatter.format-59"><span class="linenos">59</span></a><span class="sd">            record (logging.LogRecord): The log record to format</span>
+</span><span id="ColoredFormatter.format-60"><a href="#ColoredFormatter.format-60"><span class="linenos">60</span></a>
+</span><span id="ColoredFormatter.format-61"><a href="#ColoredFormatter.format-61"><span class="linenos">61</span></a><span class="sd">        Returns:</span>
+</span><span id="ColoredFormatter.format-62"><a href="#ColoredFormatter.format-62"><span class="linenos">62</span></a><span class="sd">            str: The formatted log record</span>
+</span><span id="ColoredFormatter.format-63"><a href="#ColoredFormatter.format-63"><span class="linenos">63</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="ColoredFormatter.format-64"><a href="#ColoredFormatter.format-64"><span class="linenos">64</span></a>        <span class="n">new_record</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>  <span class="c1"># create a copy of the record so that the original is not changed</span>
+</span><span id="ColoredFormatter.format-65"><a href="#ColoredFormatter.format-65"><span class="linenos">65</span></a>
+</span><span id="ColoredFormatter.format-66"><a href="#ColoredFormatter.format-66"><span class="linenos">66</span></a>        <span class="n">levelname</span> <span class="o">=</span> <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span>
+</span><span id="ColoredFormatter.format-67"><a href="#ColoredFormatter.format-67"><span class="linenos">67</span></a>        <span class="k">if</span> <span class="n">levelname</span> <span class="ow">in</span> <span class="n">COLORS</span><span class="p">:</span>
+</span><span id="ColoredFormatter.format-68"><a href="#ColoredFormatter.format-68"><span class="linenos">68</span></a>            <span class="n">levelname_color</span> <span class="o">=</span> <span class="n">COLOR_SEQ</span> <span class="o">%</span> <span class="p">(</span><span class="mi">30</span> <span class="o">+</span> <span class="n">COLORS</span><span class="p">[</span><span class="n">levelname</span><span class="p">])</span> <span class="o">+</span> <span class="n">levelname</span> <span class="o">+</span> <span class="n">RESET_SEQ</span>
+</span><span id="ColoredFormatter.format-69"><a href="#ColoredFormatter.format-69"><span class="linenos">69</span></a>            <span class="n">new_record</span><span class="o">.</span><span class="n">levelname</span> <span class="o">=</span> <span class="n">levelname_color</span>
+</span><span id="ColoredFormatter.format-70"><a href="#ColoredFormatter.format-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">new_record</span><span class="p">)</span>
 </span></pre></div>
 
 
             <div class="docstring"><p>Formats the <code>record</code>, ensuring coloured output.</p>
 
-<h6 id="args">Args</h6>
+<h6 id="arguments">Arguments:</h6>
 
 <ul>
 <li><strong>record (logging.LogRecord):</strong>  The log record to format</li>
 </ul>
 
-<h6 id="returns">Returns</h6>
+<h6 id="returns">Returns:</h6>
 
 <blockquote>
   <p>str: The formatted log record</p>
@@ -637,7 +479,7 @@
                 }
 
                 let heading;
-                switch (result.doc.type) {
+                switch (result.doc.kind) {
                     case "function":
                         if (doc.fullname.endsWith(".__init__")) {
                             heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
@@ -664,7 +506,7 @@
                 }
                 html += `
                         <section class="search-result">
-                        <a href="${url}" class="attr ${doc.type}">${heading}</a>
+                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
                         <div class="docstring">${doc.doc}</div>
                         </section>
                     `;
