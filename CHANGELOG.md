@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Update poetry lock and docs. [alexfayers]
+
+
+v3.0.0 (2023-02-13)
+-------------------
+- Bump version: 2.3.0 -> 3.0.0. [alexfayers]
+- Update CHANGELOG.md. [alexfayers]
 - Merge branch 'main' of
   https://github.com/alexfayers/new_python_project. [alexfayers]
 - Drop python3.8 support. [alexfayers]
