@@ -2,7 +2,6 @@ import argparse
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List
 
 # OLD VALUES
 REPLACEMENT_BASE = "NEW_PROJECT"
@@ -13,7 +12,7 @@ LIVE_MODE = True
 PROJECT_PATH = Path(__file__).parent
 
 
-def load_replacement_values() -> Dict[str, str]:
+def load_replacement_values() -> dict[str, str]:
     """Load new project information from the cli.
 
     Returns:
@@ -38,7 +37,7 @@ def load_replacement_values() -> Dict[str, str]:
     return REPLACE_MAP  # type: ignore
 
 
-def path_recurse_directories(path: Path) -> List[Path]:
+def path_recurse_directories(path: Path) -> list[Path]:
     """Recursively list all directories in a given path.
 
     Args:
@@ -65,7 +64,7 @@ def path_recurse_directories(path: Path) -> List[Path]:
     return directories
 
 
-def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
+def replace_placeholders(REPLACE_MAP: dict[str, str]) -> None:
     """Initialise the project by replacing the template placeholders with the new values.
 
     Args:
@@ -73,10 +72,10 @@ def replace_placeholders(REPLACE_MAP: Dict[str, str]) -> None:
     """
     NEW_PROJECT_NAME = REPLACE_MAP[f"{REPLACEMENT_BASE}_NAME".lower()]
 
-    search_directories: List[Path] = path_recurse_directories(PROJECT_PATH)
+    search_directories: list[Path] = path_recurse_directories(PROJECT_PATH)
     search_directories.append(PROJECT_PATH)
 
-    replace_files: List[Path] = []
+    replace_files: list[Path] = []
     DO_NOT_REPLACE = [
         PROJECT_PATH / Path("setup.py"),
         PROJECT_PATH / Path("LICENSE"),
@@ -184,7 +183,7 @@ def remove_or_update_template_files() -> None:
 
         pyproject_content = ""
 
-        with open(pyproject_file, "r") as f:
+        with open(pyproject_file) as f:
             pyproject_content = f.read()
 
         if LIVE_MODE:

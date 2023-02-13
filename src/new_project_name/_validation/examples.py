@@ -1,6 +1,5 @@
 """Example usages for the `new_project_name._validation.ValidatingBaseClass` class."""
 
-from typing import List
 
 from typeguard import _CallMemo
 
@@ -10,8 +9,8 @@ from .validating_base import ValidatingBaseClass
 class ActionExample(ValidatingBaseClass):
     """Shows an example usage of the `new_project_name._validation.ValidatingBaseClass` class."""
 
-    required_methods: List[str] = ["action"]
-    validated_methods: List[str] = ["action"]
+    required_methods: list[str] = ["action"]
+    validated_methods: list[str] = ["action"]
 
     def validate_action(self, method_memo: _CallMemo) -> None:
         """Validate that the data to be processed is in the correct format.
@@ -31,7 +30,7 @@ class ActionExample(ValidatingBaseClass):
 class AdderExample(ActionExample):
     """A class that adds things."""
 
-    def action(self, number_list: List[int]) -> int:
+    def action(self, number_list: list[int]) -> int:
         """Take a list of ints and sum all of the elements.
 
         The validation method in this case is `ActionExample.validate_action`.
@@ -52,7 +51,7 @@ class AdderExample(ActionExample):
 class MultiplyerExample(ActionExample):
     """A class that multiplies things."""
 
-    def action(self, number_list: List[int]) -> int:
+    def action(self, number_list: list[int]) -> int:
         """Take a list of ints and multiply all of the elements.
 
         The validation method in this case is `ActionExample.validate_action`.

@@ -3,7 +3,7 @@
 import copy
 import html
 import logging
-from typing import Any, Dict
+from typing import Any
 
 # Config stuff
 
@@ -75,7 +75,7 @@ class WebFormatter(logging.Formatter):
     Useful for situations where you want to show logging output in a web interface, or something like that.
     """
 
-    COLORS: Dict[str, str] = {}
+    COLORS: dict[str, str] = {}
     """The find/replace map for log level colors"""
 
     def format(self, record: logging.LogRecord) -> str:

@@ -2,7 +2,7 @@
 
 import logging
 from functools import wraps
-from typing import Any, List
+from typing import Any
 
 from typeguard import (
     _CallMemo,
@@ -25,9 +25,9 @@ class ValidatingBaseClass:
     Example usage can be seen in `new_project_name._validation.examples`.
     """
 
-    required_methods: List[str] = []
+    required_methods: list[str] = []
     """Methods that must be implemented in any child classes"""
-    validated_methods: List[str] = []
+    validated_methods: list[str] = []
     """Methods that must be validated in any child classes.
 
     The `validate_XXX` naming scheme should be used when creating a validation function.

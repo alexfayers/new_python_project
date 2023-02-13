@@ -48,7 +48,7 @@ class BaseClass:
         self.logger.verbose("Loading config file from %s", config_file)
 
         try:
-            with open(config_file, "r") as f:
+            with open(config_file) as f:
                 try:
                     config = toml.load(f)
                 except toml.TomlDecodeError:
