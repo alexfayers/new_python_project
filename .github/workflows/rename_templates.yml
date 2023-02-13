@@ -44,6 +44,15 @@ jobs:
           python _project_setup.py "${{ env.REPOSITORY_NAME }}" "${{ env.REPOSITORY_URLNAME }}" "${{ env.REPOSITORY_OWNER }}" "An epic projected called ${{ env.REPOSITORY_NAME }}, by ${{ env.REPOSITORY_OWNER }}!"
           rm _project_setup.py
 
+      - name: Install poetry
+        uses: abatilo/actions-poetry@v2
+
+      - name: Reset project version
+        run: |
+          poetry self add poetry-bumpversion
+          poetry self update
+          poetry version 0.1.0
+
       - uses: EndBug/add-and-commit@v9
         if: steps.is_template.outputs.is_template == 'true'
         with:
