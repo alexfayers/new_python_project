@@ -4,6 +4,15 @@ Changelog
 
 (main)
 ------
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alexfayers]
+- Drop python3.8 support. [alexfayers]
+
+
+v2.3.0 (2023-02-13)
+-------------------
+- Bump version: 2.2.0 -> 2.3.0. [alexfayers]
+- Update CHANGELOG.md. [alexfayers]
 - Execute permission on release script. [alexfayers]
 - Linting + formatting. [alexfayers]
 - Use toml for config and add helper functions to base class.
