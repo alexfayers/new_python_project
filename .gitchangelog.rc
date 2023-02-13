@@ -69,7 +69,8 @@ ignore_regexps = [
     r'^[Aa]ctually',
     r'^[Ff]or real',
     r'^@auto',
-    r'^Merge branch'
+    r'^Merge branch',
+    r'^Bump version:'
 ]
 
 
