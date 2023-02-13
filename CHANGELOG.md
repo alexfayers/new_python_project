@@ -4,8 +4,13 @@ Changelog
 
 (main)
 ------
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alexfayers]
+- Remove merge branch from changelog. [alexfayers]
+
+
+v3.0.2 (2023-02-13)
+-------------------
+- Bump version: 3.0.1 -> 3.0.2. [alexfayers]
+- Update CHANGELOG.md. [alexfayers]
 
 
 v3.0.1 (2023-02-13)
@@ -19,8 +24,6 @@ v3.0.0 (2023-02-13)
 -------------------
 - Bump version: 2.3.0 -> 3.0.0. [alexfayers]
 - Update CHANGELOG.md. [alexfayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alexfayers]
 - Drop python3.8 support. [alexfayers]
 
 
@@ -113,8 +116,6 @@ v1.2.0 (2022-11-03)
 - Drop 3.7, add 3.11 support. [alex.fayers]
 - Only run docs update on non-pull req. [alex.fayers]
 - Cicd improvements. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix linting check position. [alex.fayers]
 - Better CI linting. [alex.fayers]
 - Template checks. [alex.fayers]
@@ -131,8 +132,6 @@ v1.1.2 (2022-07-08)
 -------------------
 - Bump version: 1.1.1 -> 1.1.2. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix VERSION path in setup script. [alex.fayers]
 
 
@@ -155,25 +154,17 @@ v1.0.0 (2022-07-08)
 -------------------
 - Bump version: 0.5.2 -> 1.0.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix release. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Remove accident doc files. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix doc gen. [alex.fayers]
 - BREAKING: Move source into "src" directory. This prevents unwanted
   imports of the code, e.g. during tests. [alex.fayers]
 - Split out mypy type requirements and re-enable git push tags on
   release. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Remove upstream set on CI workflow, may be causing isssues with
   private repos. [alex.fayers]
 - Add upstream instructions. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Fix readme rename case. [alex.fayers]
 
 
@@ -201,10 +192,6 @@ v0.5.0 (2022-06-06)
 - Bump version: 0.4.0 -> 0.5.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update readme, oohlala! [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Whitespace + remove mypy env from tox. [alex.fayers]
 - Remove makefile, update readme, update tox config. [alex.fayers]
 - Update docs. [alex.fayers]
@@ -222,8 +209,6 @@ v0.5.0 (2022-06-06)
 - Change rename author. [alex.fayers]
 - Fix actions. [alex.fayers]
 - Fix syntax for actions. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Update docs. [alexfayers]
 - Update to use pre-commit more. [alex.fayers]
 - Update pre-commit hooks. [alex.fayers]
@@ -256,8 +241,6 @@ v0.4.0 (2022-05-26)
 - Autoinsert changelog at top of file. [alex.fayers]
 - Newline for version. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
-- Merge branch 'main' of
-  https://github.com/alexfayers/new_python_project. [alex.fayers]
 - Update docs. [alexfayers]
 - CRLF -> LF. [alex.fayers]
 - Change push behavior. [alex.fayers]
