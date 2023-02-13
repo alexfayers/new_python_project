@@ -4,32 +4,35 @@ Changelog
 
 (main)
 ------
+- Add bandit and toml validation. [alexfayers]
+- Remove bump version commits from changelog. [alexfayers]
+
+
+v3.0.3 (2023-02-13)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Remove merge branch from changelog. [alexfayers]
 
 
 v3.0.2 (2023-02-13)
 -------------------
-- Bump version: 3.0.1 -> 3.0.2. [alexfayers]
 - Update CHANGELOG.md. [alexfayers]
 
 
 v3.0.1 (2023-02-13)
 -------------------
-- Bump version: 3.0.0 -> 3.0.1. [alexfayers]
 - Update CHANGELOG.md. [alexfayers]
 - Update poetry lock and docs. [alexfayers]
 
 
 v3.0.0 (2023-02-13)
 -------------------
-- Bump version: 2.3.0 -> 3.0.0. [alexfayers]
 - Update CHANGELOG.md. [alexfayers]
 - Drop python3.8 support. [alexfayers]
 
 
 v2.3.0 (2023-02-13)
 -------------------
-- Bump version: 2.2.0 -> 2.3.0. [alexfayers]
 - Update CHANGELOG.md. [alexfayers]
 - Execute permission on release script. [alexfayers]
 - Linting + formatting. [alexfayers]
@@ -44,7 +47,6 @@ v2.3.0 (2023-02-13)
 
 v2.2.0 (2022-11-04)
 -------------------
-- Bump version: 2.1.3 -> 2.2.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Another cache key fix. [alex.fayers]
 - Update tox hashes. [alex.fayers]
@@ -57,49 +59,42 @@ v2.2.0 (2022-11-04)
 
 v2.1.3 (2022-11-04)
 -------------------
-- Bump version: 2.1.2 -> 2.1.3. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Adjust CI. [alex.fayers]
 
 
 v2.1.2 (2022-11-04)
 -------------------
-- Bump version: 2.1.1 -> 2.1.2. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update tox lint commands. [alex.fayers]
 
 
 v2.1.1 (2022-11-04)
 -------------------
-- Bump version: 2.1.0 -> 2.1.1. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update lock. [alex.fayers]
 
 
 v2.1.0 (2022-11-04)
 -------------------
-- Bump version: 2.0.1 -> 2.1.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Fix deps. [alex.fayers]
 
 
 v2.0.1 (2022-11-04)
 -------------------
-- Bump version: 2.0.0 -> 2.0.1. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update release script. [alex.fayers]
 
 
 v2.0.0 (2022-11-04)
 -------------------
-- Bump version: 1.2.1 -> 2.0.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Convert to poetry and pyproject.toml. [alex.fayers]
 
 
 v1.2.1 (2022-11-03)
 -------------------
-- Bump version: 1.2.0 -> 1.2.1. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - 3.10 -> 3.11 for workflows. [alex.fayers]
 - Add an example test. [alex.fayers]
@@ -107,7 +102,6 @@ v1.2.1 (2022-11-03)
 
 v1.2.0 (2022-11-03)
 -------------------
-- Bump version: 1.1.3 -> 1.2.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Lint + docs. [alex.fayers]
 - Remove helper tests. [alex.fayers]
@@ -123,28 +117,24 @@ v1.2.0 (2022-11-03)
 
 v1.1.3 (2022-07-08)
 -------------------
-- Bump version: 1.1.2 -> 1.1.3. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Workflow concurrency. [alex.fayers]
 
 
 v1.1.2 (2022-07-08)
 -------------------
-- Bump version: 1.1.1 -> 1.1.2. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Fix VERSION path in setup script. [alex.fayers]
 
 
 v1.1.1 (2022-07-08)
 -------------------
-- Bump version: 1.1.0 -> 1.1.1. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update readme to include vscode extension pack! [alex.fayers]
 
 
 v1.1.0 (2022-07-08)
 -------------------
-- Bump version: 1.0.0 -> 1.1.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Remove trailing whitespace pre-commit because it fails after automated
   file writes, which is annoying. [alex.fayers]
@@ -152,7 +142,6 @@ v1.1.0 (2022-07-08)
 
 v1.0.0 (2022-07-08)
 -------------------
-- Bump version: 0.5.2 -> 1.0.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Fix release. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
@@ -170,7 +159,6 @@ v1.0.0 (2022-07-08)
 
 v0.5.2 (2022-06-06)
 -------------------
-- Bump version: 0.5.1 -> 0.5.2. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Temp disable push on release. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
@@ -179,7 +167,6 @@ v0.5.2 (2022-06-06)
 
 v0.5.1 (2022-06-06)
 -------------------
-- Bump version: 0.5.0 -> 0.5.1. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Line endings. [alex.fayers]
 - Fix gitchangelog. [alex.fayers]
@@ -189,7 +176,6 @@ v0.5.1 (2022-06-06)
 
 v0.5.0 (2022-06-06)
 -------------------
-- Bump version: 0.4.0 -> 0.5.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update readme, oohlala! [alex.fayers]
 - Whitespace + remove mypy env from tox. [alex.fayers]
@@ -223,13 +209,11 @@ v0.5.0 (2022-06-06)
 
 v0.4.0 (2022-05-26)
 -------------------
-- Bump version: 0.3.0 -> 0.4.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Remove noverify. [alex.fayers]
 - Allow git in release tox env. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
-- Bump version: 0.3.0 -> 0.3.0. [alex.fayers]
 - Update CHANGELOG.md. [alex.fayers]
 - Convert workflows to use tox, hopefully it works! [alex.fayers]
 - Remove blank space in docs. [alex.fayers]
@@ -249,7 +233,6 @@ v0.4.0 (2022-05-26)
 
 v0.3.0 (2022-05-25)
 -------------------
-- Bump version: 0.2.0 -> 0.3.0. [alex.fayers]
 - Update changelog. [alex.fayers]
 - Resolve rebase. [alex.fayers]
 - Update changelog. [alex.fayers]
@@ -275,12 +258,10 @@ v0.3.0 (2022-05-25)
 - Existence checks. [alex.fayers]
 - Live mode bits. [alex.fayers]
 - Rename and reset stuff. [alex.fayers]
-- Bump version: 0.1.0 -> 0.2.0. [alex.fayers]
 
 
 v0.2.0 (2022-05-24)
 -------------------
-- Bump version: 0.1.0 → 0.2.0. [alex.fayers]
 - Update changelog. [alex.fayers]
 - Update config. [alex.fayers]
 - Remove things I left by accident. [alex.fayers]
