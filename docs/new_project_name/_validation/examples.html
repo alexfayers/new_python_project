@@ -91,87 +91,86 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="sd">&quot;&quot;&quot;Example usages for the `new_project_name._validation.ValidatingBaseClass` class.&quot;&quot;&quot;</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
-</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="kn">from</span> <span class="nn">typeguard</span> <span class="kn">import</span> <span class="n">_CallMemo</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a><span class="kn">from</span> <span class="nn">.validating_base</span> <span class="kn">import</span> <span class="n">ValidatingBaseClass</span>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
+</span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a><span class="kn">from</span> <span class="nn">typeguard</span> <span class="kn">import</span> <span class="n">_CallMemo</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="kn">from</span> <span class="nn">.validating_base</span> <span class="kn">import</span> <span class="n">ValidatingBaseClass</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>
 </span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="k">class</span> <span class="nc">ActionExample</span><span class="p">(</span><span class="n">ValidatingBaseClass</span><span class="p">):</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Shows an example usage of the `new_project_name._validation.ValidatingBaseClass` class.&quot;&quot;&quot;</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">required_methods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>    <span class="n">validated_methods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">validate_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_memo</span><span class="p">:</span> <span class="n">_CallMemo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that the data to be processed is in the correct format.</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">        Args:</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">            method_memo (_CallMemo): The `_CallMemo` which holds the method&#39;s typing information and arguments</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        Raises:</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            TypeError: Raised if the data is not the correct type</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">            ValueError: Raised if the types are correct, but there is an issue in the formatting</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">method_memo</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;number_list&quot;</span><span class="p">]:</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a><span class="k">class</span> <span class="nc">ActionExample</span><span class="p">(</span><span class="n">ValidatingBaseClass</span><span class="p">):</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Shows an example usage of the `new_project_name._validation.ValidatingBaseClass` class.&quot;&quot;&quot;</span>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>    <span class="n">required_methods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>    <span class="n">validated_methods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>    <span class="k">def</span> <span class="nf">validate_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_memo</span><span class="p">:</span> <span class="n">_CallMemo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that the data to be processed is in the correct format.</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">        Args:</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">            method_memo (_CallMemo): The `_CallMemo` which holds the method&#39;s typing information and arguments</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">        Raises:</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">            TypeError: Raised if the data is not the correct type</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">            ValueError: Raised if the types are correct, but there is an issue in the formatting</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">method_memo</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;number_list&quot;</span><span class="p">]:</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
 </span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="k">class</span> <span class="nc">AdderExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that adds things.&quot;&quot;&quot;</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>
-</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and sum all of the elements.</span>
-</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
-</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a>
-</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">        Args:</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
-</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a>
-</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">        Returns:</span>
-</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">            int: The sum of all elements in the list</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
-</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>
-</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">total</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="k">class</span> <span class="nc">AdderExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that adds things.&quot;&quot;&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and sum all of the elements.</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a>
+</span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="sd">        Args:</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a>
+</span><span id="L-41"><a href="#L-41"><span class="linenos">41</span></a><span class="sd">        Returns:</span>
+</span><span id="L-42"><a href="#L-42"><span class="linenos">42</span></a><span class="sd">            int: The sum of all elements in the list</span>
+</span><span id="L-43"><a href="#L-43"><span class="linenos">43</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos">44</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="L-45"><a href="#L-45"><span class="linenos">45</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
+</span><span id="L-46"><a href="#L-46"><span class="linenos">46</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
+</span><span id="L-47"><a href="#L-47"><span class="linenos">47</span></a>
+</span><span id="L-48"><a href="#L-48"><span class="linenos">48</span></a>        <span class="k">return</span> <span class="n">total</span>
+</span><span id="L-49"><a href="#L-49"><span class="linenos">49</span></a>
 </span><span id="L-50"><a href="#L-50"><span class="linenos">50</span></a>
-</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a>
-</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="k">class</span> <span class="nc">MultiplyerExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
-</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that multiplies things.&quot;&quot;&quot;</span>
-</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>
-</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and multiply all of the elements.</span>
-</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a>
-</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
-</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a>
-</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
-</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
-</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a>
-</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
-</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">            int: The multiply of all elements in the list</span>
-</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">number</span>
-</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>
-</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="n">total</span>
+</span><span id="L-51"><a href="#L-51"><span class="linenos">51</span></a><span class="k">class</span> <span class="nc">MultiplyerExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
+</span><span id="L-52"><a href="#L-52"><span class="linenos">52</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that multiplies things.&quot;&quot;&quot;</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos">53</span></a>
+</span><span id="L-54"><a href="#L-54"><span class="linenos">54</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="L-55"><a href="#L-55"><span class="linenos">55</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and multiply all of the elements.</span>
+</span><span id="L-56"><a href="#L-56"><span class="linenos">56</span></a>
+</span><span id="L-57"><a href="#L-57"><span class="linenos">57</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
+</span><span id="L-58"><a href="#L-58"><span class="linenos">58</span></a>
+</span><span id="L-59"><a href="#L-59"><span class="linenos">59</span></a><span class="sd">        Args:</span>
+</span><span id="L-60"><a href="#L-60"><span class="linenos">60</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
+</span><span id="L-61"><a href="#L-61"><span class="linenos">61</span></a>
+</span><span id="L-62"><a href="#L-62"><span class="linenos">62</span></a><span class="sd">        Returns:</span>
+</span><span id="L-63"><a href="#L-63"><span class="linenos">63</span></a><span class="sd">            int: The multiply of all elements in the list</span>
+</span><span id="L-64"><a href="#L-64"><span class="linenos">64</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-65"><a href="#L-65"><span class="linenos">65</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="L-66"><a href="#L-66"><span class="linenos">66</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos">67</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">number</span>
+</span><span id="L-68"><a href="#L-68"><span class="linenos">68</span></a>
+</span><span id="L-69"><a href="#L-69"><span class="linenos">69</span></a>        <span class="k">return</span> <span class="n">total</span>
+</span><span id="L-70"><a href="#L-70"><span class="linenos">70</span></a>
 </span><span id="L-71"><a href="#L-71"><span class="linenos">71</span></a>
-</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a>
-</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="k">def</span> <span class="nf">run_example</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;An example usage of the `new_project_name._validation.ValidatingBaseClass` class.</span>
-</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a>
-</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="sd">    Simply executes two different methods using the same automatic type validation.</span>
-</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AdderExample</span><span class="p">,</span> <span class="n">MultiplyerExample</span><span class="p">]</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>
-</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>    <span class="k">for</span> <span class="n">_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">_object</span> <span class="o">=</span> <span class="n">_class</span><span class="p">()</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="n">_object</span><span class="o">.</span><span class="n">action</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-</span><span id="L-83"><a href="#L-83"><span class="linenos">83</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</span><span id="L-72"><a href="#L-72"><span class="linenos">72</span></a><span class="k">def</span> <span class="nf">run_example</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-73"><a href="#L-73"><span class="linenos">73</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;An example usage of the `new_project_name._validation.ValidatingBaseClass` class.</span>
+</span><span id="L-74"><a href="#L-74"><span class="linenos">74</span></a>
+</span><span id="L-75"><a href="#L-75"><span class="linenos">75</span></a><span class="sd">    Simply executes two different methods using the same automatic type validation.</span>
+</span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AdderExample</span><span class="p">,</span> <span class="n">MultiplyerExample</span><span class="p">]</span>
+</span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a>    <span class="k">for</span> <span class="n">_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>        <span class="n">_object</span> <span class="o">=</span> <span class="n">_class</span><span class="p">()</span>
+</span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="n">_object</span><span class="o">.</span><span class="n">action</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -187,25 +186,25 @@
 
     </div>
     <a class="headerlink" href="#ActionExample"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ActionExample-11"><a href="#ActionExample-11"><span class="linenos">11</span></a><span class="k">class</span> <span class="nc">ActionExample</span><span class="p">(</span><span class="n">ValidatingBaseClass</span><span class="p">):</span>
-</span><span id="ActionExample-12"><a href="#ActionExample-12"><span class="linenos">12</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Shows an example usage of the `new_project_name._validation.ValidatingBaseClass` class.&quot;&quot;&quot;</span>
-</span><span id="ActionExample-13"><a href="#ActionExample-13"><span class="linenos">13</span></a>
-</span><span id="ActionExample-14"><a href="#ActionExample-14"><span class="linenos">14</span></a>    <span class="n">required_methods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
-</span><span id="ActionExample-15"><a href="#ActionExample-15"><span class="linenos">15</span></a>    <span class="n">validated_methods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
-</span><span id="ActionExample-16"><a href="#ActionExample-16"><span class="linenos">16</span></a>
-</span><span id="ActionExample-17"><a href="#ActionExample-17"><span class="linenos">17</span></a>    <span class="k">def</span> <span class="nf">validate_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_memo</span><span class="p">:</span> <span class="n">_CallMemo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ActionExample-18"><a href="#ActionExample-18"><span class="linenos">18</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that the data to be processed is in the correct format.</span>
-</span><span id="ActionExample-19"><a href="#ActionExample-19"><span class="linenos">19</span></a>
-</span><span id="ActionExample-20"><a href="#ActionExample-20"><span class="linenos">20</span></a><span class="sd">        Args:</span>
-</span><span id="ActionExample-21"><a href="#ActionExample-21"><span class="linenos">21</span></a><span class="sd">            method_memo (_CallMemo): The `_CallMemo` which holds the method&#39;s typing information and arguments</span>
-</span><span id="ActionExample-22"><a href="#ActionExample-22"><span class="linenos">22</span></a>
-</span><span id="ActionExample-23"><a href="#ActionExample-23"><span class="linenos">23</span></a><span class="sd">        Raises:</span>
-</span><span id="ActionExample-24"><a href="#ActionExample-24"><span class="linenos">24</span></a><span class="sd">            TypeError: Raised if the data is not the correct type</span>
-</span><span id="ActionExample-25"><a href="#ActionExample-25"><span class="linenos">25</span></a><span class="sd">            ValueError: Raised if the types are correct, but there is an issue in the formatting</span>
-</span><span id="ActionExample-26"><a href="#ActionExample-26"><span class="linenos">26</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ActionExample-27"><a href="#ActionExample-27"><span class="linenos">27</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">method_memo</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;number_list&quot;</span><span class="p">]:</span>
-</span><span id="ActionExample-28"><a href="#ActionExample-28"><span class="linenos">28</span></a>            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="ActionExample-29"><a href="#ActionExample-29"><span class="linenos">29</span></a>                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ActionExample-10"><a href="#ActionExample-10"><span class="linenos">10</span></a><span class="k">class</span> <span class="nc">ActionExample</span><span class="p">(</span><span class="n">ValidatingBaseClass</span><span class="p">):</span>
+</span><span id="ActionExample-11"><a href="#ActionExample-11"><span class="linenos">11</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Shows an example usage of the `new_project_name._validation.ValidatingBaseClass` class.&quot;&quot;&quot;</span>
+</span><span id="ActionExample-12"><a href="#ActionExample-12"><span class="linenos">12</span></a>
+</span><span id="ActionExample-13"><a href="#ActionExample-13"><span class="linenos">13</span></a>    <span class="n">required_methods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+</span><span id="ActionExample-14"><a href="#ActionExample-14"><span class="linenos">14</span></a>    <span class="n">validated_methods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+</span><span id="ActionExample-15"><a href="#ActionExample-15"><span class="linenos">15</span></a>
+</span><span id="ActionExample-16"><a href="#ActionExample-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">validate_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_memo</span><span class="p">:</span> <span class="n">_CallMemo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ActionExample-17"><a href="#ActionExample-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that the data to be processed is in the correct format.</span>
+</span><span id="ActionExample-18"><a href="#ActionExample-18"><span class="linenos">18</span></a>
+</span><span id="ActionExample-19"><a href="#ActionExample-19"><span class="linenos">19</span></a><span class="sd">        Args:</span>
+</span><span id="ActionExample-20"><a href="#ActionExample-20"><span class="linenos">20</span></a><span class="sd">            method_memo (_CallMemo): The `_CallMemo` which holds the method&#39;s typing information and arguments</span>
+</span><span id="ActionExample-21"><a href="#ActionExample-21"><span class="linenos">21</span></a>
+</span><span id="ActionExample-22"><a href="#ActionExample-22"><span class="linenos">22</span></a><span class="sd">        Raises:</span>
+</span><span id="ActionExample-23"><a href="#ActionExample-23"><span class="linenos">23</span></a><span class="sd">            TypeError: Raised if the data is not the correct type</span>
+</span><span id="ActionExample-24"><a href="#ActionExample-24"><span class="linenos">24</span></a><span class="sd">            ValueError: Raised if the types are correct, but there is an issue in the formatting</span>
+</span><span id="ActionExample-25"><a href="#ActionExample-25"><span class="linenos">25</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="ActionExample-26"><a href="#ActionExample-26"><span class="linenos">26</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">method_memo</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;number_list&quot;</span><span class="p">]:</span>
+</span><span id="ActionExample-27"><a href="#ActionExample-27"><span class="linenos">27</span></a>            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="ActionExample-28"><a href="#ActionExample-28"><span class="linenos">28</span></a>                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -215,7 +214,7 @@
 
                             <div id="ActionExample.required_methods" class="classattr">
                                 <div class="attr variable">
-            <span class="name">required_methods</span><span class="annotation">: List[str]</span><span class="default_value"> = [&#39;action&#39;]</span>
+            <span class="name">required_methods</span><span class="annotation">: list[str]</span><span class="default_value"> = [&#39;action&#39;]</span>
 
         
     </div>
@@ -228,7 +227,7 @@
                             </div>
                             <div id="ActionExample.validated_methods" class="classattr">
                                 <div class="attr variable">
-            <span class="name">validated_methods</span><span class="annotation">: List[str]</span><span class="default_value"> = [&#39;action&#39;]</span>
+            <span class="name">validated_methods</span><span class="annotation">: list[str]</span><span class="default_value"> = [&#39;action&#39;]</span>
 
         
     </div>
@@ -253,19 +252,19 @@ All <code>validate_XXX</code> methods should accept a single argument, which is 
 
     </div>
     <a class="headerlink" href="#ActionExample.validate_action"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="ActionExample.validate_action-17"><a href="#ActionExample.validate_action-17"><span class="linenos">17</span></a>    <span class="k">def</span> <span class="nf">validate_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_memo</span><span class="p">:</span> <span class="n">_CallMemo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="ActionExample.validate_action-18"><a href="#ActionExample.validate_action-18"><span class="linenos">18</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that the data to be processed is in the correct format.</span>
-</span><span id="ActionExample.validate_action-19"><a href="#ActionExample.validate_action-19"><span class="linenos">19</span></a>
-</span><span id="ActionExample.validate_action-20"><a href="#ActionExample.validate_action-20"><span class="linenos">20</span></a><span class="sd">        Args:</span>
-</span><span id="ActionExample.validate_action-21"><a href="#ActionExample.validate_action-21"><span class="linenos">21</span></a><span class="sd">            method_memo (_CallMemo): The `_CallMemo` which holds the method&#39;s typing information and arguments</span>
-</span><span id="ActionExample.validate_action-22"><a href="#ActionExample.validate_action-22"><span class="linenos">22</span></a>
-</span><span id="ActionExample.validate_action-23"><a href="#ActionExample.validate_action-23"><span class="linenos">23</span></a><span class="sd">        Raises:</span>
-</span><span id="ActionExample.validate_action-24"><a href="#ActionExample.validate_action-24"><span class="linenos">24</span></a><span class="sd">            TypeError: Raised if the data is not the correct type</span>
-</span><span id="ActionExample.validate_action-25"><a href="#ActionExample.validate_action-25"><span class="linenos">25</span></a><span class="sd">            ValueError: Raised if the types are correct, but there is an issue in the formatting</span>
-</span><span id="ActionExample.validate_action-26"><a href="#ActionExample.validate_action-26"><span class="linenos">26</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="ActionExample.validate_action-27"><a href="#ActionExample.validate_action-27"><span class="linenos">27</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">method_memo</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;number_list&quot;</span><span class="p">]:</span>
-</span><span id="ActionExample.validate_action-28"><a href="#ActionExample.validate_action-28"><span class="linenos">28</span></a>            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
-</span><span id="ActionExample.validate_action-29"><a href="#ActionExample.validate_action-29"><span class="linenos">29</span></a>                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ActionExample.validate_action-16"><a href="#ActionExample.validate_action-16"><span class="linenos">16</span></a>    <span class="k">def</span> <span class="nf">validate_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method_memo</span><span class="p">:</span> <span class="n">_CallMemo</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="ActionExample.validate_action-17"><a href="#ActionExample.validate_action-17"><span class="linenos">17</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that the data to be processed is in the correct format.</span>
+</span><span id="ActionExample.validate_action-18"><a href="#ActionExample.validate_action-18"><span class="linenos">18</span></a>
+</span><span id="ActionExample.validate_action-19"><a href="#ActionExample.validate_action-19"><span class="linenos">19</span></a><span class="sd">        Args:</span>
+</span><span id="ActionExample.validate_action-20"><a href="#ActionExample.validate_action-20"><span class="linenos">20</span></a><span class="sd">            method_memo (_CallMemo): The `_CallMemo` which holds the method&#39;s typing information and arguments</span>
+</span><span id="ActionExample.validate_action-21"><a href="#ActionExample.validate_action-21"><span class="linenos">21</span></a>
+</span><span id="ActionExample.validate_action-22"><a href="#ActionExample.validate_action-22"><span class="linenos">22</span></a><span class="sd">        Raises:</span>
+</span><span id="ActionExample.validate_action-23"><a href="#ActionExample.validate_action-23"><span class="linenos">23</span></a><span class="sd">            TypeError: Raised if the data is not the correct type</span>
+</span><span id="ActionExample.validate_action-24"><a href="#ActionExample.validate_action-24"><span class="linenos">24</span></a><span class="sd">            ValueError: Raised if the types are correct, but there is an issue in the formatting</span>
+</span><span id="ActionExample.validate_action-25"><a href="#ActionExample.validate_action-25"><span class="linenos">25</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="ActionExample.validate_action-26"><a href="#ActionExample.validate_action-26"><span class="linenos">26</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">method_memo</span><span class="o">.</span><span class="n">arguments</span><span class="p">[</span><span class="s2">&quot;number_list&quot;</span><span class="p">]:</span>
+</span><span id="ActionExample.validate_action-27"><a href="#ActionExample.validate_action-27"><span class="linenos">27</span></a>            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+</span><span id="ActionExample.validate_action-28"><a href="#ActionExample.validate_action-28"><span class="linenos">28</span></a>                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -308,25 +307,25 @@ All <code>validate_XXX</code> methods should accept a single argument, which is 
 
     </div>
     <a class="headerlink" href="#AdderExample"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AdderExample-32"><a href="#AdderExample-32"><span class="linenos">32</span></a><span class="k">class</span> <span class="nc">AdderExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
-</span><span id="AdderExample-33"><a href="#AdderExample-33"><span class="linenos">33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that adds things.&quot;&quot;&quot;</span>
-</span><span id="AdderExample-34"><a href="#AdderExample-34"><span class="linenos">34</span></a>
-</span><span id="AdderExample-35"><a href="#AdderExample-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="AdderExample-36"><a href="#AdderExample-36"><span class="linenos">36</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and sum all of the elements.</span>
-</span><span id="AdderExample-37"><a href="#AdderExample-37"><span class="linenos">37</span></a>
-</span><span id="AdderExample-38"><a href="#AdderExample-38"><span class="linenos">38</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
-</span><span id="AdderExample-39"><a href="#AdderExample-39"><span class="linenos">39</span></a>
-</span><span id="AdderExample-40"><a href="#AdderExample-40"><span class="linenos">40</span></a><span class="sd">        Args:</span>
-</span><span id="AdderExample-41"><a href="#AdderExample-41"><span class="linenos">41</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
-</span><span id="AdderExample-42"><a href="#AdderExample-42"><span class="linenos">42</span></a>
-</span><span id="AdderExample-43"><a href="#AdderExample-43"><span class="linenos">43</span></a><span class="sd">        Returns:</span>
-</span><span id="AdderExample-44"><a href="#AdderExample-44"><span class="linenos">44</span></a><span class="sd">            int: The sum of all elements in the list</span>
-</span><span id="AdderExample-45"><a href="#AdderExample-45"><span class="linenos">45</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AdderExample-46"><a href="#AdderExample-46"><span class="linenos">46</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="AdderExample-47"><a href="#AdderExample-47"><span class="linenos">47</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-</span><span id="AdderExample-48"><a href="#AdderExample-48"><span class="linenos">48</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
-</span><span id="AdderExample-49"><a href="#AdderExample-49"><span class="linenos">49</span></a>
-</span><span id="AdderExample-50"><a href="#AdderExample-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="n">total</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AdderExample-31"><a href="#AdderExample-31"><span class="linenos">31</span></a><span class="k">class</span> <span class="nc">AdderExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
+</span><span id="AdderExample-32"><a href="#AdderExample-32"><span class="linenos">32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that adds things.&quot;&quot;&quot;</span>
+</span><span id="AdderExample-33"><a href="#AdderExample-33"><span class="linenos">33</span></a>
+</span><span id="AdderExample-34"><a href="#AdderExample-34"><span class="linenos">34</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="AdderExample-35"><a href="#AdderExample-35"><span class="linenos">35</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and sum all of the elements.</span>
+</span><span id="AdderExample-36"><a href="#AdderExample-36"><span class="linenos">36</span></a>
+</span><span id="AdderExample-37"><a href="#AdderExample-37"><span class="linenos">37</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
+</span><span id="AdderExample-38"><a href="#AdderExample-38"><span class="linenos">38</span></a>
+</span><span id="AdderExample-39"><a href="#AdderExample-39"><span class="linenos">39</span></a><span class="sd">        Args:</span>
+</span><span id="AdderExample-40"><a href="#AdderExample-40"><span class="linenos">40</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
+</span><span id="AdderExample-41"><a href="#AdderExample-41"><span class="linenos">41</span></a>
+</span><span id="AdderExample-42"><a href="#AdderExample-42"><span class="linenos">42</span></a><span class="sd">        Returns:</span>
+</span><span id="AdderExample-43"><a href="#AdderExample-43"><span class="linenos">43</span></a><span class="sd">            int: The sum of all elements in the list</span>
+</span><span id="AdderExample-44"><a href="#AdderExample-44"><span class="linenos">44</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdderExample-45"><a href="#AdderExample-45"><span class="linenos">45</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="AdderExample-46"><a href="#AdderExample-46"><span class="linenos">46</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
+</span><span id="AdderExample-47"><a href="#AdderExample-47"><span class="linenos">47</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
+</span><span id="AdderExample-48"><a href="#AdderExample-48"><span class="linenos">48</span></a>
+</span><span id="AdderExample-49"><a href="#AdderExample-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">total</span>
 </span></pre></div>
 
 
@@ -339,28 +338,28 @@ All <code>validate_XXX</code> methods should accept a single argument, which is 
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">action</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+        <span class="name">action</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
 
                 <label class="view-source-button" for="AdderExample.action-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#AdderExample.action"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="AdderExample.action-35"><a href="#AdderExample.action-35"><span class="linenos">35</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="AdderExample.action-36"><a href="#AdderExample.action-36"><span class="linenos">36</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and sum all of the elements.</span>
-</span><span id="AdderExample.action-37"><a href="#AdderExample.action-37"><span class="linenos">37</span></a>
-</span><span id="AdderExample.action-38"><a href="#AdderExample.action-38"><span class="linenos">38</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
-</span><span id="AdderExample.action-39"><a href="#AdderExample.action-39"><span class="linenos">39</span></a>
-</span><span id="AdderExample.action-40"><a href="#AdderExample.action-40"><span class="linenos">40</span></a><span class="sd">        Args:</span>
-</span><span id="AdderExample.action-41"><a href="#AdderExample.action-41"><span class="linenos">41</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
-</span><span id="AdderExample.action-42"><a href="#AdderExample.action-42"><span class="linenos">42</span></a>
-</span><span id="AdderExample.action-43"><a href="#AdderExample.action-43"><span class="linenos">43</span></a><span class="sd">        Returns:</span>
-</span><span id="AdderExample.action-44"><a href="#AdderExample.action-44"><span class="linenos">44</span></a><span class="sd">            int: The sum of all elements in the list</span>
-</span><span id="AdderExample.action-45"><a href="#AdderExample.action-45"><span class="linenos">45</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="AdderExample.action-46"><a href="#AdderExample.action-46"><span class="linenos">46</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
-</span><span id="AdderExample.action-47"><a href="#AdderExample.action-47"><span class="linenos">47</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-</span><span id="AdderExample.action-48"><a href="#AdderExample.action-48"><span class="linenos">48</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
-</span><span id="AdderExample.action-49"><a href="#AdderExample.action-49"><span class="linenos">49</span></a>
-</span><span id="AdderExample.action-50"><a href="#AdderExample.action-50"><span class="linenos">50</span></a>        <span class="k">return</span> <span class="n">total</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="AdderExample.action-34"><a href="#AdderExample.action-34"><span class="linenos">34</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="AdderExample.action-35"><a href="#AdderExample.action-35"><span class="linenos">35</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and sum all of the elements.</span>
+</span><span id="AdderExample.action-36"><a href="#AdderExample.action-36"><span class="linenos">36</span></a>
+</span><span id="AdderExample.action-37"><a href="#AdderExample.action-37"><span class="linenos">37</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
+</span><span id="AdderExample.action-38"><a href="#AdderExample.action-38"><span class="linenos">38</span></a>
+</span><span id="AdderExample.action-39"><a href="#AdderExample.action-39"><span class="linenos">39</span></a><span class="sd">        Args:</span>
+</span><span id="AdderExample.action-40"><a href="#AdderExample.action-40"><span class="linenos">40</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
+</span><span id="AdderExample.action-41"><a href="#AdderExample.action-41"><span class="linenos">41</span></a>
+</span><span id="AdderExample.action-42"><a href="#AdderExample.action-42"><span class="linenos">42</span></a><span class="sd">        Returns:</span>
+</span><span id="AdderExample.action-43"><a href="#AdderExample.action-43"><span class="linenos">43</span></a><span class="sd">            int: The sum of all elements in the list</span>
+</span><span id="AdderExample.action-44"><a href="#AdderExample.action-44"><span class="linenos">44</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="AdderExample.action-45"><a href="#AdderExample.action-45"><span class="linenos">45</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+</span><span id="AdderExample.action-46"><a href="#AdderExample.action-46"><span class="linenos">46</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
+</span><span id="AdderExample.action-47"><a href="#AdderExample.action-47"><span class="linenos">47</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
+</span><span id="AdderExample.action-48"><a href="#AdderExample.action-48"><span class="linenos">48</span></a>
+</span><span id="AdderExample.action-49"><a href="#AdderExample.action-49"><span class="linenos">49</span></a>        <span class="k">return</span> <span class="n">total</span>
 </span></pre></div>
 
 
@@ -410,25 +409,25 @@ All <code>validate_XXX</code> methods should accept a single argument, which is 
 
     </div>
     <a class="headerlink" href="#MultiplyerExample"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiplyerExample-53"><a href="#MultiplyerExample-53"><span class="linenos">53</span></a><span class="k">class</span> <span class="nc">MultiplyerExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
-</span><span id="MultiplyerExample-54"><a href="#MultiplyerExample-54"><span class="linenos">54</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that multiplies things.&quot;&quot;&quot;</span>
-</span><span id="MultiplyerExample-55"><a href="#MultiplyerExample-55"><span class="linenos">55</span></a>
-</span><span id="MultiplyerExample-56"><a href="#MultiplyerExample-56"><span class="linenos">56</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="MultiplyerExample-57"><a href="#MultiplyerExample-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and multiply all of the elements.</span>
-</span><span id="MultiplyerExample-58"><a href="#MultiplyerExample-58"><span class="linenos">58</span></a>
-</span><span id="MultiplyerExample-59"><a href="#MultiplyerExample-59"><span class="linenos">59</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
-</span><span id="MultiplyerExample-60"><a href="#MultiplyerExample-60"><span class="linenos">60</span></a>
-</span><span id="MultiplyerExample-61"><a href="#MultiplyerExample-61"><span class="linenos">61</span></a><span class="sd">        Args:</span>
-</span><span id="MultiplyerExample-62"><a href="#MultiplyerExample-62"><span class="linenos">62</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
-</span><span id="MultiplyerExample-63"><a href="#MultiplyerExample-63"><span class="linenos">63</span></a>
-</span><span id="MultiplyerExample-64"><a href="#MultiplyerExample-64"><span class="linenos">64</span></a><span class="sd">        Returns:</span>
-</span><span id="MultiplyerExample-65"><a href="#MultiplyerExample-65"><span class="linenos">65</span></a><span class="sd">            int: The multiply of all elements in the list</span>
-</span><span id="MultiplyerExample-66"><a href="#MultiplyerExample-66"><span class="linenos">66</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MultiplyerExample-67"><a href="#MultiplyerExample-67"><span class="linenos">67</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span id="MultiplyerExample-68"><a href="#MultiplyerExample-68"><span class="linenos">68</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-</span><span id="MultiplyerExample-69"><a href="#MultiplyerExample-69"><span class="linenos">69</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">number</span>
-</span><span id="MultiplyerExample-70"><a href="#MultiplyerExample-70"><span class="linenos">70</span></a>
-</span><span id="MultiplyerExample-71"><a href="#MultiplyerExample-71"><span class="linenos">71</span></a>        <span class="k">return</span> <span class="n">total</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiplyerExample-52"><a href="#MultiplyerExample-52"><span class="linenos">52</span></a><span class="k">class</span> <span class="nc">MultiplyerExample</span><span class="p">(</span><span class="n">ActionExample</span><span class="p">):</span>
+</span><span id="MultiplyerExample-53"><a href="#MultiplyerExample-53"><span class="linenos">53</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;A class that multiplies things.&quot;&quot;&quot;</span>
+</span><span id="MultiplyerExample-54"><a href="#MultiplyerExample-54"><span class="linenos">54</span></a>
+</span><span id="MultiplyerExample-55"><a href="#MultiplyerExample-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="MultiplyerExample-56"><a href="#MultiplyerExample-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and multiply all of the elements.</span>
+</span><span id="MultiplyerExample-57"><a href="#MultiplyerExample-57"><span class="linenos">57</span></a>
+</span><span id="MultiplyerExample-58"><a href="#MultiplyerExample-58"><span class="linenos">58</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
+</span><span id="MultiplyerExample-59"><a href="#MultiplyerExample-59"><span class="linenos">59</span></a>
+</span><span id="MultiplyerExample-60"><a href="#MultiplyerExample-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
+</span><span id="MultiplyerExample-61"><a href="#MultiplyerExample-61"><span class="linenos">61</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
+</span><span id="MultiplyerExample-62"><a href="#MultiplyerExample-62"><span class="linenos">62</span></a>
+</span><span id="MultiplyerExample-63"><a href="#MultiplyerExample-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
+</span><span id="MultiplyerExample-64"><a href="#MultiplyerExample-64"><span class="linenos">64</span></a><span class="sd">            int: The multiply of all elements in the list</span>
+</span><span id="MultiplyerExample-65"><a href="#MultiplyerExample-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MultiplyerExample-66"><a href="#MultiplyerExample-66"><span class="linenos">66</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="MultiplyerExample-67"><a href="#MultiplyerExample-67"><span class="linenos">67</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
+</span><span id="MultiplyerExample-68"><a href="#MultiplyerExample-68"><span class="linenos">68</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">number</span>
+</span><span id="MultiplyerExample-69"><a href="#MultiplyerExample-69"><span class="linenos">69</span></a>
+</span><span id="MultiplyerExample-70"><a href="#MultiplyerExample-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="n">total</span>
 </span></pre></div>
 
 
@@ -441,28 +440,28 @@ All <code>validate_XXX</code> methods should accept a single argument, which is 
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">action</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
+        <span class="name">action</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">int</span>:</span></span>
 
                 <label class="view-source-button" for="MultiplyerExample.action-view-source"><span>View Source</span></label>
 
     </div>
     <a class="headerlink" href="#MultiplyerExample.action"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiplyerExample.action-56"><a href="#MultiplyerExample.action-56"><span class="linenos">56</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-</span><span id="MultiplyerExample.action-57"><a href="#MultiplyerExample.action-57"><span class="linenos">57</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and multiply all of the elements.</span>
-</span><span id="MultiplyerExample.action-58"><a href="#MultiplyerExample.action-58"><span class="linenos">58</span></a>
-</span><span id="MultiplyerExample.action-59"><a href="#MultiplyerExample.action-59"><span class="linenos">59</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
-</span><span id="MultiplyerExample.action-60"><a href="#MultiplyerExample.action-60"><span class="linenos">60</span></a>
-</span><span id="MultiplyerExample.action-61"><a href="#MultiplyerExample.action-61"><span class="linenos">61</span></a><span class="sd">        Args:</span>
-</span><span id="MultiplyerExample.action-62"><a href="#MultiplyerExample.action-62"><span class="linenos">62</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
-</span><span id="MultiplyerExample.action-63"><a href="#MultiplyerExample.action-63"><span class="linenos">63</span></a>
-</span><span id="MultiplyerExample.action-64"><a href="#MultiplyerExample.action-64"><span class="linenos">64</span></a><span class="sd">        Returns:</span>
-</span><span id="MultiplyerExample.action-65"><a href="#MultiplyerExample.action-65"><span class="linenos">65</span></a><span class="sd">            int: The multiply of all elements in the list</span>
-</span><span id="MultiplyerExample.action-66"><a href="#MultiplyerExample.action-66"><span class="linenos">66</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="MultiplyerExample.action-67"><a href="#MultiplyerExample.action-67"><span class="linenos">67</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
-</span><span id="MultiplyerExample.action-68"><a href="#MultiplyerExample.action-68"><span class="linenos">68</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
-</span><span id="MultiplyerExample.action-69"><a href="#MultiplyerExample.action-69"><span class="linenos">69</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">number</span>
-</span><span id="MultiplyerExample.action-70"><a href="#MultiplyerExample.action-70"><span class="linenos">70</span></a>
-</span><span id="MultiplyerExample.action-71"><a href="#MultiplyerExample.action-71"><span class="linenos">71</span></a>        <span class="k">return</span> <span class="n">total</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="MultiplyerExample.action-55"><a href="#MultiplyerExample.action-55"><span class="linenos">55</span></a>    <span class="k">def</span> <span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="MultiplyerExample.action-56"><a href="#MultiplyerExample.action-56"><span class="linenos">56</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a list of ints and multiply all of the elements.</span>
+</span><span id="MultiplyerExample.action-57"><a href="#MultiplyerExample.action-57"><span class="linenos">57</span></a>
+</span><span id="MultiplyerExample.action-58"><a href="#MultiplyerExample.action-58"><span class="linenos">58</span></a><span class="sd">        The validation method in this case is `ActionExample.validate_action`.</span>
+</span><span id="MultiplyerExample.action-59"><a href="#MultiplyerExample.action-59"><span class="linenos">59</span></a>
+</span><span id="MultiplyerExample.action-60"><a href="#MultiplyerExample.action-60"><span class="linenos">60</span></a><span class="sd">        Args:</span>
+</span><span id="MultiplyerExample.action-61"><a href="#MultiplyerExample.action-61"><span class="linenos">61</span></a><span class="sd">            number_list (List[int]): The list of ints</span>
+</span><span id="MultiplyerExample.action-62"><a href="#MultiplyerExample.action-62"><span class="linenos">62</span></a>
+</span><span id="MultiplyerExample.action-63"><a href="#MultiplyerExample.action-63"><span class="linenos">63</span></a><span class="sd">        Returns:</span>
+</span><span id="MultiplyerExample.action-64"><a href="#MultiplyerExample.action-64"><span class="linenos">64</span></a><span class="sd">            int: The multiply of all elements in the list</span>
+</span><span id="MultiplyerExample.action-65"><a href="#MultiplyerExample.action-65"><span class="linenos">65</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="MultiplyerExample.action-66"><a href="#MultiplyerExample.action-66"><span class="linenos">66</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span id="MultiplyerExample.action-67"><a href="#MultiplyerExample.action-67"><span class="linenos">67</span></a>        <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">number_list</span><span class="p">:</span>
+</span><span id="MultiplyerExample.action-68"><a href="#MultiplyerExample.action-68"><span class="linenos">68</span></a>            <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">number</span>
+</span><span id="MultiplyerExample.action-69"><a href="#MultiplyerExample.action-69"><span class="linenos">69</span></a>
+</span><span id="MultiplyerExample.action-70"><a href="#MultiplyerExample.action-70"><span class="linenos">70</span></a>        <span class="k">return</span> <span class="n">total</span>
 </span></pre></div>
 
 
@@ -512,17 +511,17 @@ All <code>validate_XXX</code> methods should accept a single argument, which is 
 
     </div>
     <a class="headerlink" href="#run_example"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="run_example-74"><a href="#run_example-74"><span class="linenos">74</span></a><span class="k">def</span> <span class="nf">run_example</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="run_example-75"><a href="#run_example-75"><span class="linenos">75</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;An example usage of the `new_project_name._validation.ValidatingBaseClass` class.</span>
-</span><span id="run_example-76"><a href="#run_example-76"><span class="linenos">76</span></a>
-</span><span id="run_example-77"><a href="#run_example-77"><span class="linenos">77</span></a><span class="sd">    Simply executes two different methods using the same automatic type validation.</span>
-</span><span id="run_example-78"><a href="#run_example-78"><span class="linenos">78</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="run_example-79"><a href="#run_example-79"><span class="linenos">79</span></a>    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AdderExample</span><span class="p">,</span> <span class="n">MultiplyerExample</span><span class="p">]</span>
-</span><span id="run_example-80"><a href="#run_example-80"><span class="linenos">80</span></a>
-</span><span id="run_example-81"><a href="#run_example-81"><span class="linenos">81</span></a>    <span class="k">for</span> <span class="n">_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
-</span><span id="run_example-82"><a href="#run_example-82"><span class="linenos">82</span></a>        <span class="n">_object</span> <span class="o">=</span> <span class="n">_class</span><span class="p">()</span>
-</span><span id="run_example-83"><a href="#run_example-83"><span class="linenos">83</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="n">_object</span><span class="o">.</span><span class="n">action</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-</span><span id="run_example-84"><a href="#run_example-84"><span class="linenos">84</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="run_example-73"><a href="#run_example-73"><span class="linenos">73</span></a><span class="k">def</span> <span class="nf">run_example</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="run_example-74"><a href="#run_example-74"><span class="linenos">74</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;An example usage of the `new_project_name._validation.ValidatingBaseClass` class.</span>
+</span><span id="run_example-75"><a href="#run_example-75"><span class="linenos">75</span></a>
+</span><span id="run_example-76"><a href="#run_example-76"><span class="linenos">76</span></a><span class="sd">    Simply executes two different methods using the same automatic type validation.</span>
+</span><span id="run_example-77"><a href="#run_example-77"><span class="linenos">77</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="run_example-78"><a href="#run_example-78"><span class="linenos">78</span></a>    <span class="n">classes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AdderExample</span><span class="p">,</span> <span class="n">MultiplyerExample</span><span class="p">]</span>
+</span><span id="run_example-79"><a href="#run_example-79"><span class="linenos">79</span></a>
+</span><span id="run_example-80"><a href="#run_example-80"><span class="linenos">80</span></a>    <span class="k">for</span> <span class="n">_class</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">:</span>
+</span><span id="run_example-81"><a href="#run_example-81"><span class="linenos">81</span></a>        <span class="n">_object</span> <span class="o">=</span> <span class="n">_class</span><span class="p">()</span>
+</span><span id="run_example-82"><a href="#run_example-82"><span class="linenos">82</span></a>        <span class="n">total</span> <span class="o">=</span> <span class="n">_object</span><span class="o">.</span><span class="n">action</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</span><span id="run_example-83"><a href="#run_example-83"><span class="linenos">83</span></a>        <span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
 </span></pre></div>
 
 
