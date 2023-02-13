@@ -4,6 +4,12 @@ Changelog
 
 (main)
 ------
+- Adjust template readme. [alexfayers]
+
+
+v3.2.0 (2023-02-13)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Move __version__ reset to project setup script. [alexfayers]
 
 
