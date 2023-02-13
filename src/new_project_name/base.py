@@ -2,14 +2,13 @@
 
 import logging
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeVar
+
 import toml
-from typing import TypeVar
 
 from ._helpers.nice_logger import SuccessLogger
 
-
-D = TypeVar('D')
+D = TypeVar("D")
 
 
 class BaseClass:
@@ -59,7 +58,7 @@ class BaseClass:
 
         return config
 
-    def read_config(self, *path: str, default: D = None) -> Any | D:
+    def read_config(self, *path: str, default: D | None = None) -> Any | D:
         """Reads a value from the config file.
 
         Args:

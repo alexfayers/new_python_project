@@ -1,8 +1,8 @@
 """CLI functionality of `new_project_name`."""
 
 import logging
-from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 import sys
+from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 
 from . import BaseClass
 from ._helpers.nice_logger import VERBOSE_LEVEL, SuccessLogger
