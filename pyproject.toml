@@ -19,6 +19,7 @@ new_project_name = "new_project_name:cli_main"
 python = ">=3.8,<4.0"
 typeguard = "^2.13.3"
 pyyaml = "^6.0"
+toml = "^0.10.2"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.0"
@@ -65,6 +66,7 @@ docs = ["pdoc"]
 release = ["gitchangelog", "poetry-bumpversion"]
 dev = ["tox-poetry-installer"]
 
+[tool.poetry_bumpversion.file."src/new_project_name/__init__.py"]
 [tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
 
 [tool.isort]

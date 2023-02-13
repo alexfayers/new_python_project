@@ -1,4 +1,5 @@
 """.. include:: ../../README.md"""  # noqa
+__version__ = "2.2.0"
 
 import logging
 
@@ -10,7 +11,7 @@ from .cli import cli_main
 # set up logging for the package
 logging.setLoggerClass(_SuccessLogger)
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.WARNING)
 console = logging.StreamHandler()
 console.setFormatter(_ColoredFormatter("[%(name)s] (%(levelname)s): %(message)s"))
 logger.addHandler(console)
