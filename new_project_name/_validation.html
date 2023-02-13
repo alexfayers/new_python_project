@@ -107,9 +107,9 @@
 </span><span id="ValidatingBaseClass-26"><a href="#ValidatingBaseClass-26"><span class="linenos"> 26</span></a><span class="sd">    Example usage can be seen in `new_project_name._validation.examples`.</span>
 </span><span id="ValidatingBaseClass-27"><a href="#ValidatingBaseClass-27"><span class="linenos"> 27</span></a><span class="sd">    &quot;&quot;&quot;</span>
 </span><span id="ValidatingBaseClass-28"><a href="#ValidatingBaseClass-28"><span class="linenos"> 28</span></a>
-</span><span id="ValidatingBaseClass-29"><a href="#ValidatingBaseClass-29"><span class="linenos"> 29</span></a>    <span class="n">required_methods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="ValidatingBaseClass-29"><a href="#ValidatingBaseClass-29"><span class="linenos"> 29</span></a>    <span class="n">required_methods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="ValidatingBaseClass-30"><a href="#ValidatingBaseClass-30"><span class="linenos"> 30</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Methods that must be implemented in any child classes&quot;&quot;&quot;</span>
-</span><span id="ValidatingBaseClass-31"><a href="#ValidatingBaseClass-31"><span class="linenos"> 31</span></a>    <span class="n">validated_methods</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="ValidatingBaseClass-31"><a href="#ValidatingBaseClass-31"><span class="linenos"> 31</span></a>    <span class="n">validated_methods</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
 </span><span id="ValidatingBaseClass-32"><a href="#ValidatingBaseClass-32"><span class="linenos"> 32</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Methods that must be validated in any child classes.</span>
 </span><span id="ValidatingBaseClass-33"><a href="#ValidatingBaseClass-33"><span class="linenos"> 33</span></a>
 </span><span id="ValidatingBaseClass-34"><a href="#ValidatingBaseClass-34"><span class="linenos"> 34</span></a><span class="sd">    The `validate_XXX` naming scheme should be used when creating a validation function.</span>
@@ -244,7 +244,7 @@ class variable.</p>
                             </div>
                             <div id="ValidatingBaseClass.required_methods" class="classattr">
                                 <div class="attr variable">
-            <span class="name">required_methods</span><span class="annotation">: List[str]</span><span class="default_value"> = []</span>
+            <span class="name">required_methods</span><span class="annotation">: list[str]</span><span class="default_value"> = []</span>
 
         
     </div>
@@ -257,7 +257,7 @@ class variable.</p>
                             </div>
                             <div id="ValidatingBaseClass.validated_methods" class="classattr">
                                 <div class="attr variable">
-            <span class="name">validated_methods</span><span class="annotation">: List[str]</span><span class="default_value"> = []</span>
+            <span class="name">validated_methods</span><span class="annotation">: list[str]</span><span class="default_value"> = []</span>
 
         
     </div>
