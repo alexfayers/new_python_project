@@ -4,6 +4,14 @@ Changelog
 
 (main)
 ------
+- Merge branch 'main' of
+  https://github.com/alexfayers/new_python_project. [alexfayers]
+
+
+v3.0.1 (2023-02-13)
+-------------------
+- Bump version: 3.0.0 -> 3.0.1. [alexfayers]
+- Update CHANGELOG.md. [alexfayers]
 - Update poetry lock and docs. [alexfayers]
 
 
