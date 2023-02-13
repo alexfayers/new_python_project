@@ -23,11 +23,9 @@ You can use new_project_readable_name as an importable module:
 ```py
 from new_project_name import BaseClass
 
-app = BaseClass("config.yml")
+app = BaseClass("config.toml")
 
-app.logger.info(
-    f"Hi, welcome to {app.config.INFO.NAME} by {app.config.INFO.AUTHOR}!"
-)
+# cool stuff here...
 ```
 
 Or as a command line interface:
