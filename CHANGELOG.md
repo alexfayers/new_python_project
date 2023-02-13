@@ -4,6 +4,12 @@ Changelog
 
 (main)
 ------
+- Adjust rename action to reset project version. [alexfayers]
+
+
+v3.0.4 (2023-02-13)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Add bandit and toml validation. [alexfayers]
 - Remove bump version commits from changelog. [alexfayers]
 
