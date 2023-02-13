@@ -16,6 +16,7 @@ COLORS = {
     "CRITICAL": YELLOW,
     "ERROR": RED,
     "SUCCESS": GREEN,
+    "VERBOSE": MAGENTA,
 }
 
 COLORS_HTML = {
@@ -25,6 +26,7 @@ COLORS_HTML = {
     "CRITICAL": "darkred",
     "ERROR": "red",
     "SUCCESS": "green",
+    "VERBOSE": "purple",
 }
 
 COLORS_BOOTSTRAP = {
@@ -34,6 +36,7 @@ COLORS_BOOTSTRAP = {
     "CRITICAL": "warning",
     "ERROR": "danger",
     "SUCCESS": "success",
+    "VERBOSE": "muted",
 }
 
 
@@ -41,7 +44,8 @@ RESET_SEQ = "\033[0m"
 COLOR_SEQ = "\033[1;%dm"
 BOLD_SEQ = "\033[1m"
 
-SUCCESS_LEVEL = 25
+SUCCESS_LEVEL = 35
+VERBOSE_LEVEL = 5
 
 
 class ColoredFormatter(logging.Formatter):
@@ -123,6 +127,7 @@ class SuccessLogger(logging.Logger):
 
         # self.propagate = True  # don't propagate to parent loggers, otherwise we get duplicate messages
 
+        logging.addLevelName(VERBOSE_LEVEL, "VERBOSE")
         logging.addLevelName(SUCCESS_LEVEL, "SUCCESS")
 
     def success(self, msg: str, *args: Any, **kwargs: Any) -> None:
@@ -133,3 +138,12 @@ class SuccessLogger(logging.Logger):
         """
         if self.isEnabledFor(SUCCESS_LEVEL):
             self._log(SUCCESS_LEVEL, msg, args, **kwargs)
+
+    def verbose(self, msg: str, *args: Any, **kwargs: Any) -> None:
+        """Enables the "verbose" log type for all loggers using `SuccessLogger`.
+
+        Args:
+            msg (str): The message to log
+        """
+        if self.isEnabledFor(VERBOSE_LEVEL):
+            self._log(VERBOSE_LEVEL, msg, args, **kwargs)
