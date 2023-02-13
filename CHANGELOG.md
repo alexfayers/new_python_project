@@ -4,6 +4,12 @@ Changelog
 
 (main)
 ------
+- Move __version__ reset to project setup script. [alexfayers]
+
+
+v3.1.0 (2023-02-13)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Adjust rename action to reset project version. [alexfayers]
 
 
