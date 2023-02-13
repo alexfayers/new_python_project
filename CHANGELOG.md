@@ -4,6 +4,21 @@ Changelog
 
 (main)
 ------
+- Execute permission on release script. [alexfayers]
+- Linting + formatting. [alexfayers]
+- Use toml for config and add helper functions to base class.
+  [alexfayers]
+- Add verbose logging level. [alexfayers]
+- Add version to init. [alexfayers]
+- Remove project setup script after execution. [alexfayers]
+- Bump pre-commit. [alexfayers]
+- Use poetry to get version. [alexfayers]
+
+
+v2.2.0 (2022-11-04)
+-------------------
+- Bump version: 2.1.3 -> 2.2.0. [alex.fayers]
+- Update CHANGELOG.md. [alex.fayers]
 - Another cache key fix. [alex.fayers]
 - Update tox hashes. [alex.fayers]
 - Cache pre-commit bits. [alex.fayers]
