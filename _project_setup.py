@@ -194,6 +194,22 @@ def remove_or_update_template_files() -> None:
     else:
         print("[Reset Files]\t@@ Couldn't find 'pyproject.toml' file. Skipping resetting 'current_version'.")
 
+    init_file = PROJECT_PATH / Path(f"src/{REPLACEMENT_BASE.lower()}_name/__init__.py")
+    if init_file.is_file():
+        print("[Reset Files]\t@@ Resetting version 'version' in '__init__.py' to '0.1.0'")
+
+        pyproject_content = ""
+
+        with open(init_file) as f:
+            pyproject_content = f.read()
+
+        if LIVE_MODE:
+            with open(init_file, "w") as config_file:
+                # this is a bit hacky but eh
+                config_file.write(re.sub(r'__version__\s=\s".*"', '__version__ = "0.1.0"', pyproject_content))
+    else:
+        print("[Reset Files]\t@@ Couldn't find '__init__.py' file. Skipping resetting 'current_version'.")
+
     changelogfile = PROJECT_PATH / Path("CHANGELOG.md")
     if changelogfile.is_file():
         print("[Reset Files]\t@@ Removing 'CHANGELOG.md'")
