@@ -13,6 +13,7 @@ repos:
   - id: debug-statements
   - id: mixed-line-ending
     args: ['--fix=lf']
+  - id: check-toml
 
 - repo: https://github.com/myint/autoflake
   rev: v2.0.1
@@ -52,3 +53,9 @@ repos:
     hooks:
     - id: pyupgrade
       args: [--py39-plus]
+
+-   repo: https://github.com/PyCQA/bandit
+    rev: 1.7.4
+    hooks:
+    - id: bandit
+      args: ["--exclude", "tests"]
