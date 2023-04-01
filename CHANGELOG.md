@@ -4,6 +4,13 @@ Changelog
 
 (main)
 ------
+- Move ValidatingBaseClass into its own repo
+  (https://github.com/alexfayers/validating-base) [alexfayers]
+
+
+v3.3.0 (2023-04-01)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Add requirements update to release script. [alexfayers]
 - Use requirements files for tox. [alexfayers]
 - Update requirements files. [alexfayers]
