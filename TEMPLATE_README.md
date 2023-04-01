@@ -1,6 +1,7 @@
 # new_project_readable_name
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/new_project_author/new_project_name?label=version)
+![Lines of code](https://img.shields.io/tokei/lines/github/new_project_author/new_project_name)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/new_project_author/new_project_name/CI.yml?label=tests)
 ![GitHub last commit](https://img.shields.io/github/last-commit/new_project_author/new_project_name)
 

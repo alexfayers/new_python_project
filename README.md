@@ -1,6 +1,7 @@
 # Alex's New Python Project Template
 
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alexfayers/new_python_project?label=version)
+![Lines of code](https://img.shields.io/tokei/lines/github/alexfayers/new_python_project)
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/alexfayers/new_python_project/CI.yml?label=tests)
 ![GitHub last commit](https://img.shields.io/github/last-commit/alexfayers/new_python_project)
 
