@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "new_project_readable_name"
-version = "3.4.2"
+version = "3.4.3"
 description = "new_project_description"
 authors = ["new_project_author <new_project_author@example.com>"]
 license = "MIT"
