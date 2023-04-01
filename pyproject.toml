@@ -25,20 +25,15 @@ toml = "^0.10.2"
 [tool.poetry.group.dev.dependencies]
 # For during development.
 # Mainly linters and poetry plugins.
-isort = "^5.10.1"
 black = "^22.6.0"
 mypy = "^0.971"
-Flake8-pyproject = "^1.1.0.post0"
-flake8 = "^5.0.4"
-pydocstyle = "^6.1.1"
-flake8-docstrings = "^1.6.0"
 poetry-types = "^0.3.5"
 poetry-bumpversion = "^0.3.0"
+ruff = "^0.0.260"
 
 [tool.poetry.group.types.dependencies]
 # Type stubs for mypy
 types-pyyaml = "^6.0.12.9"
-types-flake8-docstrings = "^1.7.0.1"
 types-toml = "^0.10.8.6"
 
 [tool.poetry.group.test.dependencies]
@@ -71,9 +66,6 @@ poetry-bumpversion = "^0.3.0"
 [tool.poetry_bumpversion.file."src/new_project_name/__init__.py"]
 [tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
 
-[tool.isort]
-profile = 'black'
-
 [tool.black]
 line-length = 120
 exclude = ['.*', 'docs']
@@ -100,4 +92,13 @@ strict_equality = true
 pretty = true
 exclude = '(?x)( ^setup\.py$ | ^__pycache__ | ^build )'
 
+[tool.ruff]
+select = ["E", "F", "I", "D", "UP", "TCH", "PT", "ANN"]
+line-length = 120
+target-version = "py38"
+exclude = [".*", "docs", "__pycache__"]
+ignore = ["ANN101", "ANN401"]
 
+[tool.ruff.pydocstyle]
+convention = "google"
+ignore-decorators = ["overrides.overrides"]

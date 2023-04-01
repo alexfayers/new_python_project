@@ -2,11 +2,12 @@
 
 import logging
 from pathlib import Path
-from typing import Any, TypeVar
+from typing import TYPE_CHECKING, Any, TypeVar
 
 import toml
 
-from ._helpers.nice_logger import SuccessLogger
+if TYPE_CHECKING:
+    from ._helpers.nice_logger import SuccessLogger
 
 D = TypeVar("D")
 
@@ -14,7 +15,7 @@ D = TypeVar("D")
 class BaseClass:
     """Everything in the project comes back to here."""
 
-    def __init__(self, config_file: str):
+    def __init__(self, config_file: str) -> None:
         """Initialises the base class for `new_project_name` by loading the config and setting up a logger.
 
         Args:
@@ -29,6 +30,8 @@ class BaseClass:
 
         Args:
             message (str): The message to log and raise.
+            *args (Any): Generic positional arguments
+            **kwargs (Any): Generic keyword arguments
 
         Raises:
             Exception: The raised exception.

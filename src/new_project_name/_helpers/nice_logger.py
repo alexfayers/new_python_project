@@ -122,6 +122,7 @@ class SuccessLogger(logging.Logger):
 
         Args:
             name (str): The name of the logger
+            **kwargs (Any): Generic keyword arguments
         """
         super().__init__(name, **kwargs)
 
@@ -135,6 +136,8 @@ class SuccessLogger(logging.Logger):
 
         Args:
             msg (str): The message to log
+            *args (Any): Generic positional arguments
+            **kwargs (Any): Generic keyword arguments
         """
         if self.isEnabledFor(SUCCESS_LEVEL):
             self._log(SUCCESS_LEVEL, msg, args, **kwargs)
@@ -144,6 +147,8 @@ class SuccessLogger(logging.Logger):
 
         Args:
             msg (str): The message to log
+            *args (Any): Generic positional arguments
+            **kwargs (Any): Generic keyword arguments
         """
         if self.isEnabledFor(VERBOSE_LEVEL):
             self._log(VERBOSE_LEVEL, msg, args, **kwargs)
