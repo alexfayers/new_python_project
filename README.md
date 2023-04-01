@@ -1,5 +1,9 @@
 # Alex's New Python Project Template
 
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/alexfayers/new_python_project?label=version)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/alexfayers/new_python_project/CI.yml?label=tests)
+![GitHub last commit](https://img.shields.io/github/last-commit/alexfayers/new_python_project)
+
 This repository allows you to start a new python project faster. It sets up a few things for after you [create a new repository from this template](https://github.com/alexfayers/new_python_project/generate), so that you can get started on your new idea sooner.
 
 ## Installation

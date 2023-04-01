@@ -40,7 +40,7 @@ jobs:
       - name: Rename the project
         if: steps.is_template.outputs.is_template == 'true'
         run: |
-          echo "Renaming the project with a name of ${{ env.REPOSITORY_NAME }}, author of ${{ env.REPOSITORY_OWNER }}, and description of ${{ env.REPOSITORY_URLNAME }}"
+          echo "Renaming the project with a name of ${{ env.REPOSITORY_NAME }} and author of ${{ env.REPOSITORY_OWNER }}"
           python _project_setup.py "${{ env.REPOSITORY_NAME }}" "${{ env.REPOSITORY_URLNAME }}" "${{ env.REPOSITORY_OWNER }}" "An epic project called ${{ env.REPOSITORY_URLNAME }}, by ${{ env.REPOSITORY_OWNER }}!"
           rm _project_setup.py
 
