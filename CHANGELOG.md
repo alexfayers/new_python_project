@@ -5,6 +5,16 @@ Changelog
 (main)
 ------
 - Update requirements files. [alexfayers]
+- Update deps to latest. [alexfayers]
+- Update lock file. [alexfayers]
+- Update pre-commit hooks. [alexfayers]
+- Use ruff for linting. [alexfayers]
+
+
+v3.4.3 (2023-04-01)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
+- Update requirements files. [alexfayers]
 - Update poetry.lock. [alexfayers]
 - Add pytest-clarity. [alexfayers]
 - Add pytest-sugar. [alexfayers]
@@ -343,3 +353,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
+
+
