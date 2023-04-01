@@ -4,6 +4,12 @@ Changelog
 
 (main)
 ------
+- Lines of code badge. [alexfayers]
+
+
+v3.4.1 (2023-04-01)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Make readme look a bit nicer. [alexfayers]
 
 
