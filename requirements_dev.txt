@@ -1,6 +1,0 @@
-.[test]
-.[lint]
-.[devlint]
-.[typehints]
-.[docs]
-.[release]
