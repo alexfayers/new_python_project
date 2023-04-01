@@ -4,6 +4,12 @@ Changelog
 
 (main)
 ------
+- Make readme look a bit nicer. [alexfayers]
+
+
+v3.4.0 (2023-04-01)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Move ValidatingBaseClass into its own repo
   (https://github.com/alexfayers/validating-base) [alexfayers]
 
