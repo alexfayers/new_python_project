@@ -16,20 +16,15 @@ include = ["LICENSE", "src/new_project_name/py.typed", "src/new_project_name/VER
 new_project_readable_name = "new_project_name:cli_main"
 
 [tool.poetry.dependencies]
+# Main project dependencies.
 python = ">=3.9,<4.0"
 typeguard = "^2.13.3"
 pyyaml = "^6.0"
 toml = "^0.10.2"
 
-[tool.poetry.group.test.dependencies]
-pytest = "^7.2.0"
-tox = "^3.27.0"
-
-[tool.poetry.group.lint.dependencies]
-pre-commit = "^2.20.0"
-mypy = "^0.971"
-
-[tool.poetry.group.devlint.dependencies]
+[tool.poetry.group.dev.dependencies]
+# For during development.
+# Mainly linters and poetry plugins.
 isort = "^5.10.1"
 black = "^22.6.0"
 mypy = "^0.971"
@@ -37,34 +32,39 @@ Flake8-pyproject = "^1.1.0.post0"
 flake8 = "^5.0.4"
 pydocstyle = "^6.1.1"
 flake8-docstrings = "^1.6.0"
+poetry-types = "^0.3.5"
+poetry-bumpversion = "^0.3.0"
 
 [tool.poetry.group.types.dependencies]
-types-PyYAML = "^6.0.11"
+# Type stubs for mypy
+types-pyyaml = "^6.0.12.9"
+types-flake8-docstrings = "^1.7.0.1"
+types-toml = "^0.10.8.6"
+
+[tool.poetry.group.test.dependencies]
+# For running tests.
+pytest = "^7.2.0"
+
+[tool.poetry.group.lint.dependencies]
+# For linting the project.
+pre-commit = "^2.20.0"
+mypy = "^0.971"
 
 [tool.poetry.group.docs]
+# For generating documentation.
 optional = true
 
 [tool.poetry.group.docs.dependencies]
 pdoc = "^12.0.2"
 
 [tool.poetry.group.release]
+# For making a new versioned release of the project.
 optional = true
 
 [tool.poetry.group.release.dependencies]
 gitchangelog = "^3.0.4"
 poetry-bumpversion = "^0.3.0"
 
-[tool.poetry.group.dev.dependencies]
-tox-poetry-installer = {extras = ["poetry"], version = "^0.10.0"}
-
-[tool.poetry.extras]
-test = ["pytest", "tox"]
-lint = ["pre-commit", "mypy"]
-devlint = ["isort", "black", "mypy", "Flake8-pyproject", "flake8", "pydocstyle", "flake8-docstrings"]
-types = ["types-PyYAML"]
-docs = ["pdoc"]
-release = ["gitchangelog", "poetry-bumpversion"]
-dev = ["tox-poetry-installer"]
 
 [tool.poetry_bumpversion.file."src/new_project_name/__init__.py"]
 [tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
