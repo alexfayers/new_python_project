@@ -4,7 +4,7 @@ import logging
 import sys
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 
-from . import BaseClass
+from . import BaseClass, __version__
 from ._helpers.nice_logger import VERBOSE_LEVEL, SuccessLogger
 
 
@@ -13,10 +13,15 @@ def cli_main() -> None:
     argparser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     argparser.add_argument("-c", "--config", help="Path to config file", type=str, default="config.toml")
     argparser.add_argument("-v", "--verbose", help="Enable verbose logging", action="count", default=0)
+    argparser.add_argument("-V", "--version", help="Output the project's current version and exit", action="store_true")
 
     args = argparser.parse_args()
     config_file = args.config
     verbose_level: int = args.verbose
+
+    if args.version is True:
+        print(f"Version: {__version__}")
+        sys.exit(1)
 
     package_logger: SuccessLogger = logging.getLogger("new_project_name")  # type: ignore
 
