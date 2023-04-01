@@ -31,9 +31,9 @@ app = BaseClass("config.toml")
 Or as a command line interface:
 
 ```bash
-$ python3 -m new_project_name
+$ python3 -m new_project_readable_name
 # or
-$ new_project_name
+$ new_project_readable_name
 ```
 
 ## Documentation

@@ -1,4 +1,4 @@
-"""The main functionality of `new_project_name`."""
+"""The main functionality of `new_project_readable_name`."""
 
 import logging
 from pathlib import Path

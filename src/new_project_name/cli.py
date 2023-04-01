@@ -1,4 +1,4 @@
-"""CLI functionality of `new_project_name`."""
+"""CLI functionality of `new_project_readable_name`."""
 
 import logging
 import sys
@@ -9,7 +9,7 @@ from ._helpers.nice_logger import VERBOSE_LEVEL, SuccessLogger
 
 
 def cli_main() -> None:
-    """CLI entrypoint for `new_project_name`. Uses `BaseClass`."""
+    """CLI entrypoint for `new_project_readable_name`. Uses `new_project_name.BaseClass`."""
     argparser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     argparser.add_argument("-c", "--config", help="Path to config file", type=str, default="config.toml")
     argparser.add_argument("-v", "--verbose", help="Enable verbose logging", action="count", default=0)

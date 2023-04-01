@@ -13,7 +13,7 @@ packages = [{include = "new_project_name", from = "src"}]
 include = ["LICENSE", "src/new_project_name/py.typed", "src/new_project_name/VERSION"]
 
 [tool.poetry.scripts]
-new_project_name = "new_project_name:cli_main"
+new_project_readable_name = "new_project_name:cli_main"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
