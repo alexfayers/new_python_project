@@ -4,6 +4,20 @@ Changelog
 
 (main)
 ------
+- Add requirements update to release script. [alexfayers]
+- Use requirements files for tox. [alexfayers]
+- Update requirements files. [alexfayers]
+- Update poetry.lock. [alexfayers]
+- Re-organise dependencies. [alexfayers]
+- Add export_requirements.sh script. [alexfayers]
+- Add version flag. [alexfayers]
+- Add non-gh script. [alexfayers]
+- Use new_project_readable_name a bit more. [alexfayers]
+
+
+v3.2.1 (2023-02-13)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Adjust template readme. [alexfayers]
 
 
