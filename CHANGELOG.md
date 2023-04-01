@@ -4,6 +4,15 @@ Changelog
 
 (main)
 ------
+- Update requirements files. [alexfayers]
+- Update poetry.lock. [alexfayers]
+- Add pytest-clarity. [alexfayers]
+- Add pytest-sugar. [alexfayers]
+
+
+v3.4.2 (2023-04-01)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Lines of code badge. [alexfayers]
 
 
