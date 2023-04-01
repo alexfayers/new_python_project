@@ -19,6 +19,12 @@ if [ -z "$1" ]
     exit 1
 fi
 
+# Get the current script's directory
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+# Ensure requirements.txt files are up to date
+"$SCRIPT_DIR/export_requirements.sh"
+
 # Clear the current changelog - it gets regenerated fully on each release
 echo '' > CHANGELOG.md
 
