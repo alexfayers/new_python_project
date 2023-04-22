@@ -14,24 +14,8 @@ poetry export --format=requirements.txt \
     --without-hashes \
     --output="requirements.txt"
 
-# Export development requirements
-echo "[-] Exporting development requirements..."
-
-poetry export --format=requirements.txt \
-    --without-hashes \
-    --only="dev,types" \
-    --output="requirements-dev.txt"
-
-# Export linting requirements
-echo "[-] Exporting linting requirements..."
-
-poetry export --format=requirements.txt \
-    --without-hashes \
-    --only="lint,types" \
-    --output="requirements-lint.txt"
-
 # Define the extra group dependencies
-declare -a arr=("test" "docs" "release")
+declare -a arr=("dev" "lint" "test" "docs" "release")
 
 for group in "${arr[@]}"
 do
