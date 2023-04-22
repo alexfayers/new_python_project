@@ -18,22 +18,16 @@ new_project_readable_name = "new_project_name:cli_main"
 [tool.poetry.dependencies]
 # Main project dependencies.
 python = ">=3.9,<4.0"
-typeguard = "^3.0.2"
-pyyaml = "^6.0"
 toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
-# For during development.
-# Mainly linters and poetry plugins.
+# Linters for use during development (e.g. via vscode).
 black = "^23.3.0"
 mypy = "^1.1.1"
-poetry-bumpversion = "^0.3.0"
 ruff = "^0.0.260"
-poetry-plugin-up = "^0.3.0"
 
 [tool.poetry.group.types.dependencies]
 # Type stubs for mypy
-types-pyyaml = "^6.0.12.9"
 types-toml = "^0.10.8.6"
 
 [tool.poetry.group.test.dependencies]
@@ -43,9 +37,14 @@ pytest-sugar = "^0.9.6"
 pytest-clarity = "^1.0.1"
 
 [tool.poetry.group.lint.dependencies]
-# For linting the project.
+# For linting via tox.
 pre-commit = "^3.2.1"
 mypy = "^1.1.1"
+
+[tool.poetry.group.poetry-plugins.dependencies]
+# Poetry plugins for the project.
+poetry-bumpversion = "^0.3.0"
+poetry-plugin-up = "^0.3.0"
 
 [tool.poetry.group.docs]
 # For generating documentation.
@@ -62,6 +61,7 @@ optional = true
 gitchangelog = "^3.0.4"
 poetry-bumpversion = "^0.3.0"
 
+### Tool configs ###
 
 [tool.poetry_bumpversion.file."src/new_project_name/__init__.py"]
 [tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
