@@ -5,6 +5,26 @@ Changelog
 (main)
 ------
 - Update requirements files. [alexfayers]
+- Update dependencies and pre-commit config. [alexfayers]
+
+  Basically just a clean up and update
+- Remove unneeded types requirements file. [alexfayers]
+- Update all deps. [alexfayers]
+- Pre-commit dep updates. [alexfayers]
+- Remove whitespace. [alexfayers]
+- Update export requirements to not export types. [alexfayers]
+- Remove mypy from tox lint - it's in the pre-commit hook now.
+  [alexfayers]
+- Remove types group. [alexfayers]
+- Update pre-commit config. [alexfayers]
+- Update requirements files. [alexfayers]
+- Update deps in pyproject. [alexfayers]
+
+
+v3.5.0 (2023-04-01)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
+- Update requirements files. [alexfayers]
 - Update deps to latest. [alexfayers]
 - Update lock file. [alexfayers]
 - Update pre-commit hooks. [alexfayers]
@@ -353,3 +373,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
+
+
