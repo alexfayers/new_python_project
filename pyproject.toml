@@ -10,7 +10,14 @@ authors = ["Alex Fayers <alex@fayers.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "anppt", from = "src"}]
-include = ["LICENSE", "src/anppt/py.typed", "src/anppt/VERSION"]
+include = [
+    "LICENSE",
+    "src/anppt/py.typed",
+    "src/anppt/VERSION",
+    '{{cookiecutter.project_slug}}/**/*',
+    'cookiecutter.json',
+    'hooks/*'
+]
 
 [tool.poetry.scripts]
 anppt = "anppt:cli_main"
