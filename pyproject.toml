@@ -3,22 +3,23 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "new_project_readable_name"
+name = "alexs-new-python-project-template"
 version = "3.6.0"
-description = "new_project_description"
-authors = ["new_project_author <new_project_author@example.com>"]
+description = "A template for new Python projects."
+authors = ["Alex Fayers <alex@fayers.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "new_project_name", from = "src"}]
-include = ["LICENSE", "src/new_project_name/py.typed", "src/new_project_name/VERSION"]
+packages = [{include = "anppt", from = "src"}]
+include = ["LICENSE", "src/anppt/py.typed", "src/anppt/VERSION"]
 
 [tool.poetry.scripts]
-new_project_readable_name = "new_project_name:cli_main"
+anppt = "anppt:cli_main"
 
 [tool.poetry.dependencies]
 # Main project dependencies.
 python = ">=3.9,<4.0"
 toml = "^0.10.2"
+cookiecutter = "^2.1.1"
 
 [tool.poetry.group.dev.dependencies]
 # Linters for use during development (e.g. via vscode).
@@ -35,6 +36,7 @@ pytest-clarity = "^1.0.1"
 [tool.poetry.group.lint.dependencies]
 # For linting via tox.
 pre-commit = "^3.2.2"
+mypy = "^1.3.0"
 
 [tool.poetry.group.poetry-plugins.dependencies]
 # Poetry plugins for the project.
@@ -58,8 +60,8 @@ poetry-bumpversion = "^0.3.0"
 
 ### Tool configs ###
 
-[tool.poetry_bumpversion.file."src/new_project_name/__init__.py"]
-[tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
+[tool.poetry_bumpversion.file."src/anppt/__init__.py"]
+[tool.poetry_bumpversion.file."src/anppt/VERSION"]
 
 [tool.black]
 line-length = 120
