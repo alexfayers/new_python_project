@@ -9,11 +9,35 @@ This repository allows you to start a new python project faster. It sets up a fe
 
 ## Installation
 
-After you've created your new repo, wait for the [rename_templates](.github/workflows/rename_templates.yml) workflow to complete. This will move around a few files, rename some stuff, and reset the project version so that everything's ready for you to get started (using the [_project_setup.py](_project_setup.py) script).
+You can use this repo in a few ways:
+
+- [Create a new repository from this template](https://github.com/alexfayers/new_python_project/generate) (this is the easiest method)
+- [Use the helper script](#using-the-helper-script) (this is the method I use)
+- [Use cookiecutter](#using-cookiecutter) (nice if you already use cookiecutter)
+
+After you've created your new repo, wait for the [rename_templates](.github/workflows/rename_templates.yml) workflow to complete. This will move around a few files, rename some stuff, and reset the project version so that everything's ready for you to get started.
 
 Then you can clone the repo locally, and get started on some coding.
 
 *I recommend using [Visual Studio Code](https://code.visualstudio.com) with my extension pack ([Alex's New Python Project Template - Extensions](https://marketplace.visualstudio.com/items?itemName=alexfayers.alexs-nppt-extensions))*
+
+### Using cookiecutter
+
+You can use [cookiecutter](https://cookiecutter.readthedocs.io/en/1.7.2/) to create a new project from this template. You can use this method like this:
+
+```bash
+$ pip install cookiecutter
+$ cookiecutter gh:alexfayers/new_python_project
+```
+
+### Using the helper script
+
+You can also install this repo as a python module and use that to create a new project. It installs a new script called `anppt` (Alex's New Python Project Template), which just wraps around cookiecutter. This method is useful if you make a lot of projects using this template (like me!). You can use this method like this:
+
+```bash
+$ pip install git+https://github.com/alexfayers/new_python_project.git
+$ anppt
+```
 
 ## Development
 
@@ -21,8 +45,6 @@ The template includes a few of my preferences for writing Python:
 
 - All function parameters and returns values must be typed.
 - All functions, classes, and modules must contain docstrings (in the Google format).
-- Each module that you add _should_ have tests associated with it - they go in the [tests](tests) folder.
-    - _At the moment, this isn't actually enforced - but it probably will be in the future because I, personally, always forget to write tests for things._
 - pre-commit hooks are available to enable linting and formatting to be run before you do a commit. You can either install these using `pre-commit install` or just run them once using `tox -e lint`.
 - A few cool classes and functions that I use a lot are also included as submodules of your module. In the future I'll make a system to manage these, but for now you can delete them if you don't need them.
 - The project is installable as a python module, allowing you to even upload the project to PyPI, if you want.
