@@ -4,8 +4,8 @@
 echo "[-] Making sure lock file is up to date..."
 
 poetry lock
-git add poetry.lock
-git commit -m "Update poetry.lock"
+# git add poetry.lock
+# git commit -m "Update poetry.lock"
 
 # Export the base project requirements poetry into requirements.txt format.
 echo "[-] Exporting main requirements..."
@@ -15,7 +15,7 @@ poetry export --format=requirements.txt \
     --output="requirements.txt"
 
 # Define the extra group dependencies
-declare -a arr=("dev" "lint" "test" "docs" "release")
+declare -a arr=("dev" "lint" "types" "test" "docs" "release")
 
 for group in "${arr[@]}"
 do
@@ -28,5 +28,5 @@ done
 
 echo "[+] All requirements exported."
 
-git add "requirements*.txt"
-git commit -m "Update requirements files"
+# git add "requirements*.txt"
+# git commit -m "Update requirements files"

@@ -15,7 +15,7 @@ poetry export --format=requirements.txt \
     --output="requirements.txt"
 
 # Define the extra group dependencies
-declare -a arr=("dev" "lint" "test" "docs" "release")
+declare -a arr=("dev" "lint" "types" "test" "docs" "release")
 
 for group in "${arr[@]}"
 do
