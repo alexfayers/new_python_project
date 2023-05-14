@@ -30,11 +30,14 @@ async def _echo(stream: asyncio.StreamReader) -> None:
         else:
             print(line)
 
+
 P = ParamSpec("P")
 R = TypeVar("R")
 
+
 def async_run(func: Callable[P, Awaitable[R]]) -> Callable[P, Awaitable[R]]:
     """Handle async running of a function."""
+
     @functools.wraps(func)
     def wrapper(*args: P.args, **kwargs: P.kwargs) -> Awaitable[R]:
         return asyncio.run(func(*args, **kwargs))  # type: ignore
@@ -44,10 +47,10 @@ def async_run(func: Callable[P, Awaitable[R]]) -> Callable[P, Awaitable[R]]:
 
 async def aioprocess(
     *cmds: str,
-    stdout_handler: Callable=_echo,
-    stderr_handler: Callable=_echo,
-    inherit_env: bool=True,
-    detached: bool=False,
+    stdout_handler: Callable = _echo,
+    stderr_handler: Callable = _echo,
+    inherit_env: bool = True,
+    detached: bool = False,
     cwd: str | None = None,
 ) -> Process:
     """Execute cmds in asyncio process, and echo it's stdout/stderr.
@@ -109,7 +112,7 @@ def remove_file(filepath: str) -> None:
 
 
 @async_run
-async def execute(*args: str, cwd: str | None=None) -> None:
+async def execute(*args: str, cwd: str | None = None) -> None:
     """Run a command in a directory."""
     os.getcwd()
 
@@ -136,6 +139,7 @@ def init_git() -> None:
             cwd=PROJECT_DIRECTORY,
         )
 
+
 def init_dev() -> None:
     """Init all the dev stuff."""
     print(Style.NORMAL, Fore.BLUE, "creating virtualenv...")
@@ -159,7 +163,7 @@ def init_dev() -> None:
         print(Style.NORMAL, Fore.GREEN, "virtual environment was successfully created", Style.RESET_ALL)
 
     EXECUTABLE = sys.executable if not did_venv else ".venv/bin/python"
-    
+
     # print(Style.NORMAL, Fore.BLUE, "installing pre-commit hooks...")
     # print(Style.RESET_ALL, Style.DIM)
     # try:
@@ -186,8 +190,7 @@ def init_dev() -> None:
         print(e)
         print(
             Fore.YELLOW,
-            "failed to install poetry, you may need re-run the task by yourself: "
-            ' '.join(run_command),
+            "failed to install poetry, you may need re-run the task by yourself: " " ".join(run_command),
             Style.RESET_ALL,
         )
         return
@@ -206,7 +209,7 @@ def init_dev() -> None:
             Style.NORMAL,
             Fore.YELLOW,
             "failed to install dev dependency packages, you may need re-run the task by yourself: "
-            ' '.join(run_command),
+            " ".join(run_command),
             Style.RESET_ALL,
         )
     else:
@@ -216,7 +219,6 @@ def init_dev() -> None:
             "all dev dependency packages installed successfully",
             Style.RESET_ALL,
         )
-
 
     run_command = ["scripts/export_requirements.sh"]
 
@@ -229,8 +231,7 @@ def init_dev() -> None:
         print(
             Style.NORMAL,
             Fore.YELLOW,
-            "failed to export requirements, you may need re-run the task by yourself: "
-            ' '.join(run_command),
+            "failed to export requirements, you may need re-run the task by yourself: " " ".join(run_command),
             Style.RESET_ALL,
         )
     else:
@@ -240,7 +241,6 @@ def init_dev() -> None:
             "all requirements exported successfully",
             Style.RESET_ALL,
         )
-
 
     if "{{ cookiecutter.init_dev_env_do_init_commit }}" == "y":  # type: ignore[comparison-overlap]
         try:
