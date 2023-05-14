@@ -4,6 +4,12 @@ Changelog
 
 (main)
 ------
+- Linting. [alexfayers]
+
+
+v4.0.0 (2023-05-14)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Update requirements files. [alexfayers]
 - Update licence. [alexfayers]
 - Update readme. [alexfayers]
@@ -398,3 +404,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
+
+
