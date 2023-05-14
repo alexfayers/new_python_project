@@ -11,4 +11,3 @@
     "init_dev_env": "y",
     "_copy_without_render": [".github/workflows/*.yml"]
   }
-  
