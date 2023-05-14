@@ -4,12 +4,12 @@ import logging
 import sys
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 
-from . import {{ cookiecutter.project_class_name }}, __version__
+from . import {{ cookiecutter.__project_class_name }}, __version__
 from ._helpers.nice_logger import VERBOSE_LEVEL, SuccessLogger
 
 
 def cli_main() -> None:
-    """CLI entrypoint for `{{ cookiecutter.project_name }}`. Uses `{{ cookiecutter.project_slug}}.{{ cookiecutter.project_class_name }}`."""
+    """CLI entrypoint for `{{ cookiecutter.project_name }}`. Uses `{{ cookiecutter.project_slug}}.{{ cookiecutter.__project_class_name }}`."""
     argparser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     argparser.add_argument("-c", "--config", help="Path to config file", type=str, default="config.toml")
     argparser.add_argument("-v", "--verbose", help="Enable verbose logging", action="count", default=0)
@@ -37,7 +37,7 @@ def cli_main() -> None:
         package_logger.setLevel(VERBOSE_LEVEL)
 
     try:
-        app = {{ cookiecutter.project_class_name }}(config_file)
+        app = {{ cookiecutter.__project_class_name }}(config_file)
     except Exception:
         package_logger.fatal("Failed to initialise - exiting...")
         sys.exit(1)

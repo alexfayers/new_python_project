@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 D = TypeVar("D")
 
 
-class {{ cookiecutter.project_class_name }}:
+class {{ cookiecutter.__project_class_name }}:
     """Everything in the project comes back to here."""
 
     def __init__(self, config_file: str) -> None:

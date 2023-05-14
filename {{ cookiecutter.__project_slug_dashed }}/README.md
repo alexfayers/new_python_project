@@ -42,9 +42,9 @@ $ pipx install git+https://github.com/{{ cookiecutter.github_username }}/{{ cook
 You can use {{ cookiecutter.project_name }} as an importable module:
 
 ```py
-from {{ cookiecutter.project_slug}} import {{ cookiecutter.project_class_name }}
+from {{ cookiecutter.project_slug}} import {{ cookiecutter.__project_class_name }}
 
-app = {{ cookiecutter.project_class_name }}("config.toml")
+app = {{ cookiecutter.__project_class_name }}("config.toml")
 
 # cool stuff here...
 ```

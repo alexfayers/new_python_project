@@ -5,7 +5,7 @@ import logging
 
 from ._helpers import ColoredFormatter as _ColoredFormatter
 from ._helpers import SuccessLogger as _SuccessLogger
-from .base import {{ cookiecutter.project_class_name }}
+from .base import {{ cookiecutter.__project_class_name }}
 from .cli import cli_main
 
 # set up logging for the package
@@ -16,4 +16,4 @@ console = logging.StreamHandler()
 console.setFormatter(_ColoredFormatter("[%(name)s] (%(levelname)s): %(message)s"))
 logger.addHandler(console)
 
-__all__ = ["{{ cookiecutter.project_class_name }}", "cli_main", "_helpers"]
+__all__ = ["{{ cookiecutter.__project_class_name }}", "cli_main", "_helpers"]
