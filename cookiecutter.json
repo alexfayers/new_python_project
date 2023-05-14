@@ -8,9 +8,18 @@
     "init_git_repo": "y",
     "init_dev_env": "y",
     "init_dev_env_do_init_commit": "{% if cookiecutter.init_dev_env == 'y' %}y{% else %}n{% endif %}",
-    "open_source_license": ["MIT", "BSD-3-Clause", "ISC", "Apache-2.0", "GPL-3.0-only", "Not open source"],
-    "_copy_without_render": [".github/workflows/*.yml"],
+    "open_source_license": [
+        "MIT",
+        "BSD-3-Clause",
+        "ISC",
+        "Apache-2.0",
+        "GPL-3.0-only",
+        "Not open source"
+    ],
+    "_copy_without_render": [
+        ".github/workflows/*.yml"
+    ],
     "__project_slug_dashed": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
     "__project_slug": "{{ cookiecutter.__project_slug_dashed.replace('-', '_') }}",
     "__project_class_name": "{{ cookiecutter.__project_slug.title().replace('_', '') }}"
-  }
+}
