@@ -1,5 +1,5 @@
 """.. include:: ../../README.md"""  # noqa
-__version__ = "3.6.0"
+__version__ = "4.0.0"
 
 
 from .cli import cli_main
