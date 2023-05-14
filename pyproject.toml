@@ -26,6 +26,7 @@ anppt = "anppt:cli_main"
 # Main project dependencies.
 python = ">=3.9,<4.0"
 cookiecutter = "^2.1.1"
+colorama = "^0.4.6"
 
 [tool.poetry.group.dev.dependencies]
 # Linters for use during development (e.g. via vscode).
