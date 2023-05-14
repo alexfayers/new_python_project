@@ -67,8 +67,8 @@ poetry-bumpversion = "^0.3.0"
 
 ### Tool configs ###
 
-[tool.poetry_bumpversion.file."src/new_project_name/__init__.py"]
-[tool.poetry_bumpversion.file."src/new_project_name/VERSION"]
+[tool.poetry_bumpversion.file."src/{{ cookiecutter.project_slug }}/__init__.py"]
+[tool.poetry_bumpversion.file."src/{{ cookiecutter.project_slug }}/VERSION"]
 
 [tool.black]
 line-length = 120
