@@ -160,20 +160,20 @@ def init_dev() -> None:
 
     EXECUTABLE = sys.executable if not did_venv else ".venv/bin/python"
     
-    print(Style.NORMAL, Fore.BLUE, "installing pre-commit hooks...")
-    print(Style.RESET_ALL, Style.DIM)
-    try:
-        execute(EXECUTABLE, "-m", "pip", "install", "pre-commit")
-        execute("pre-commit", "install", cwd=PROJECT_DIRECTORY)
-    except Exception as e:
-        print(e)
-        print(
-            Fore.YELLOW,
-            "failed to install pre-commit hooks. You may need run `pre-commit install` later",
-            Style.RESET_ALL,
-        )
-    else:
-        print(Style.NORMAL, Fore.GREEN, "pre-commit hooks were successfully installed", Style.RESET_ALL)
+    # print(Style.NORMAL, Fore.BLUE, "installing pre-commit hooks...")
+    # print(Style.RESET_ALL, Style.DIM)
+    # try:
+    #     execute(EXECUTABLE, "-m", "pip", "install", "pre-commit")
+    #     execute("pre-commit", "install", cwd=PROJECT_DIRECTORY)
+    # except Exception as e:
+    #     print(e)
+    #     print(
+    #         Fore.YELLOW,
+    #         "failed to install pre-commit hooks. You may need run `pre-commit install` later",
+    #         Style.RESET_ALL,
+    #     )
+    # else:
+    #     print(Style.NORMAL, Fore.GREEN, "pre-commit hooks were successfully installed", Style.RESET_ALL)
 
     print(Style.NORMAL, Fore.BLUE, "installing poetry...")
     print(Style.RESET_ALL, Style.DIM)
