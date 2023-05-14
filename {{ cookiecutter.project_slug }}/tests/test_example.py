@@ -1,4 +1,4 @@
-"""Example tests for new_project_readable_name."""
+"""Example tests for {{ cookiecutter.project_name }}."""
 
 
 def test_main() -> None:

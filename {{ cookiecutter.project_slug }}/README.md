@@ -1,13 +1,13 @@
-# new_project_readable_name
+# {{ cookiecutter.project_name }}
 
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/new_project_author/new_project_name?label=version)
-![Lines of code](https://img.shields.io/tokei/lines/github/new_project_author/new_project_name)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/new_project_author/new_project_name/CI.yml?label=tests)
-![GitHub last commit](https://img.shields.io/github/last-commit/new_project_author/new_project_name)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}?label=version)
+![Lines of code](https://img.shields.io/tokei/lines/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}})
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}/CI.yml?label=tests)
+![GitHub last commit](https://img.shields.io/github/last-commit/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}})
 
-new_project_description
+{{ cookiecutter.project_short_description }}
 
-- [new_project_readable_name](#new_project_readable_name)
+- [{{ cookiecutter.project_name }}](#{{ cookiecutter.project_name }})
   - [Features](#Features)
   - [Installation](#Installation)
     - [pip](#pip)
@@ -28,23 +28,23 @@ new_project_description
 ### pip
 
 ```bash
-$ pip install git+https://github.com/new_project_author/new_project_name
+$ pip install git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}
 ```
 
 ### [pipx](https://pypa.github.io/pipx/)
 
 ```bash
-$ pipx install git+https://github.com/new_project_author/new_project_name
+$ pipx install git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}
 ```
 
 ## Usage
 
-You can use new_project_readable_name as an importable module:
+You can use {{ cookiecutter.project_name }} as an importable module:
 
 ```py
-from new_project_name import BaseClass
+from {{ cookiecutter.project_slug}} import {{ cookiecutter.project_class_name }}
 
-app = BaseClass("config.toml")
+app = {{ cookiecutter.project_class_name }}("config.toml")
 
 # cool stuff here...
 ```
@@ -52,24 +52,24 @@ app = BaseClass("config.toml")
 Or as a command line interface:
 
 ```bash
-$ python3 -m new_project_readable_name
+$ python3 -m {{ cookiecutter.project_slug}}
 # or
-$ new_project_readable_name
+$ {{ cookiecutter.project_slug}}
 ```
 
 ## Documentation
 
-Interactive documentation for new_project_readable_name can be found within the [docs](./docs/index.html) folder.
+Interactive documentation for {{ cookiecutter.project_name }} can be found within the [docs](./docs/index.html) folder.
 
 ## Contributing
 
-If you want to contribute to new_project_readable_name, you'll need [poetry](https://python-poetry.org/) and [tox](https://tox.wiki/en/latest/).
+If you want to contribute to {{ cookiecutter.project_name }}, you'll need [poetry](https://python-poetry.org/) and [tox](https://tox.wiki/en/latest/).
 
 Then you can clone the repository and install the development dependencies like so:
 
 ```bash
-$ git clone https://github.com/new_project_author/new_project_name
-$ cd new_project_name
+$ git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}
+$ cd {{ cookiecutter.project_slug}}
 $ poetry install --with dev
 ```
 

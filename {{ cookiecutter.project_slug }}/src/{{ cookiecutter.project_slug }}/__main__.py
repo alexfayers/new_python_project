@@ -1,4 +1,4 @@
-"""Called when `new_project_readable_name` is called from the command line as a module."""
+"""Called when `{{ cookiecutter.project_name }}` is called from the command line as a module."""
 
 from .cli import cli_main
 

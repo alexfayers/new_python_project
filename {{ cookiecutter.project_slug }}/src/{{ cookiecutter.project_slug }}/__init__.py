@@ -1,11 +1,11 @@
 """.. include:: ../../README.md"""  # noqa
-__version__ = "3.6.0"
+__version__ = "{{ cookiecutter.version }}"
 
 import logging
 
 from ._helpers import ColoredFormatter as _ColoredFormatter
 from ._helpers import SuccessLogger as _SuccessLogger
-from .base import BaseClass
+from .base import {{ cookiecutter.project_class_name }}
 from .cli import cli_main
 
 # set up logging for the package
@@ -16,4 +16,4 @@ console = logging.StreamHandler()
 console.setFormatter(_ColoredFormatter("[%(name)s] (%(levelname)s): %(message)s"))
 logger.addHandler(console)
 
-__all__ = ["BaseClass", "cli_main", "_helpers"]
+__all__ = ["{{ cookiecutter.project_class_name }}", "cli_main", "_helpers"]

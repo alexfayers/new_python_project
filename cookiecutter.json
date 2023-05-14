@@ -4,10 +4,9 @@
     "github_username": "",
     "project_name": "New Python Project",
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
-    "project_short_description": "An epic project called ${{ cookiecutter.project_name }}, by {{ cookiecutter.full_name }}!",
+    "project_class_name": "{{ cookiecutter.project_name.title().replace(' ', '') }}",
+    "project_short_description": "An epic project called {{ cookiecutter.project_name }}, by {{ cookiecutter.full_name }}!",
     "version": "0.1.0",
-    "use_pytest": "y",
     "open_source_license": ["MIT", "BSD-3-Clause", "ISC", "Apache-2.0", "GPL-3.0-only", "Not open source"],
-    "init_dev_env": "y",
     "_copy_without_render": [".github/workflows/*.yml"]
   }

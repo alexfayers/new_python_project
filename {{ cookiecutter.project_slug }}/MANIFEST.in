@@ -1,2 +1,2 @@
-include src/new_project_name/VERSION
-include src/new_project_name/py.typed
+include src/{{ cookiecutter.project_slug}}/VERSION
+include src/{{ cookiecutter.project_slug}}/py.typed

@@ -1,19 +1,28 @@
+{%- set license_classifiers = {
+    'MIT': 'License :: OSI Approved :: MIT License',
+    'BSD-3-Clause': 'License :: OSI Approved :: BSD License',
+    'ISC': 'License :: OSI Approved :: ISC License (ISCL)',
+    'Apache-2.0': 'License :: OSI Approved :: Apache Software License',
+    'GPL-3.0-only': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
+} -%}
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "new_project_readable_name"
-version = "3.6.0"
-description = "new_project_description"
-authors = ["new_project_author <new_project_author@example.com>"]
-license = "MIT"
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
+{%- if cookiecutter.open_source_license in license_classifiers %}
+license = "{{ cookiecutter.open_source_license }}"
+{%- endif %}
 readme = "README.md"
-packages = [{include = "new_project_name", from = "src"}]
-include = ["LICENSE", "src/new_project_name/py.typed", "src/new_project_name/VERSION"]
+packages = [{include = "{{ cookiecutter.project_slug}}", from = "src"}]
+include = ["LICENSE", "src/{{ cookiecutter.project_slug}}/py.typed", "src/{{ cookiecutter.project_slug}}/VERSION"]
 
 [tool.poetry.scripts]
-new_project_readable_name = "new_project_name:cli_main"
+"{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug}}:cli_main"
 
 [tool.poetry.dependencies]
 # Main project dependencies.
