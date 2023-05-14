@@ -10,7 +10,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.__project_slug }}"
 version = "{{ cookiecutter.version }}"
 description = "{{ cookiecutter.project_short_description }}"
 authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
@@ -18,11 +18,11 @@ authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
 license = "{{ cookiecutter.open_source_license }}"
 {%- endif %}
 readme = "README.md"
-packages = [{include = "{{ cookiecutter.project_slug}}", from = "src"}]
-include = ["LICENSE", "src/{{ cookiecutter.project_slug}}/py.typed", "src/{{ cookiecutter.project_slug}}/VERSION"]
+packages = [{include = "{{ cookiecutter.__project_slug}}", from = "src"}]
+include = ["LICENSE", "src/{{ cookiecutter.__project_slug}}/py.typed", "src/{{ cookiecutter.__project_slug}}/VERSION"]
 
 [tool.poetry.scripts]
-"{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug}}:cli_main"
+"{{ cookiecutter.__project_slug }}" = "{{ cookiecutter.__project_slug}}:cli_main"
 
 [tool.poetry.dependencies]
 # Main project dependencies.
@@ -68,8 +68,8 @@ poetry-bumpversion = "^0.3.0"
 
 ### Tool configs ###
 
-[tool.poetry_bumpversion.file."src/{{ cookiecutter.project_slug }}/__init__.py"]
-[tool.poetry_bumpversion.file."src/{{ cookiecutter.project_slug }}/VERSION"]
+[tool.poetry_bumpversion.file."src/{{ cookiecutter.__project_slug }}/__init__.py"]
+[tool.poetry_bumpversion.file."src/{{ cookiecutter.__project_slug }}/VERSION"]
 
 [tool.black]
 line-length = 120

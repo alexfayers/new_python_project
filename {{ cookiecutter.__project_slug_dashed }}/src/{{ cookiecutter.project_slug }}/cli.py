@@ -9,7 +9,7 @@ from ._helpers.nice_logger import VERBOSE_LEVEL, SuccessLogger
 
 
 def cli_main() -> None:
-    """CLI entrypoint for `{{ cookiecutter.project_name }}`. Uses `{{ cookiecutter.project_slug}}.{{ cookiecutter.__project_class_name }}`."""
+    """CLI entrypoint for `{{ cookiecutter.project_name }}`. Uses `{{ cookiecutter.__project_slug}}.{{ cookiecutter.__project_class_name }}`."""
     argparser = ArgumentParser(formatter_class=ArgumentDefaultsHelpFormatter)
     argparser.add_argument("-c", "--config", help="Path to config file", type=str, default="config.toml")
     argparser.add_argument("-v", "--verbose", help="Enable verbose logging", action="count", default=0)
@@ -23,7 +23,7 @@ def cli_main() -> None:
         print(f"Version: {__version__}")
         sys.exit(1)
 
-    package_logger: SuccessLogger = logging.getLogger("{{ cookiecutter.project_slug}}")  # type: ignore
+    package_logger: SuccessLogger = logging.getLogger("{{ cookiecutter.__project_slug}}")  # type: ignore
 
     # logging defaults to WARNING, then INFO, then DEBUG, then VERBOSE
 

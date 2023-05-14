@@ -14,7 +14,7 @@ include = [
     "LICENSE",
     "src/anppt/py.typed",
     "src/anppt/VERSION",
-    '{{cookiecutter.project_slug}}/**/*',
+    '{{cookiecutter.__project_slug}}/**/*',
     'cookiecutter.json',
     'hooks/*'
 ]

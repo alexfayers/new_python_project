@@ -1,9 +1,9 @@
 # {{ cookiecutter.project_name }}
 
-![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}?label=version)
-![Lines of code](https://img.shields.io/tokei/lines/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}})
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}/CI.yml?label=tests)
-![GitHub last commit](https://img.shields.io/github/last-commit/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}})
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}}?label=version)
+![Lines of code](https://img.shields.io/tokei/lines/github/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}})
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}}/CI.yml?label=tests)
+![GitHub last commit](https://img.shields.io/github/last-commit/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}})
 
 {{ cookiecutter.project_short_description }}
 
@@ -28,13 +28,13 @@
 ### pip
 
 ```bash
-$ pip install git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}
+$ pip install git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}}
 ```
 
 ### [pipx](https://pypa.github.io/pipx/)
 
 ```bash
-$ pipx install git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}
+$ pipx install git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}}
 ```
 
 ## Usage
@@ -42,7 +42,7 @@ $ pipx install git+https://github.com/{{ cookiecutter.github_username }}/{{ cook
 You can use {{ cookiecutter.project_name }} as an importable module:
 
 ```py
-from {{ cookiecutter.project_slug}} import {{ cookiecutter.__project_class_name }}
+from {{ cookiecutter.__project_slug}} import {{ cookiecutter.__project_class_name }}
 
 app = {{ cookiecutter.__project_class_name }}("config.toml")
 
@@ -52,9 +52,9 @@ app = {{ cookiecutter.__project_class_name }}("config.toml")
 Or as a command line interface:
 
 ```bash
-$ python3 -m {{ cookiecutter.project_slug}}
+$ python3 -m {{ cookiecutter.__project_slug}}
 # or
-$ {{ cookiecutter.project_slug}}
+$ {{ cookiecutter.__project_slug}}
 ```
 
 ## Documentation
@@ -68,8 +68,8 @@ If you want to contribute to {{ cookiecutter.project_name }}, you'll need [poetr
 Then you can clone the repository and install the development dependencies like so:
 
 ```bash
-$ git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug}}
-$ cd {{ cookiecutter.project_slug}}
+$ git clone https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.__project_slug}}
+$ cd {{ cookiecutter.__project_slug}}
 $ poetry install --with dev
 ```
 

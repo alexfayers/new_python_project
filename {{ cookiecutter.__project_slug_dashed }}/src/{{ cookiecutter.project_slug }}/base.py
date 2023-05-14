@@ -16,7 +16,7 @@ class {{ cookiecutter.__project_class_name }}:
     """Everything in the project comes back to here."""
 
     def __init__(self, config_file: str) -> None:
-        """Initialises the base class for `{{ cookiecutter.project_slug}}` by loading the config and setting up a logger.
+        """Initialises the base class for `{{ cookiecutter.__project_slug}}` by loading the config and setting up a logger.
 
         Args:
             config_file (str): Path to a config file containing settings for the class.
