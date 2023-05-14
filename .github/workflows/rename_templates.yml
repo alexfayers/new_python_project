@@ -41,9 +41,9 @@ jobs:
         with:
           github-username: "${{ env.REPOSITORY_OWNER }}"
 
-      - name: Install cookiecutter
+      - name: Install deps
         if: steps.is_template.outputs.is_template == 'true'
-        run: pip install cookiecutter
+        run: pip install -r requirements.txt
 
       - name: Prepare cookiecutter config
         if: steps.is_template.outputs.is_template == 'true'
