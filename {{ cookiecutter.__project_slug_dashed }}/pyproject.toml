@@ -75,6 +75,9 @@ poetry-bumpversion = "^0.3.0"
 [tool.poetry_bumpversion.file."src/{{ cookiecutter.__project_slug }}/__init__.py"]
 [tool.poetry_bumpversion.file."src/{{ cookiecutter.__project_slug }}/VERSION"]
 
+[tool.cruft]
+skip = ["tests"]
+
 [tool.black]
 line-length = 120
 exclude = ['.*', 'docs']

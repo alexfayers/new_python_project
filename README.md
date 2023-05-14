@@ -14,6 +14,7 @@ You can use this repo in a few ways:
 - [Create a new repository from this template](https://github.com/alexfayers/new_python_project/generate) (this is the easiest method)
 - [Use the helper script](#using-the-helper-script) (this is the method I use)
 - [Use cookiecutter](#using-cookiecutter) (nice if you already use cookiecutter)
+- [Use cruft](#using-cruft) (Good for keeping your project up to date)
 
 After you've created your new repo, wait for the [rename_templates](.github/workflows/rename_templates.yml) workflow to complete. This will move around a few files, rename some stuff, and reset the project version so that everything's ready for you to get started.
 
@@ -37,6 +38,15 @@ You can also install this repo as a python module and use that to create a new p
 ```bash
 $ pip install git+https://github.com/alexfayers/new_python_project.git
 $ anppt
+```
+
+# Using cruft
+
+You can use [cruft](https://cruft.github.io/cruft/) to create a new project from this template, which will mean that you can stay up to date with any changes to the original template. You can use this method like this:
+
+```bash
+$ pip install cruft
+$ cruft create https://github.com/alexfayers/new_python_project.git
 ```
 
 ## Development
