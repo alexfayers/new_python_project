@@ -135,20 +135,6 @@ def init_git() -> None:
             "{{ cookiecutter.email }}",
             cwd=PROJECT_DIRECTORY,
         )
-        execute(
-            "git",
-            "add",
-            ".",
-            cwd=PROJECT_DIRECTORY,
-        )
-        execute(
-            "git",
-            "commit",
-            "-m",
-            "Initial commit",
-            cwd=PROJECT_DIRECTORY,
-        )
-
 
 def init_dev() -> None:
     """Init all the dev stuff."""
@@ -159,8 +145,6 @@ def init_dev() -> None:
 
     try:
         execute(sys.executable, "-m", "venv", ".venv")
-        print(Style.NORMAL, Fore.GREEN, "virtual environment was successfully created")
-        print(Style.RESET_ALL)
     except Exception as e:
         print(e)
         print(
@@ -172,6 +156,7 @@ def init_dev() -> None:
         did_venv = False
     else:
         did_venv = True
+        print(Style.NORMAL, Fore.GREEN, "virtual environment was successfully created", Style.RESET_ALL)
 
     EXECUTABLE = sys.executable if not did_venv else ".venv/bin/python"
     
@@ -180,8 +165,6 @@ def init_dev() -> None:
     try:
         execute(EXECUTABLE, "-m", "pip", "install", "pre-commit")
         execute("pre-commit", "install", cwd=PROJECT_DIRECTORY)
-        print(Style.NORMAL, Fore.GREEN, "pre-commit hooks were successfully installed")
-        print(Style.RESET_ALL)
     except Exception as e:
         print(e)
         print(
@@ -189,6 +172,8 @@ def init_dev() -> None:
             "failed to install pre-commit hooks. You may need run `pre-commit install` later",
             Style.RESET_ALL,
         )
+    else:
+        print(Style.NORMAL, Fore.GREEN, "pre-commit hooks were successfully installed", Style.RESET_ALL)
 
     print(Style.NORMAL, Fore.BLUE, "installing poetry...")
     print(Style.RESET_ALL, Style.DIM)
@@ -197,7 +182,6 @@ def init_dev() -> None:
 
     try:
         execute(*run_command)
-        print(Style.NORMAL, Fore.GREEN, "poetry installed successfully", Style.RESET_ALL)
     except Exception as e:
         print(e)
         print(
@@ -207,6 +191,8 @@ def init_dev() -> None:
             Style.RESET_ALL,
         )
         return
+    else:
+        print(Style.NORMAL, Fore.GREEN, "poetry installed successfully", Style.RESET_ALL)
 
     run_command = ["poetry", "install", "--with", "dev,test,lint"]
 
@@ -214,12 +200,6 @@ def init_dev() -> None:
         print(Style.NORMAL, Fore.BLUE, "install all dev dependency packages...")
         print(Style.RESET_ALL, Style.DIM)
         execute(*run_command, cwd=PROJECT_DIRECTORY)
-        print(
-            Style.NORMAL,
-            Fore.GREEN,
-            "all dev dependency packages installed successfully",
-            Style.RESET_ALL,
-        )
     except Exception as e:
         print(e)
         print(
@@ -229,6 +209,14 @@ def init_dev() -> None:
             ' '.join(run_command),
             Style.RESET_ALL,
         )
+    else:
+        print(
+            Style.NORMAL,
+            Fore.GREEN,
+            "all dev dependency packages installed successfully",
+            Style.RESET_ALL,
+        )
+
 
     run_command = ["scripts/export_requirements.sh"]
 
@@ -236,12 +224,6 @@ def init_dev() -> None:
         print(Style.NORMAL, Fore.BLUE, "exporting requirements to files...")
         print(Style.RESET_ALL, Style.DIM)
         execute(*run_command, cwd=PROJECT_DIRECTORY)
-        print(
-            Style.NORMAL,
-            Fore.GREEN,
-            "all requirements exported successfully",
-            Style.RESET_ALL,
-        )
     except Exception as e:
         print(e)
         print(
@@ -251,7 +233,48 @@ def init_dev() -> None:
             ' '.join(run_command),
             Style.RESET_ALL,
         )
+    else:
+        print(
+            Style.NORMAL,
+            Fore.GREEN,
+            "all requirements exported successfully",
+            Style.RESET_ALL,
+        )
 
+
+    if "{{ cookiecutter.init_dev_env_do_init_commit }}" == "y":  # type: ignore[comparison-overlap]
+        try:
+            print(Style.NORMAL, Fore.BLUE, "committing repo changes...")
+            print(Style.RESET_ALL, Style.DIM)
+
+            execute(
+                "git",
+                "add",
+                ".",
+                cwd=PROJECT_DIRECTORY,
+            )
+            execute(
+                "git",
+                "commit",
+                "-m",
+                "Initial commit",
+                cwd=PROJECT_DIRECTORY,
+            )
+        except Exception as e:
+            print(e)
+            print(
+                Style.NORMAL,
+                Fore.YELLOW,
+                "failed to commit changes, you may need commit the changes manually",
+                Style.RESET_ALL,
+            )
+        else:
+            print(
+                Style.NORMAL,
+                Fore.GREEN,
+                "all changes committed successfully",
+                Style.RESET_ALL,
+            )
 
 
 if __name__ == "__main__":

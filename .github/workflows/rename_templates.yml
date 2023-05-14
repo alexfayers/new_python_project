@@ -18,10 +18,7 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
-      - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}' | tr '-' '_' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-        shell: bash
-
-      - run: echo "REPOSITORY_URLNAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+      - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
         shell: bash
 
       - run: echo "REPOSITORY_OWNER=$(echo '${{ github.repository }}' | awk -F '/' '{print $1}')" >> $GITHUB_ENV
@@ -56,11 +53,13 @@ jobs:
           echo "  email: ${{ steps.get-owner-email.outputs.email }}" >> .github/cookiecutter.yaml
           echo "  github_username: ${{ env.REPOSITORY_OWNER }}" >> .github/cookiecutter.yaml
           echo "  project_name: ${{ env.REPOSITORY_NAME }}" >> .github/cookiecutter.yaml
+          echo "  init_dev_env_do_init_commit: 'n'" >> .github/cookiecutter.yaml
 
       - name: Rename the project
         if: steps.is_template.outputs.is_template == 'true'
         run: |
-          echo "Renaming the project with a name of ${{ env.REPOSITORY_NAME }} and author of ${{ env.REPOSITORY_OWNER }}"
+          echo "Renaming the project with the following config:"
+          cat .github/cookiecutter.yaml
           cookiecutter --no-input --output-dir ./cookiecutter-temp --config-file .github/cookiecutter.yaml .
 
       # from here is taken from https://github.com/stefanbuck/cookiecutter-template/blob/main/.github/workflows/setup-repository.yml
