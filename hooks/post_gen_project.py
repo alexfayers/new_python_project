@@ -242,7 +242,10 @@ def init_dev() -> None:
             Style.RESET_ALL,
         )
 
-    if "{{ cookiecutter.init_dev_env_do_init_commit }}" == "y":  # type: ignore[comparison-overlap]
+    if (
+        "{{ cookiecutter.init_git_repo }}" == "y"  # type: ignore[comparison-overlap]
+        and "{{ cookiecutter.init_dev_env_do_init_commit }}" == "y"  # type: ignore[comparison-overlap]
+    ):
         try:
             print(Style.NORMAL, Fore.BLUE, "committing repo changes...")
             print(Style.RESET_ALL, Style.DIM)
@@ -283,10 +286,11 @@ if __name__ == "__main__":
     if "{{ cookiecutter.open_source_license }}" == "Not open source":  # type: ignore[comparison-overlap]
         remove_file("LICENSE")
 
-    try:
-        init_git()
-    except Exception as e:
-        print(e)
+    if "{{ cookiecutter.init_git_repo }}" == "y":  # type: ignore[comparison-overlap]
+        try:
+            init_git()
+        except Exception as e:
+            print(e)
 
     if "{{ cookiecutter.init_dev_env }}" == "y":  # type: ignore[comparison-overlap]
         try:

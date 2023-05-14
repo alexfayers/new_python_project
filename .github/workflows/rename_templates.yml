@@ -53,6 +53,7 @@ jobs:
           echo "  email: ${{ steps.get-owner-email.outputs.email }}" >> .github/cookiecutter.yaml
           echo "  github_username: ${{ env.REPOSITORY_OWNER }}" >> .github/cookiecutter.yaml
           echo "  project_name: ${{ env.REPOSITORY_NAME }}" >> .github/cookiecutter.yaml
+          echo "  init_git_repo: 'n'" >> .github/cookiecutter.yaml
           echo "  init_dev_env_do_init_commit: 'n'" >> .github/cookiecutter.yaml
 
       - name: Rename the project
