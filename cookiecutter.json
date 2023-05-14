@@ -9,7 +9,7 @@
     "init_dev_env_do_init_commit": "y",
     "open_source_license": ["MIT", "BSD-3-Clause", "ISC", "Apache-2.0", "GPL-3.0-only", "Not open source"],
     "_copy_without_render": [".github/workflows/*.yml"],
-    "__project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "__project_slug_dashed": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
-    "__project_class_name": "{{ cookiecutter.project_name.title().replace(' ', '').replace('-', '') }}"
+    "__project_slug": "{{ cookiecutter.__project_slug_dashed.lower()replace('-', '_') }}",
+    "__project_class_name": "{{ cookiecutter.__project_slug.title().replace('_', '') }}"
   }
