@@ -4,6 +4,22 @@ Changelog
 
 (main)
 ------
+- Fix typo. [alexfayers]
+- Add option to not init git repo. [alexfayers]
+- Adjust variables. [alexfayers]
+- Rename project folder. [alexfayers]
+- Private the project slug. [alexfayers]
+- Private class name config. [alexfayers]
+- Change top level template folder name. [alexfayers]
+- Adjust dep install for workflow. [alexfayers]
+- Merge pull request #2 from alexfayers/cookiecutter. [alexfayers]
+
+  Switch to cookiecutter
+
+
+v4.0.1 (2023-05-14)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Linting. [alexfayers]
 
 
@@ -404,3 +420,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
+
+
