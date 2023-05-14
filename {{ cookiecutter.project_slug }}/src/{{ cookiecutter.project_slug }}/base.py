@@ -1,4 +1,4 @@
-"""The main functionality of `new_project_readable_name`."""
+"""The main functionality of `{{ cookiecutter.project_name }}`."""
 
 import logging
 from pathlib import Path
@@ -12,11 +12,11 @@ if TYPE_CHECKING:
 D = TypeVar("D")
 
 
-class BaseClass:
+class {{ cookiecutter.project_class_name }}:
     """Everything in the project comes back to here."""
 
     def __init__(self, config_file: str) -> None:
-        """Initialises the base class for `new_project_name` by loading the config and setting up a logger.
+        """Initialises the base class for `{{ cookiecutter.project_slug}}` by loading the config and setting up a logger.
 
         Args:
             config_file (str): Path to a config file containing settings for the class.

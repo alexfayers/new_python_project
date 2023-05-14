@@ -4,6 +4,37 @@ Changelog
 
 (main)
 ------
+- Linting. [alexfayers]
+
+
+v4.0.0 (2023-05-14)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
+- Update requirements files. [alexfayers]
+- Update licence. [alexfayers]
+- Update readme. [alexfayers]
+- Disable pre-commit install. [alexfayers]
+- Actions improvements. [alexfayers]
+- Adjust github action. [alexfayers]
+- Add hooks! [alexfayers]
+- Remove lockfile from template. [alexfayers]
+- Add mypy to template reqs. [alexfayers]
+- Add colorama as a dep. [alexfayers]
+- Adjust project include config. [alexfayers]
+- Adjust template var. [alexfayers]
+- Finishing touches on template. [alexfayers]
+- Update requirements files. [alexfayers]
+- Remove toml dep. [alexfayers]
+- Small lint changes. [alexfayers]
+- Add cli entry for anppt. [alexfayers]
+- Update requirements files. [alexfayers]
+- Update poetry.lock. [alexfayers]
+- Cookiecutter init. [alexfayers]
+
+
+v3.6.0 (2023-04-22)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Update requirements files. [alexfayers]
 - Update dependencies and pre-commit config. [alexfayers]
 
@@ -373,3 +404,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
+
+

@@ -18,10 +18,7 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
 
-      - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}' | tr '-' '_' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
-        shell: bash
-
-      - run: echo "REPOSITORY_URLNAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+      - run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
         shell: bash
 
       - run: echo "REPOSITORY_OWNER=$(echo '${{ github.repository }}' | awk -F '/' '{print $1}')" >> $GITHUB_ENV
@@ -37,12 +34,54 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: get owner email
+        if: steps.is_template.outputs.is_template == 'true'
+        id: get-owner-email
+        uses: evvanErb/get-github-email-by-username-action@v2.0
+        with:
+          github-username: "${{ env.REPOSITORY_OWNER }}"
+
+      - name: Install cookiecutter
+        if: steps.is_template.outputs.is_template == 'true'
+        run: pip install cookiecutter
+
+      - name: Prepare cookiecutter config
+        if: steps.is_template.outputs.is_template == 'true'
+        run: |
+          echo "default_context:" > .github/cookiecutter.yaml
+          echo "  full_name: ${{ env.REPOSITORY_OWNER }}" >> .github/cookiecutter.yaml
+          echo "  email: ${{ steps.get-owner-email.outputs.email }}" >> .github/cookiecutter.yaml
+          echo "  github_username: ${{ env.REPOSITORY_OWNER }}" >> .github/cookiecutter.yaml
+          echo "  project_name: ${{ env.REPOSITORY_NAME }}" >> .github/cookiecutter.yaml
+          echo "  init_dev_env_do_init_commit: 'n'" >> .github/cookiecutter.yaml
+
       - name: Rename the project
         if: steps.is_template.outputs.is_template == 'true'
         run: |
-          echo "Renaming the project with a name of ${{ env.REPOSITORY_NAME }} and author of ${{ env.REPOSITORY_OWNER }}"
-          python _project_setup.py "${{ env.REPOSITORY_NAME }}" "${{ env.REPOSITORY_URLNAME }}" "${{ env.REPOSITORY_OWNER }}" "An epic project called ${{ env.REPOSITORY_URLNAME }}, by ${{ env.REPOSITORY_OWNER }}!"
-          rm _project_setup.py
+          echo "Renaming the project with the following config:"
+          cat .github/cookiecutter.yaml
+          cookiecutter --no-input --output-dir ./cookiecutter-temp --config-file .github/cookiecutter.yaml .
+
+      # from here is taken from https://github.com/stefanbuck/cookiecutter-template/blob/main/.github/workflows/setup-repository.yml
+      - name: Prepare root directory
+        if: steps.is_template.outputs.is_template == 'true'
+        # Remove all files and folder exepct .git/ and cookiecutter-temp/
+        run: |
+          find ./ -maxdepth 1 \
+          ! -name '.git' \
+          ! -name 'cookiecutter-temp' \
+          ! -name '.' \
+          ! -exec rm -rf {} +
+
+      - name: Move files to root
+        # The cookiecutter-temp/ folder contains a single folder which is the
+        # generated project by cookiecutter. We want to move all the project
+        # files into the root directory so we can reinitialize git in the next step
+        run: |
+          rsync -r ./cookiecutter-temp/*/ . && \
+          rm -rf ./cookiecutter-temp/
+
+      # end parts taken from https://github.com/stefanbuck/cookiecutter-template/blob/main/.github/workflows/setup-repository.yml
 
       - uses: EndBug/add-and-commit@v9
         if: steps.is_template.outputs.is_template == 'true'

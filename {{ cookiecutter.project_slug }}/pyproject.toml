@@ -1,32 +1,33 @@
+{%- set license_classifiers = {
+    'MIT': 'License :: OSI Approved :: MIT License',
+    'BSD-3-Clause': 'License :: OSI Approved :: BSD License',
+    'ISC': 'License :: OSI Approved :: ISC License (ISCL)',
+    'Apache-2.0': 'License :: OSI Approved :: Apache Software License',
+    'GPL-3.0-only': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
+} -%}
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "alexs-new-python-project-template"
-version = "4.0.1"
-description = "A template for new Python projects."
-authors = ["Alex Fayers <alex@fayers.com>"]
-license = "MIT"
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.version }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
+{%- if cookiecutter.open_source_license in license_classifiers %}
+license = "{{ cookiecutter.open_source_license }}"
+{%- endif %}
 readme = "README.md"
-packages = [{include = "anppt", from = "src"}]
-include = [
-    "LICENSE",
-    "src/anppt/py.typed",
-    "src/anppt/VERSION",
-    '{{cookiecutter.project_slug}}/**/*',
-    'cookiecutter.json',
-    'hooks/*'
-]
+packages = [{include = "{{ cookiecutter.project_slug}}", from = "src"}]
+include = ["LICENSE", "src/{{ cookiecutter.project_slug}}/py.typed", "src/{{ cookiecutter.project_slug}}/VERSION"]
 
 [tool.poetry.scripts]
-anppt = "anppt:cli_main"
+"{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug}}:cli_main"
 
 [tool.poetry.dependencies]
 # Main project dependencies.
 python = ">=3.9,<4.0"
-cookiecutter = "^2.1.1"
-colorama = "^0.4.6"
+toml = "^0.10.2"
 
 [tool.poetry.group.dev.dependencies]
 # Linters for use during development (e.g. via vscode).
@@ -67,8 +68,8 @@ poetry-bumpversion = "^0.3.0"
 
 ### Tool configs ###
 
-[tool.poetry_bumpversion.file."src/anppt/__init__.py"]
-[tool.poetry_bumpversion.file."src/anppt/VERSION"]
+[tool.poetry_bumpversion.file."src/{{ cookiecutter.project_slug }}/__init__.py"]
+[tool.poetry_bumpversion.file."src/{{ cookiecutter.project_slug }}/VERSION"]
 
 [tool.black]
 line-length = 120
