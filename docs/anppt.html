@@ -24,6 +24,9 @@
   <li><a href="#alexs-new-python-project-template">Alex's New Python Project Template</a>
   <ul>
     <li><a href="#installation">Installation</a></li>
+  </ul></li>
+  <li><a href="#using-cruft">Using cruft</a>
+  <ul>
     <li><a href="#development">Development</a></li>
     <li><a href="#tox">Tox</a></li>
     <li><a href="#documentation-reiterated">Documentation, reiterated</a></li>
@@ -71,6 +74,7 @@ anppt    </h1>
 <li><a href="https://github.com/alexfayers/new_python_project/generate">Create a new repository from this template</a> (this is the easiest method)</li>
 <li><a href="#using-the-helper-script">Use the helper script</a> (this is the method I use)</li>
 <li><a href="#using-cookiecutter">Use cookiecutter</a> (nice if you already use cookiecutter)</li>
+<li><a href="#using-cruft">Use cruft</a> (Good for keeping your project up to date)</li>
 </ul>
 
 <p>After you've created your new repo, wait for the <a href=".github/workflows/rename_templates.yml">rename_templates</a> workflow to complete. This will move around a few files, rename some stuff, and reset the project version so that everything's ready for you to get started.</p>
@@ -96,6 +100,16 @@ $<span class="w"> </span>cookiecutter<span class="w"> </span>gh:alexfayers/new_p
 <div class="pdoc-code codehilite">
 <pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/alexfayers/new_python_project.git
 $<span class="w"> </span>anppt
+</code></pre>
+</div>
+
+<h1 id="using-cruft">Using cruft</h1>
+
+<p>You can use <a href="https://cruft.github.io/cruft/">cruft</a> to create a new project from this template, which will mean that you can stay up to date with any changes to the original template. You can use this method like this:</p>
+
+<div class="pdoc-code codehilite">
+<pre><span></span><code>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>cruft
+$<span class="w"> </span>cruft<span class="w"> </span>create<span class="w"> </span>https://github.com/alexfayers/new_python_project.git
 </code></pre>
 </div>
 
