@@ -49,6 +49,14 @@ $ pip install cruft
 $ cruft create https://github.com/alexfayers/new_python_project.git
 ```
 
+And then you can update your project to the latest version of the template with cruft like this:
+
+```bash
+$ cruft update
+```
+
+Easy!
+
 ## Development
 
 The template includes a few of my preferences for writing Python:
