@@ -20,7 +20,7 @@
     "_copy_without_render": [
         ".github/workflows/*.yml"
     ],
-    "__project_slug_dashed": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "__project_slug_dashed": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
     "__project_slug": "{{ cookiecutter.__project_slug_dashed.replace('-', '_') }}",
     "__project_class_name": "{{ cookiecutter.__project_slug.title().replace('_', '') }}"
 }

@@ -22,7 +22,7 @@ packages = [{include = "{{ cookiecutter.__project_slug}}", from = "src"}]
 include = ["LICENSE", "src/{{ cookiecutter.__project_slug}}/py.typed", "src/{{ cookiecutter.__project_slug}}/VERSION"]
 
 [tool.poetry.scripts]
-"{{ cookiecutter.__project_slug }}" = "{{ cookiecutter.__project_slug}}:cli_main"
+"{{ cookiecutter.__project_slug_dashed }}" = "{{ cookiecutter.__project_slug}}:cli_main"
 
 [tool.poetry.dependencies]
 # Main project dependencies.

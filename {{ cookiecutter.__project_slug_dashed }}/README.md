@@ -52,9 +52,9 @@ app = {{ cookiecutter.__project_class_name }}("config.toml")
 Or as a command line interface:
 
 ```bash
-$ python3 -m {{ cookiecutter.__project_slug}}
+$ python3 -m {{ cookiecutter.__project_slug_dashed}}
 # or
-$ {{ cookiecutter.__project_slug}}
+$ {{ cookiecutter.__project_slug_dashed}}
 ```
 
 ## Documentation
