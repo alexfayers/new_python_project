@@ -4,6 +4,27 @@ Changelog
 
 (main)
 ------
+- Update requirements files. [alexfayers]
+
+
+v4.1.0 (2024-07-17)
+-------------------
+- Update poetry.lock. [alexfayers]
+- Big revamp! [alexfayers]
+- Add cruft update info to readme. [alexfayers]
+- Add cruft bits. [alexfayers]
+- Linting. [alexfayers]
+- Update types deps. [alexfayers]
+- Add types group for mypy to use. [alexfayers]
+- Update release script. [alexfayers]
+- Update requirements export script. [alexfayers]
+- Format json config. [alexfayers]
+- Remove unnecessary lower call. [alexfayers]
+
+
+v4.0.2 (2023-05-14)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Fix typo. [alexfayers]
 - Add option to not init git repo. [alexfayers]
 - Adjust variables. [alexfayers]
@@ -420,3 +441,6 @@ v0.2.0 (2022-05-24)
 - Format with black. [alex.fayers]
 - Better venv support (use venv if just created) [alex.fayers]
 - Remove vscode settings from repo. [alex.fayers]
+
+
+
