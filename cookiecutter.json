@@ -5,6 +5,7 @@
     "project_name": "New Python Project",
     "project_short_description": "An epic project called {{ cookiecutter.project_name }}, by {{ cookiecutter.full_name }}!",
     "version": "0.1.0",
+    "config_file_required": "y",
     "init_git_repo": "y",
     "init_dev_env": "y",
     "init_dev_env_do_init_commit": "{% if cookiecutter.init_dev_env == 'y' %}y{% else %}n{% endif %}",

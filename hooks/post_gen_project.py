@@ -3,13 +3,15 @@
 Also see:
 https://github.com/zillionare/python-project-wizard/blob/2d85c2c267f98e68288c3716d4e92c815e4cba33/hooks/aioproc.py.
 """
+
 import asyncio
 import functools
 import os
 import shlex
 import sys
 from asyncio.subprocess import Process
-from typing import Awaitable, Callable, ParamSpec, TypeVar
+from collections.abc import Awaitable, Callable
+from typing import ParamSpec, TypeVar
 
 import colorama
 from colorama import Fore, Style
@@ -145,8 +147,6 @@ def init_dev() -> None:
     print(Style.NORMAL, Fore.BLUE, "creating virtualenv...")
     print(Style.RESET_ALL, Style.DIM)
 
-    did_venv = False
-
     try:
         execute(sys.executable, "-m", "venv", ".venv")
     except Exception as e:
@@ -157,12 +157,13 @@ def init_dev() -> None:
             "later, if you want to use a venv",
             Style.RESET_ALL,
         )
-        did_venv = False
     else:
-        did_venv = True
-        print(Style.NORMAL, Fore.GREEN, "virtual environment was successfully created", Style.RESET_ALL)
-
-    EXECUTABLE = sys.executable if not did_venv else ".venv/bin/python"
+        print(
+            Style.NORMAL,
+            Fore.GREEN,
+            "virtual environment was successfully created",
+            Style.RESET_ALL,
+        )
 
     # print(Style.NORMAL, Fore.BLUE, "installing pre-commit hooks...")
     # print(Style.RESET_ALL, Style.DIM)
@@ -179,25 +180,7 @@ def init_dev() -> None:
     # else:
     #     print(Style.NORMAL, Fore.GREEN, "pre-commit hooks were successfully installed", Style.RESET_ALL)
 
-    print(Style.NORMAL, Fore.BLUE, "installing poetry...")
-    print(Style.RESET_ALL, Style.DIM)
-
-    run_command = [EXECUTABLE, "-m", "pip", "install", "poetry"]
-
-    try:
-        execute(*run_command)
-    except Exception as e:
-        print(e)
-        print(
-            Fore.YELLOW,
-            "failed to install poetry, you may need re-run the task by yourself: " " ".join(run_command),
-            Style.RESET_ALL,
-        )
-        return
-    else:
-        print(Style.NORMAL, Fore.GREEN, "poetry installed successfully", Style.RESET_ALL)
-
-    run_command = ["poetry", "install", "--with", "dev,test,lint"]
+    run_command = ["poetry", "install", "--with", "dev,types,test"]
 
     try:
         print(Style.NORMAL, Fore.BLUE, "install all dev dependency packages...")
@@ -208,8 +191,9 @@ def init_dev() -> None:
         print(
             Style.NORMAL,
             Fore.YELLOW,
-            "failed to install dev dependency packages, you may need re-run the task by yourself: "
-            " ".join(run_command),
+            "failed to install dev dependency packages, you may need re-run the task by yourself: " " ".join(
+                run_command
+            ),
             Style.RESET_ALL,
         )
     else:

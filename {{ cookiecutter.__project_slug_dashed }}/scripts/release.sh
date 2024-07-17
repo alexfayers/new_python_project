@@ -31,6 +31,9 @@ git commit -m "Update poetry.lock"
 git add requirements*.txt
 git commit -m "Update requirements files"
 
+# Make sure all tests pass
+tox
+
 # Clear the current changelog - it gets regenerated fully on each release
 echo '' > CHANGELOG.md
 

@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Ensure that the poetry-plugin-export plugin is installed
+if ! poetry self show plugins | grep -q "poetry-plugin-export"; then
+    echo "[!] Please install the poetry-plugin-export poetry plugin before continuing..."
+    exit 1
+else
+    if poetry config warnings.export | grep -q "true"; then
+        echo "[-] poetry-plugin-export warnings are enabled. Consider disabling them because they can be noisy (poetry config warnings.export false)."
+    fi
+fi
+
 # Ensure the poetry lock file is up to date
 echo "[-] Making sure lock file is up to date..."
 
@@ -15,7 +25,7 @@ poetry export --format=requirements.txt \
     --output="requirements.txt"
 
 # Define the extra group dependencies
-declare -a arr=("dev" "lint" "types" "test" "docs" "release")
+declare -a arr=("dev" "types" "test" "docs" "release")
 
 for group in "${arr[@]}"
 do

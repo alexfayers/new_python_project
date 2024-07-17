@@ -4,20 +4,4 @@
     "python.testing.pytestEnabled": true,
     "python.defaultInterpreterPath": "",
     "files.eol": "\n",
-
-    "python.formatting.provider": "black",
-
-    "python.linting.flake8Enabled": true,
-    "python.linting.flake8Args": [
-        "--max-line-length=120",
-        "--docstring-convention=google"
-    ],
-
-    "python.linting.mypyEnabled": true,
-    "python.linting.mypyArgs": [
-        "--follow-imports=silent",
-        "--ignore-missing-imports",
-        "--show-column-numbers",
-        "--no-pretty"
-    ],
 }

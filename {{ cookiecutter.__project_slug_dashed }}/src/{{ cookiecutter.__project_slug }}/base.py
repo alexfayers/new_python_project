@@ -1,29 +1,32 @@
 """The main functionality of `{{ cookiecutter.project_name }}`."""
 
 import logging
+{%- if cookiecutter.config_file_required == 'y' %}
 from pathlib import Path
-from typing import TYPE_CHECKING, Any, TypeVar
+{%- endif %}
+from typing import Any{% if cookiecutter.config_file_required == 'y' %}, TypeVar{% endif %}
 
+{%- if cookiecutter.config_file_required == 'y' %}
 import toml
 
-if TYPE_CHECKING:
-    from ._helpers.nice_logger import SuccessLogger
-
 D = TypeVar("D")
+{%- endif %}
 
 
 class {{ cookiecutter.__project_class_name }}:
     """Everything in the project comes back to here."""
 
-    def __init__(self, config_file: str) -> None:
-        """Initialises the base class for `{{ cookiecutter.__project_slug}}` by loading the config and setting up a logger.
+    def __init__(self{% if cookiecutter.config_file_required == 'y' %}, config_file: str{% endif %}) -> None:
+        """Initialises the base class for `{{ cookiecutter.__project_slug}}` by loading the config and setting up a logger.{%- if cookiecutter.config_file_required == 'y' %}
 
         Args:
             config_file (str): Path to a config file containing settings for the class.
-        """
-        self.logger: SuccessLogger = logging.getLogger(__name__).getChild(self.__class__.__qualname__)  # type: ignore
+        {%- endif %}"""
+        self.logger = logging.getLogger(__name__).getChild(self.__class__.__qualname__)  # type: ignore
 
+        {%- if cookiecutter.config_file_required == 'y' %}
         self._config = self._load_config(Path(config_file))
+        {%- endif %}
 
     def _log_and_raise_exception(self, message: str, *args: Any, **kwargs: Any) -> None:
         """Logs an error and raises an exception.
@@ -39,6 +42,7 @@ class {{ cookiecutter.__project_class_name }}:
         self.logger.error(message, *args, **kwargs)
         raise Exception(message)
 
+    {%- if cookiecutter.config_file_required == 'y' %}
     def _load_config(self, config_file: Path) -> dict:
         """Loads the config file using toml.
 
@@ -48,7 +52,7 @@ class {{ cookiecutter.__project_class_name }}:
         Returns:
             dict: The config file as a dictionary.
         """
-        self.logger.verbose("Loading config file from %s", config_file)
+        self.logger.debug("Loading config file from %s", config_file)
 
         try:
             with open(config_file) as f:
@@ -71,7 +75,7 @@ class {{ cookiecutter.__project_class_name }}:
         Returns:
             Any: The value found at the path in the config file, or the default value if the path does not exist.
         """
-        self.logger.verbose("Reading config value: %s", path)
+        self.logger.debug("Reading config value: %s", path)
 
         located_data = self._config
 
@@ -82,3 +86,9 @@ class {{ cookiecutter.__project_class_name }}:
                 return default
 
         return located_data
+    {%- endif %}
+
+    def run(self) -> None:
+        """The main entrypoint for the project."""
+        # Add your code here...
+        self.logger.warning("Todo: Everything...")

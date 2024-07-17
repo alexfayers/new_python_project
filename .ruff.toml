@@ -1,0 +1,11 @@
+exclude = ["\\..*", "docs", "__pycache__", "\\{\\{.*"]
+line-length = 120
+target-version = "py39"
+
+[lint]
+extend-select = ["E", "F", "I", "D", "UP", "TCH", "PT", "ANN"]
+extend-ignore = ["ANN101", "ANN401"]
+
+[lint.pydocstyle]
+convention = "google"
+ignore-decorators = ["overrides.overrides"]
