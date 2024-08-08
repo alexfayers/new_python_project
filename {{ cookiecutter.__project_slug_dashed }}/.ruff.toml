@@ -42,7 +42,7 @@ extend-select = [
     # "PERF",  # performance related stuff
     # "RUF",  # misc linting
 ]
-extend-ignore = ["ANN101", "ANN401"]
+extend-ignore = ["ANN101", "ANN401", "ISC001"]
 
 [lint.pydocstyle]
 convention = "google"
