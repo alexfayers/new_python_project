@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -xe
 
 # This script is used to release a new version of the project.
 # It will update the version in the actual package, create a new tag and push it to the remote repository.
@@ -19,28 +19,20 @@ if [ -z "$1" ]
     exit 1
 fi
 
+# make sure all files are linted and all tests pass
+tox
+
 # Get the current script's directory
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # Ensure requirements.txt files are up to date
 "$SCRIPT_DIR/export_requirements.sh"
 
-git add poetry.lock
-git commit -m "Update poetry.lock"
-
-git add requirements*.txt
-git commit -m "Update requirements files"
-
-# Make sure all tests pass
-tox
-
 # Clear the current changelog - it gets regenerated fully on each release
 echo '' > CHANGELOG.md
 
 # Update the changelog
 gitchangelog
-git add CHANGELOG.md
-git commit -m "Update CHANGELOG.md"
 
 # Get the current version number
 current_version=$(poetry version -s)
@@ -50,6 +42,12 @@ poetry version "$1"
 
 # Get the new version number
 new_version=$(poetry version -s)
+
+# Update __init__.py version
+find src -type f -name "__init__.py" -exec sed -i "s/__version__ = \"$current_version\"/__version__ = \"$new_version\"/g" {} \;
+
+# make sure files are linted and formatted
+tox -e lint
 
 # Update the version number in the git repo
 git add .
