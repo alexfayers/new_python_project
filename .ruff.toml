@@ -1,10 +1,48 @@
-exclude = ["\\..*", "docs", "__pycache__", "\\{\\{.*"]
 line-length = 120
 target-version = "py39"
 
 [lint]
-extend-select = ["E", "F", "I", "D", "UP", "TCH", "PT", "ANN"]
-extend-ignore = ["ANN101", "ANN401"]
+extend-select = [
+    "F",
+    "E",
+    "W",
+    "I",
+    # "N",  # variable naming
+    "D",
+    "UP",
+    "PT",
+    "ANN",
+    "ASYNC", # async validation
+    # "S",  # bandit - generic good practices
+    # "BLE",  # disallows except Exception
+    # "B",  # bugbear - pretty reasonable, probs enable
+    # "A",  # builtins - prevent shadowing of python builtins
+    # "COM",  # require trailing commas. nice.
+    # "C4",  # comprehension checks. nice.
+    # "DTZ",  # make sure datetimes are tz aware
+    # "EM",  # make tracebacks a bit cleaner by enforcing good exceptions
+    "ISC", # prevent implicit string concats (usually as a result of formatting)
+    # "G",  # prevent logging statements from using fstrings
+    # "INP",  # implicit namespaces. mainly affects tests atm.
+    # "PIE",  # misc lints
+    "T20",
+    "PT",
+    # "RET",  # ensure returns are cleaner
+    # "SLF",  # prevent accessing privates
+    "SIM",
+    "TCH",
+    # "ARG",  # unused arguments
+    # "PTH",  # use pathlib as much as possible
+    # "TD",  # Make todos have issue links and authors
+    # "ERA",  # show commented out code
+    # "PD",  # clean up pandas code
+    # "PGH",  # misc lints, mainly non-specific ignores
+    # "PL",  # pylint - misc lints
+    # "TRY",  # better exceptions
+    # "PERF",  # performance related stuff
+    # "RUF",  # misc linting
+]
+extend-ignore = ["ANN101", "ANN401", "ISC001"]
 
 [lint.pydocstyle]
 convention = "google"
