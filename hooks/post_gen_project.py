@@ -226,6 +226,28 @@ def init_dev() -> None:
             Style.RESET_ALL,
         )
 
+    run_command = ["/usr/bin/env", "bash", "scripts/lint-and-format.sh"]
+
+    try:
+        print(Style.NORMAL, Fore.BLUE, "running initial linting checks...")
+        print(Style.RESET_ALL, Style.DIM)
+        execute(*run_command, cwd=PROJECT_DIRECTORY)
+    except Exception as e:
+        print(e)
+        print(
+            Style.NORMAL,
+            Fore.YELLOW,
+            "initial linting checks failed, you may need re-run the task by yourself: " " ".join(run_command),
+            Style.RESET_ALL,
+        )
+    else:
+        print(
+            Style.NORMAL,
+            Fore.GREEN,
+            "all linting checks passed successfully",
+            Style.RESET_ALL,
+        )
+
     if (
         "{{ cookiecutter.init_git_repo }}" == "y"  # type: ignore[comparison-overlap]
         and "{{ cookiecutter.init_dev_env_do_init_commit }}" == "y"  # type: ignore[comparison-overlap]
