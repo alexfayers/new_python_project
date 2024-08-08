@@ -70,6 +70,8 @@ ignore_regexps = [
     r'^[Ff]or real',
     r'^@auto',
     r'^Merge branch',
+    r'^Update poetry\.lock$',
+    r'^Update requirements files$',
     r'^Bump version:'
 ]
 
