@@ -11,7 +11,7 @@
         ".venv": true,
         ".coverage": true,
         "htmlcov": true,
-        ".testmondata": true,
+        ".testmondata*": true,
         "coverage.xml": true,
     }
 }
