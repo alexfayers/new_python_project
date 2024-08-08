@@ -4,19 +4,51 @@ Changelog
 
 (main)
 ------
-- Update requirements files. [alexfayers]
+- Fix ruff issues. [alexfayers]
+- Fix ruff error. [alexfayers]
+- Add back ignore to pre-commit. [alexfayers]
+- Update various things about main repo from template section.
+  [alexfayers]
+- Fix mypy capital. [alexfayers]
+- Update version output. [alexfayers]
+- Add ignore for ruff. [alexfayers]
+- Make project get linted and formatted at start. [alexfayers]
+- Fix linting errors. [alexfayers]
+- Update pre-commit config. [alexfayers]
+- Remove mypy exclude. [alexfayers]
+- Fix vscode testmon ignore path. [alexfayers]
+- Set default interpreter path. [alexfayers]
+- Update deps to not be optional. [alexfayers]
+- Handle dir already exists. [alexfayers]
+- Fix bug where new venv wasn't being used properly. [alexfayers]
+- Update ruff config. [alexfayers]
+- Add auto-test tasks for vscode. [alexfayers]
+- Update gitignore. [alexfayers]
+- Add file excludes for vscode. [alexfayers]
+- Update tox config to use cov. [alexfayers]
+- Add extra deps for tests. [alexfayers]
+- Remove version file. [alexfayers]
+- Update mypy config. [alexfayers]
+- Update gitchangelog config to ignore new scripted commits.
+  [alexfayers]
+- Remove flake8 config. [alexfayers]
+- Add coveragerc. [alexfayers]
+- Update scripts. [alexfayers]
+
+
+v4.0.4 (2024-07-17)
+-------------------
+- Update CHANGELOG.md. [alexfayers]
 - Use dashes in actual command name. [alexfayers]
 
 
 v4.0.3 (2024-07-17)
 -------------------
 - Update CHANGELOG.md. [alexfayers]
-- Update requirements files. [alexfayers]
 
 
 v4.1.0 (2024-07-17)
 -------------------
-- Update poetry.lock. [alexfayers]
 - Big revamp! [alexfayers]
 - Add cruft update info to readme. [alexfayers]
 - Add cruft bits. [alexfayers]
@@ -54,7 +86,6 @@ v4.0.1 (2023-05-14)
 v4.0.0 (2023-05-14)
 -------------------
 - Update CHANGELOG.md. [alexfayers]
-- Update requirements files. [alexfayers]
 - Update licence. [alexfayers]
 - Update readme. [alexfayers]
 - Disable pre-commit install. [alexfayers]
@@ -67,19 +98,15 @@ v4.0.0 (2023-05-14)
 - Adjust project include config. [alexfayers]
 - Adjust template var. [alexfayers]
 - Finishing touches on template. [alexfayers]
-- Update requirements files. [alexfayers]
 - Remove toml dep. [alexfayers]
 - Small lint changes. [alexfayers]
 - Add cli entry for anppt. [alexfayers]
-- Update requirements files. [alexfayers]
-- Update poetry.lock. [alexfayers]
 - Cookiecutter init. [alexfayers]
 
 
 v3.6.0 (2023-04-22)
 -------------------
 - Update CHANGELOG.md. [alexfayers]
-- Update requirements files. [alexfayers]
 - Update dependencies and pre-commit config. [alexfayers]
 
   Basically just a clean up and update
@@ -92,14 +119,12 @@ v3.6.0 (2023-04-22)
   [alexfayers]
 - Remove types group. [alexfayers]
 - Update pre-commit config. [alexfayers]
-- Update requirements files. [alexfayers]
 - Update deps in pyproject. [alexfayers]
 
 
 v3.5.0 (2023-04-01)
 -------------------
 - Update CHANGELOG.md. [alexfayers]
-- Update requirements files. [alexfayers]
 - Update deps to latest. [alexfayers]
 - Update lock file. [alexfayers]
 - Update pre-commit hooks. [alexfayers]
@@ -109,8 +134,6 @@ v3.5.0 (2023-04-01)
 v3.4.3 (2023-04-01)
 -------------------
 - Update CHANGELOG.md. [alexfayers]
-- Update requirements files. [alexfayers]
-- Update poetry.lock. [alexfayers]
 - Add pytest-clarity. [alexfayers]
 - Add pytest-sugar. [alexfayers]
 
@@ -139,8 +162,6 @@ v3.3.0 (2023-04-01)
 - Update CHANGELOG.md. [alexfayers]
 - Add requirements update to release script. [alexfayers]
 - Use requirements files for tox. [alexfayers]
-- Update requirements files. [alexfayers]
-- Update poetry.lock. [alexfayers]
 - Re-organise dependencies. [alexfayers]
 - Add export_requirements.sh script. [alexfayers]
 - Add version flag. [alexfayers]

@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "alexs-new-python-project-template"
-version = "4.0.4"
+version = "4.1.0"
 description = "A template for new Python projects."
 authors = ["Alex Fayers <alex@fayers.com>"]
 license = "MIT"
