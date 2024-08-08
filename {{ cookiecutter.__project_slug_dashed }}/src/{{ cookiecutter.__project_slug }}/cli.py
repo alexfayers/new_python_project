@@ -39,7 +39,8 @@ def cli_main() -> None:
         package_logger.setLevel(logging.DEBUG)
 
     if args.version is True:
-        package_logger.warning(f"Version: {__version__}")
+        package_logger.setLevel(logging.INFO)
+        package_logger.info(f"Version: {__version__}")
         sys.exit(1)
 
     try:
