@@ -1,0 +1,98 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "run tests",
+            "group": "test",
+            "type": "shell",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "-m",
+                "pytest",
+                "--cov",
+                "src",
+                "--cov-report",
+                "html",
+                "-vv",
+            ],
+            "problemMatcher": {
+                "fileLocation": "autoDetect",
+                "owner": "python",
+                "pattern": [
+                    {
+                        "regexp": "^FAILED (.*):(\\d+)::(.*?) - (.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "message": 4,
+                    },
+                ]
+            }
+        },
+        {
+            "label": "run tests (testmon)",
+            "group": "test",
+            "type": "shell",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "-m",
+                "pytest",
+                "-vv",
+                "--testmon",
+            ],
+            "problemMatcher": {
+                "owner": "python",
+                "fileLocation": "autoDetect",
+                "pattern": [
+                    {
+                        "regexp": "^FAILED (.*):(\\d+)::(.*?) - (.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "message": 4,
+                    },
+                ]
+            }
+        },
+        {
+            "label": "watch tests",
+            "group": "test",
+            "type": "shell",
+            "command": "${config:python.defaultInterpreterPath}",
+            "args": [
+                "-m",
+                "pytest_watch",
+                "src",
+                "tests",
+                "--",
+                "-vv",
+                "--testmon",
+            ],
+            "problemMatcher": {
+                "owner": "python",
+                "fileLocation": "autoDetect",
+                "pattern": [
+                    {
+                        "regexp": "^FAILED (.*):(\\d+)::.*? - (.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "message": 3,
+                    },
+                ],
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "^Test session starts.*$",
+                    "endsPattern": "^Results \\(\\d+(?:\\.\\d+)s\\):$"
+                }
+            },
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "runOptions": {
+                "runOn": "folderOpen"
+            }
+        }
+    ]
+}
