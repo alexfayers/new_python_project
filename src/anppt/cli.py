@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+from cookiecutter.exceptions import OutputDirExistsException
 from cookiecutter.main import cookiecutter
 
 
@@ -11,4 +12,7 @@ def cli_main() -> None:
     try:
         cookiecutter(source_path)
     except KeyboardInterrupt:
+        return
+    except OutputDirExistsException as e:
+        print(f"{e}! Exiting...")
         return
