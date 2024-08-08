@@ -1,6 +1,0 @@
-# It's crazy that flake8 doesn't support pyproject.toml yet but oh well
-[flake8]
-max-line-length = 120
-exclude = .*, docs/, __pycache__, setup.py
-docstring-convention = google
-ignore = W503
