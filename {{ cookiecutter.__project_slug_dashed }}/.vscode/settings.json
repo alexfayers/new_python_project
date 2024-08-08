@@ -4,4 +4,14 @@
     "python.testing.pytestEnabled": true,
     "python.defaultInterpreterPath": "",
     "files.eol": "\n",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.*_cache": true,
+        ".tox": true,
+        ".venv": true,
+        ".coverage": true,
+        "htmlcov": true,
+        ".testmondata": true,
+        "coverage.xml": true,
+    }
 }
