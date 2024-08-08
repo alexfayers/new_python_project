@@ -180,7 +180,7 @@ def init_dev() -> None:
     # else:
     #     print(Style.NORMAL, Fore.GREEN, "pre-commit hooks were successfully installed", Style.RESET_ALL)
 
-    run_command = ["poetry", "install", "--with", "dev,types,test"]
+    run_command = ["/usr/bin/env", "bash", "-c", ". .venv/bin/activate && poetry install"]
 
     try:
         print(Style.NORMAL, Fore.BLUE, "install all dev dependency packages...")
@@ -204,7 +204,7 @@ def init_dev() -> None:
             Style.RESET_ALL,
         )
 
-    run_command = ["scripts/export_requirements.sh"]
+    run_command = ["/usr/bin/env", "bash", "scripts/export_requirements.sh"]
 
     try:
         print(Style.NORMAL, Fore.BLUE, "exporting requirements to files...")
