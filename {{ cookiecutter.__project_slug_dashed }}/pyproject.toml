@@ -19,7 +19,7 @@ license = "{{ cookiecutter.open_source_license }}"
 {%- endif %}
 readme = "README.md"
 packages = [{include = "{{ cookiecutter.__project_slug}}", from = "src"}]
-include = ["LICENSE", "src/{{ cookiecutter.__project_slug}}/py.typed", "src/{{ cookiecutter.__project_slug}}/VERSION"]
+include = ["LICENSE", "src/{{ cookiecutter.__project_slug}}/py.typed"]
 
 [tool.poetry.scripts]
 "{{ cookiecutter.__project_slug_dashed }}" = "{{ cookiecutter.__project_slug}}:cli_main"
@@ -27,7 +27,9 @@ include = ["LICENSE", "src/{{ cookiecutter.__project_slug}}/py.typed", "src/{{ c
 [tool.poetry.dependencies]
 # Main project dependencies.
 python = ">=3.9,<4.0"
+{%- if cookiecutter.config_file_required == 'y' %}
 toml = "^0.10.2"
+{%- endif %}
 rich = "^13.7.1"
 
 [tool.poetry.group.dev.dependencies]
@@ -38,13 +40,20 @@ pre-commit = "^3.7.1"
 
 [tool.poetry.group.types.dependencies]
 # Type stubs used by the package.
+{%- if cookiecutter.config_file_required == 'y' %}
 types-toml = "^0.10.8.6"
+{%- endif %}
 
 [tool.poetry.group.test.dependencies]
 # For running tests.
-pytest = "^8.2.2"
+pytest = "^8.3.2"
 pytest-sugar = "^1.0.0"
 pytest-clarity = "^1.0.1"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
+pytest-socket = "^0.7.0"
+pytest-watch = "^4.2.0"
+pytest-testmon = "^2.1.1"
 
 [tool.poetry.group.docs]
 # For generating documentation.
