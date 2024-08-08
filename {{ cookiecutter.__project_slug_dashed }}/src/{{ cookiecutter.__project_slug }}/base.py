@@ -22,7 +22,7 @@ class {{ cookiecutter.__project_class_name }}:
         Args:
             config_file (str): Path to a config file containing settings for the class.
         {%- endif %}"""
-        self.logger = logging.getLogger(__name__).getChild(self.__class__.__qualname__)  # type: ignore
+        self.logger = logging.getLogger(__name__).getChild(self.__class__.__qualname__)
 
         {%- if cookiecutter.config_file_required == 'y' %}
         self._config = self._load_config(Path(config_file))

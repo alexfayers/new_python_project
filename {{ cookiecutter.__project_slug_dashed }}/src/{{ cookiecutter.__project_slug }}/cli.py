@@ -24,11 +24,7 @@ def cli_main() -> None:
     {%- endif %}
     verbose_level: int = args.verbose
 
-    if args.version is True:
-        print(f"Version: {__version__}")
-        sys.exit(1)
-
-    package_logger = logging.getLogger("{{ cookiecutter.__project_slug}}")  # type: ignore
+    package_logger = logging.getLogger("{{ cookiecutter.__project_slug}}")
 
     # initialise log handling
     package_logger.addHandler(RichHandler(rich_tracebacks=True))
@@ -41,6 +37,10 @@ def cli_main() -> None:
         package_logger.setLevel(logging.INFO)
     elif verbose_level >= 2:
         package_logger.setLevel(logging.DEBUG)
+
+    if args.version is True:
+        package_logger.warning(f"Version: {__version__}")
+        sys.exit(1)
 
     try:
         app = {{ cookiecutter.__project_class_name }}({% if cookiecutter.config_file_required == 'y' %}config_file{% endif %})
