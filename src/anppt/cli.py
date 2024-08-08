@@ -14,5 +14,5 @@ def cli_main() -> None:
     except KeyboardInterrupt:
         return
     except OutputDirExistsException as e:
-        print(f"{e}! Exiting...")  # noqa: T201
+        print(f"{e}! Exiting...")
         return

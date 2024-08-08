@@ -5,6 +5,7 @@ https://github.com/zillionare/python-project-wizard/blob/2d85c2c267f98e68288c371
 """
 
 import asyncio
+import contextlib
 import functools
 import os
 import shlex
@@ -107,10 +108,8 @@ PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
 
 def remove_file(filepath: str) -> None:
     """Delete a file if it exists."""
-    try:
+    with contextlib.suppress(FileNotFoundError):
         os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
-    except FileNotFoundError:
-        pass
 
 
 @async_run

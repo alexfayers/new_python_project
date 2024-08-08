@@ -10,7 +10,6 @@ extend-select = [
     # "N",  # variable naming
     "D",
     "UP",
-    "PT",
     "ANN",
     "ASYNC", # async validation
     # "S",  # bandit - generic good practices
@@ -25,7 +24,7 @@ extend-select = [
     # "G",  # prevent logging statements from using fstrings
     # "INP",  # implicit namespaces. mainly affects tests atm.
     # "PIE",  # misc lints
-    "T20",
+    # "T20",
     "PT",
     # "RET",  # ensure returns are cleaner
     # "SLF",  # prevent accessing privates

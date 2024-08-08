@@ -26,7 +26,6 @@ extend-select = [
     # "INP",  # implicit namespaces. mainly affects tests atm.
     # "PIE",  # misc lints
     "T20",
-    "PT",
     # "RET",  # ensure returns are cleaner
     # "SLF",  # prevent accessing privates
     "SIM",
