@@ -55,18 +55,12 @@ pytest-socket = "^0.7.0"
 pytest-watch = "^4.2.0"
 pytest-testmon = "^2.1.1"
 
-[tool.poetry.group.docs]
-# For generating documentation.
-optional = true
-
 [tool.poetry.group.docs.dependencies]
+# For generating documentation.
 pdoc = "^14.5.1"
 
-[tool.poetry.group.release]
-# For making a new versioned release of the project.
-optional = true
-
 [tool.poetry.group.release.dependencies]
+# For making a new versioned release of the project.
 gitchangelog = "^3.0.4"
 
 ### Tool configs ###
